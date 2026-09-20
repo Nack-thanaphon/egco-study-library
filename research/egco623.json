@@ -1,0 +1,147 @@
+{
+  "courseCode": "EGCO623",
+  "title": "Data Mining and Machine Learning",
+  "shortTitle": "Data Mining & ML",
+  "description": "จากการทำความเข้าใจและเตรียมข้อมูล ไปจนถึงการลดมิติ คลังข้อมูล OLAP และการทำ Dashboard ด้วย Power BI",
+  "focus": "เน้นสำรวจข้อมูล เตรียมข้อมูล วิเคราะห์หลายมิติ และนำข้อมูลไปใช้ตัดสินใจ",
+  "sessions": [
+    {
+      "id": "egco623-session-01",
+      "number": 1,
+      "date": "11 สิงหาคม 2569",
+      "week": "Week 1",
+      "title": "Data Mining, KDD และจริยธรรมข้อมูล",
+      "subtitle": "เริ่มจากข้อมูลดิบ เปลี่ยนให้เป็นความรู้ และเลือกชนิดงานวิเคราะห์ให้ตรงโจทย์",
+      "topics": [
+        "ลำดับ Data → Information → Knowledge → Wisdom",
+        "กระบวนการ KDD: เตรียมข้อมูล → ทำ Data Mining → ตรวจและนำผลไปใช้",
+        "งานหลัก Classification, Regression, Clustering และ Anomaly Detection",
+        "Supervised กับ Unsupervised Learning และภาพรวมเครื่องมือ Machine Learning",
+        "Ethics, Privacy, Bias และการดูแลโมเดลหลังใช้งานด้วย MLOps"
+      ],
+      "discussions": [
+        "เปรียบข้อมูลเหมือนเบาะแส: รหัสไฟแดงเป็นข้อมูลดิบ แต่เมื่อรู้สถานที่และช่วงรถติดจึงใช้ตัดสินใจได้",
+        "ยกตัวอย่างทำนายลูกค้าย้ายค่าย ยอดขาย ความเร็วลม การโกงบัตรเครดิต และการแบ่งกลุ่มลูกค้า",
+        "โมเดลที่แม่นอาจยังไม่ดี หากเลือกปฏิบัติจากเพศหรือเชื้อชาติ หรือใช้ข้อมูลโดยไม่เคารพความเป็นส่วนตัว"
+      ],
+      "emphasis": [
+        "เริ่มจากคำถามว่าอยากรู้อะไร แล้วค่อยเลือกวิธีวิเคราะห์",
+        "การเตรียมข้อมูลเป็นส่วนหนึ่งของกระบวนการ ไม่ใช่งานเก็บกวาดท้ายสุด",
+        "ความแม่นยำต้องเดินคู่กับจริยธรรม ความเป็นส่วนตัว และการตรวจอคติ"
+      ],
+      "assignments": [
+        "ฝึกแยกโจทย์ว่าเป็น Classification, Regression, Clustering หรือ Anomaly Detection",
+        "ทบทวนว่า Supervised และ Unsupervised Learning ต่างกันอย่างไร",
+        "ไม่มีหลักฐานกำหนดส่งงานเฉพาะคาบในข้อความสรุปนี้"
+      ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงคาบ 11 ส.ค. 2569",
+      "sourceNote": "อ้างอิงสรุปหลังเรียน Slack ts 1786424583.446999 (S1)"
+    },
+    {
+      "id": "egco623-session-02",
+      "number": 2,
+      "date": "16 สิงหาคม 2569",
+      "week": "Week 2",
+      "title": "Exploring Data และ Data Quality",
+      "subtitle": "รู้จักแถว คอลัมน์ ชนิดข้อมูล คุณภาพข้อมูล และสถิติพื้นฐานก่อนสร้างโมเดล",
+      "topics": [
+        "Concept, Instance/Object และ Attribute/Feature",
+        "Nominal, Ordinal, Interval, Ratio รวมถึง Discrete และ Continuous",
+        "รูปแบบข้อมูล Record, Data Matrix, Document, Transaction, Graph และ Ordered Data",
+        "Noise, Outlier, Missing Value, ข้อมูลไม่สอดคล้อง ข้อมูลซ้ำ และข้อมูลเก่า",
+        "Mean, Median, Range, Variance, Standard Deviation, IQR และการทำ EDA"
+      ],
+      "discussions": [
+        "ชนิดข้อมูลเหมือนป้ายบนกล่อง: ถ้าติดป้ายผิด เครื่องมือก็จัดการของข้างในผิด เช่นเปรียบว่า outlook มากกว่า sunny ซึ่งไม่มีความหมาย",
+        "Mean ถูก outlier ดึงง่าย ขณะที่ Median และ IQR มักทนกว่า",
+        "เมื่อนำหลายแหล่งมารวม ต้องตรวจรูปแบบเวลา key หน่วย และระดับการสรุปให้ตรงกัน",
+        "ผลลัพธ์การเรียนรู้ยกตัวอย่าง Decision Table, Decision Tree, IF–THEN Rule และ k-nearest neighbors"
+      ],
+      "emphasis": [
+        "สำรวจข้อมูลก่อนเชื่อหรือสร้างโมเดล",
+        "เลือกสถิติให้เหมาะกับชนิดข้อมูลและผลกระทบของ outlier",
+        "อย่าแก้ค่าหายด้วยสูตรเดียวทุกกรณี ต้องเข้าใจบริบทข้อมูล"
+      ],
+      "assignments": [
+        "คำนวณ sample mean, variance, standard deviation, median, quartiles, range และ IQR จากค่า yield strength 11 ค่า",
+        "ตรวจปัญหาคุณภาพข้อมูลในตารางบุคคล เช่น ID ซ้ำ วันที่คนละรูปแบบ ค่าหาย และข้อมูลขัดแย้ง"
+      ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงคาบ 16 ส.ค. 2569",
+      "sourceNote": "อ้างอิงสรุปหลังเรียน Slack ts 1786847322.238019 (S2); ไม่ใช้โพสต์เตรียมเรียน"
+    },
+    {
+      "id": "egco623-session-03",
+      "number": 3,
+      "date": "22 หรือ 23 สิงหาคม 2569 (ข้อความต้นทางระบุไม่ตรงกัน)",
+      "week": "Week 3",
+      "title": "Visualization และ Data Preprocessing",
+      "subtitle": "รวมสรุปซ้ำของช่วงเรียนเดียวกัน: อ่านกราฟ ล้างข้อมูล ปรับสเกล สุ่มตัวอย่าง และลดมิติ",
+      "topics": [
+        "Visualization ด้วย Histogram, Boxplot, Scatter Plot และ Correlation Matrix",
+        "Data Cleaning: ค่าหาย ข้อมูลผิด หน่วยไม่ตรง และหมวดหมู่ไม่สอดคล้อง",
+        "หา Outlier ด้วย Z-score และ IQR",
+        "ปรับสเกลด้วย Min-Max Normalization และ Z-score Standardization",
+        "Sampling, Aggregation, Discretization และ Curse of Dimensionality",
+        "Feature Selection กับ Feature Extraction เช่น PCA และ LDA"
+      ],
+      "discussions": [
+        "การเตรียมข้อมูลเหมือนล้างและหั่นวัตถุดิบก่อนปรุง: Garbage In ย่อมได้ Garbage Out",
+        "กราฟช่วยเห็นรูปแบบและจุดผิดปกติเร็ว แต่จำนวน bin มุมมอง 3 มิติ และการเลือกข้อมูลอาจทำให้ตีความต่างกัน",
+        "เติมค่าหายด้วย mean โดยไม่เข้าใจคอลัมน์อาจสร้างค่าที่ไม่มีความหมาย จึงควรถามผู้รู้โดเมนหรือเจ้าของฐานข้อมูล",
+        "PCA เหมือนหามุมถ่ายรูปที่เห็นความต่างมากที่สุด ส่วน LDA หามุมที่แยกกลุ่มที่รู้ป้ายแล้วให้ชัด",
+        "สรุปวันที่ 22 ส.ค. สองข้อความและ 23 ส.ค. สองข้อความมีเนื้อหาต่อเนื่องและทับซ้อน จึงนับเป็นคาบเดียวแทนการเพิ่มจำนวนคาบ"
+      ],
+      "emphasis": [
+        "อย่าลบค่าหายหรือ outlier ทันที ต้องถามก่อนว่าค่านั้นผิดจริงหรือเป็นเหตุการณ์สำคัญ",
+        "ปรับสเกลเมื่อฟีเจอร์มีช่วงตัวเลขต่างกันมาก เพื่อไม่ให้คอลัมน์เลขใหญ่ครอบโมเดล",
+        "ลดมิติเพื่อแก้ข้อมูลเบาบางและลดฟีเจอร์ซ้ำซ้อน แต่ต้องรักษาความหมายที่จำเป็น"
+      ],
+      "assignments": [
+        "In-class 0.5 คะแนน: เติม Normalize และ Standardize ในไฟล์ Excel ส่วนสูง 14 คน แล้วส่ง Classroom",
+        "คำนวณ Pearson r ของ (160,55), (170,65), (180,75) และบอกความแรงกับทิศทาง",
+        "เลือกฟีเจอร์ useful/irrelevant สำหรับทำนายราคาบ้านพร้อมเหตุผล",
+        "วิเคราะห์ correlation ระหว่างขนมกับน้ำอัดลม แล้วเสนอฟีเจอร์รวมหนึ่งตัว",
+        "กำหนดส่งที่สรุประบุคือเที่ยงคืนของวันที่เรียน แต่วันเรียนขัดกันระหว่าง 22 กับ 23 ส.ค.; ต้องตรวจ Classroom ก่อนยืนยันวันปฏิทิน"
+      ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงช่วงเรียน 22/23 ส.ค. 2569 (รอตรวจวันที่)",
+      "sourceNote": "รวมสรุปซ้ำ S3–S6: Slack ts 1787418604.643899, 1787418605.134559, 1787498424.697089, 1787498425.182199; วันที่หัวข้อความระบุ 22 และ 23 ส.ค. ไม่ตรงกัน จึงไม่เดา"
+    },
+    {
+      "id": "egco623-session-04",
+      "number": 4,
+      "date": "30 สิงหาคม 2569",
+      "week": "Week 4",
+      "title": "Data Warehouse, OLAP และ Power BI",
+      "subtitle": "มองข้อมูลหลายมิติ สรุปจากคลังข้อมูล และเปลี่ยนตารางให้เป็น Dashboard ที่ตอบคำถามได้",
+      "topics": [
+        "Data Warehouse แบบ Subject-oriented, Integrated, Time-variant และ Non-volatile",
+        "Data Cube และ OLAP operators: Roll-up, Drill-down, Slice, Dice และ Pivot",
+        "ROLAP, MOLAP, HOLAP และโครงสร้าง Star, Snowflake, Fact Constellation",
+        "ความต่างระหว่าง OLTP สำหรับธุรกรรมประจำวันกับ OLAP สำหรับการวิเคราะห์อดีต",
+        "Power BI workflow: Import → Model Relationship → Visualize → Slicer → Measure"
+      ],
+      "discussions": [
+        "Data Warehouse เหมือนตู้เย็นกลางบ้านที่รวมวัตถุดิบจากหลายที่ให้พร้อมใช้ ส่วน Data Mart เป็นช่องย่อยของแต่ละแผนก",
+        "Data Cube เหมือนลูกบาศก์รูบิคที่ดูยอดขายผ่านมิติสินค้า ร้าน และเวลา แล้วหมุนมุมมองเพื่อหาคำตอบ",
+        "ROLAP เก็บแบบตารางและใช้ SQL, MOLAP คำนวณสรุปล่วงหน้าเพื่อความเร็ว, HOLAP ผสมสองแบบ",
+        "ใน Power BI เชื่อม CategoryID แบบ many-to-one แล้วใช้ Slicer ให้ทุกกราฟเปลี่ยนตามหมวดที่เลือก"
+      ],
+      "emphasis": [
+        "เลือกมิติและค่าที่ต้องการวัดให้ตรงคำถามธุรกิจ",
+        "Roll-up คือสรุปกว้างขึ้น ส่วน Drill-down คือเปิดรายละเอียดลึกลง",
+        "Dashboard หนึ่งหน้าควรช่วยตอบคำถาม ไม่ใช่เพียงรวมกราฟสวย ๆ"
+      ],
+      "assignments": [
+        "Zoom assignment #7: ทำ Power BI dashboard หนึ่งหน้า มี KPI, Sales Trend, Product Performance, Customer Analysis, Sales by Category และ Slicer",
+        "ส่งภาพหน้าจอและตอบคำถามเรื่องสินค้าขายดี ลูกค้ารายได้สูงสุด แนวโน้มยอดขาย ความต่างของแต่ละหมวด และ Average Order Value",
+        "ข้อความประกาศระบุว่างดเรียนสองสัปดาห์ และจะเริ่ม Association Analysis เมื่อกลับมา"
+      ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงคาบ 30 ส.ค. 2569",
+      "sourceNote": "รวมสรุปสองตอนของคาบเดียวกัน Slack ts 1788109078.728709 และ 1788109079.223369 (S7–S8)"
+    }
+  ]
+}

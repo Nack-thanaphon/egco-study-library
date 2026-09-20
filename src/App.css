@@ -21,6 +21,27 @@ button, a { -webkit-tap-highlight-color: transparent; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid rgba(186, 88, 59, .28); outline-offset: 3px; }
 
 .app-shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: 36px 0 24px; }
+.library-header { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 20px; align-items: start; padding: 38px 0 34px; border-bottom: 1px solid var(--line); }
+.library-header h1 { max-width: 820px; margin: 0; font-family: 'Newsreader', 'Noto Sans Thai', sans-serif; font-size: clamp(44px, 7vw, 78px); line-height: .96; letter-spacing: -.035em; }
+.library-description { max-width: 780px; margin: 16px 0 0; color: var(--muted); font-size: 19px; }
+.library-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 24px 0 50px; background: var(--ink); border-radius: 16px; overflow: hidden; }
+.library-metrics div { display: flex; flex-direction: column; padding: 18px 22px; color: white; border-right: 1px solid rgba(255, 255, 255, .13); }
+.library-metrics div:last-child { border-right: 0; }
+.library-metrics strong { font-family: 'Newsreader', 'Noto Sans Thai', sans-serif; font-size: 34px; line-height: 1; }
+.library-metrics span { margin-top: 4px; color: rgba(255, 255, 255, .68); font-size: 14px; }
+.course-library { padding-bottom: 54px; }
+.course-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+.course-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; background: var(--paper-strong); border: 1px solid var(--line); border-radius: 18px; }
+.course-card-main { display: flex; flex: 1; flex-direction: column; align-items: stretch; min-width: 0; min-height: 300px; padding: 23px; text-align: left; color: var(--ink); background: transparent; border: 0; cursor: pointer; }
+.course-card-main:hover { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+.course-code { color: var(--accent); font-family: 'Newsreader', 'Noto Sans Thai', sans-serif; font-size: 42px; font-weight: 700; line-height: 1; }
+.course-card h3 { margin: 12px 0 7px; font-size: 26px; line-height: 1.2; }
+.course-card p { margin: 0; color: var(--muted); font-size: 17px; }
+.course-stats { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 24px; color: var(--muted); font-size: 14px; }
+.course-stats span, .open-course { display: inline-flex; align-items: center; gap: 6px; }
+.open-course { justify-content: space-between; margin-top: auto; padding-top: 24px; color: var(--accent); font-weight: 700; }
+.course-skill-link { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 49px; padding: 9px 14px; color: var(--ink); background: color-mix(in srgb, var(--accent) 10%, var(--paper-strong)); border-top: 1px solid var(--line); text-decoration: none; font-size: 15px; font-weight: 700; }
+.course-skill-link:hover { background: color-mix(in srgb, var(--accent) 18%, var(--paper-strong)); }
 .course-header { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 20px; align-items: start; padding: 30px 0 28px; border-bottom: 1px solid var(--line); }
 .course-mark { display: grid; place-items: center; width: 58px; height: 58px; color: var(--paper-strong); background: var(--ink); border-radius: 18px; }
 .course-copy { min-width: 0; }
@@ -104,6 +125,7 @@ h1, h2, h3, p { overflow-wrap: break-word; }
 
 @media (max-width: 820px) {
   .app-shell { width: min(100% - 28px, 680px); padding-top: 18px; }
+  .course-grid { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: 1fr; margin-bottom: 36px; }
   .lecture-grid { grid-template-columns: 1fr; }
   .section-heading { align-items: stretch; flex-direction: column; }
@@ -116,6 +138,14 @@ h1, h2, h3, p { overflow-wrap: break-word; }
 @media (max-width: 480px) {
   body { font-size: 18px; }
   .app-shell { width: calc(100% - 24px); }
+  .library-header { grid-template-columns: 48px minmax(0, 1fr); gap: 13px; padding-top: 22px; }
+  .library-header h1 { font-size: 44px; }
+  .library-description { font-size: 17px; }
+  .library-metrics { grid-template-columns: 1fr; }
+  .library-metrics div { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .13); }
+  .library-metrics div:last-child { border-bottom: 0; }
+  .course-card-main { min-height: 280px; padding: 19px; }
+  .course-code { font-size: 36px; }
   .course-header { grid-template-columns: 48px minmax(0, 1fr); gap: 13px; padding-top: 22px; }
   .course-mark { width: 46px; height: 46px; border-radius: 13px; }
   .course-header h1 { font-size: 49px; }

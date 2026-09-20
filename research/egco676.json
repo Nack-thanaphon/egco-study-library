@@ -1,0 +1,158 @@
+{
+  "courseCode": "EGCO676",
+  "title": "Network Security and Risk Assessment",
+  "shortTitle": "Network Security",
+  "description": "สรุปหลังเรียนจริง 4 คาบ ตั้งแต่พื้นฐานความเสี่ยง ไปจนถึงการเข้ารหัส ความถูกต้องของข้อมูล และโครงสร้างความเชื่อถือของกุญแจ",
+  "focus": "ความมั่นคงปลอดภัย การเข้ารหัส และการจัดการความเสี่ยง",
+  "accent": "#2f6f73",
+  "skillPath": "./downloads/egco676/SKILL.md",
+  "sessionCount": 4,
+  "sessions": [
+    {
+      "id": "lecture-01",
+      "number": 1,
+      "date": "15 สิงหาคม 2569",
+      "week": "Week 1",
+      "title": "Introduction, CIA และการประเมินความเสี่ยง",
+      "subtitle": "รู้ว่าต้องปกป้องอะไร แยกภัยคุกคามออกจากช่องโหว่ และเลือกวิธีจัดการความเสี่ยง",
+      "topics": [
+        "CIA Triad: Confidentiality, Integrity และ Availability",
+        "Authentication, Authorization, Accountability/Auditing และ Non-repudiation",
+        "ความแตกต่างระหว่าง Threat, Vulnerability, Risk และ Countermeasure",
+        "Defense in Depth, Security–Usability balance และการลด Attack Surface",
+        "ภาพรวม Symmetric, Asymmetric, Hash, MAC, Digital Signature, PKI และ Key Management"
+      ],
+      "discussions": [
+        "ใช้ Mobile Banking แยกภาพของความลับ ความถูกต้อง และความพร้อมใช้",
+        "ความเสี่ยงต้องดูทั้งมูลค่าของสิ่งที่ปกป้อง ภัยคุกคาม ช่องโหว่ โอกาสเกิด และผลกระทบ",
+        "ระบบที่ปลอดภัยไม่ควรฝากความหวังไว้กับด่านเดียว แต่ต้องป้องกันหลายชั้นทั้งคน ขั้นตอน เครือข่าย และข้อมูล",
+        "โปรเจกต์เป็นงานเดี่ยว ใช้หัวข้อเดียวต่อเนื่องทั้งเทอม และอาจต่อยอดเป็นหัวข้อจบได้"
+      ],
+      "emphasis": [
+        "CIA เป็นเป้าหมาย ไม่ใช่รายชื่อเครื่องมือ",
+        "Top-down มักสำเร็จกว่า เพราะผู้บริหารกำหนดนโยบาย ผู้รับผิดชอบ และการบังคับใช้ได้",
+        "Key Management สำคัญพอ ๆ กับการเลือกอัลกอริทึม",
+        "ตารางรายวิชายังเปลี่ยนได้ ให้ตรวจประกาศล่าสุดใน Google Classroom"
+      ],
+      "assignments": [
+        "Assignment 3 ครั้ง รวม 15%",
+        "Term Project 4 ช่วง รวม 55%: Topic 5%, Literature Review 10%, Progress/Methodology 15%, Final Presentation + Report 25%",
+        "Examination 30%",
+        "เตรียม Project 01: Topic, Motivation, Objective และ Expected Outcome สำหรับ 26 กันยายน"
+      ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงคาบ 15 ส.ค. 2569",
+      "sourceNote": "อ้างอิงจากสรุปหลังเรียน Week 01 และบันทึกคำบรรยายวันที่ 15 ส.ค. 2569"
+    },
+    {
+      "id": "lecture-02",
+      "number": 2,
+      "date": "22 สิงหาคม 2569",
+      "week": "Week 2",
+      "title": "Symmetric Cryptography",
+      "subtitle": "กุญแจลับดอกเดียว แบบจำลองการโจมตี และเส้นทางจาก DES ไป AES",
+      "topics": [
+        "Symmetric key และสมการ C = E(K, P), P = D(K, C)",
+        "Cryptography ต่างจาก Steganography อย่างไร",
+        "การโจมตีแบบ Ciphertext-only, Known-plaintext, Chosen-plaintext และ Chosen-ciphertext",
+        "DES, Double DES, 3DES และ AES",
+        "โหมด ECB, CBC, CFB, OFB, CTR และ Stream cipher"
+      ],
+      "discussions": [
+        "กุญแจดอกเดียวทำให้เข้ารหัสข้อมูลจำนวนมากได้เร็ว แต่ติดปัญหาว่าจะส่งกุญแจให้ผู้รับอย่างปลอดภัยอย่างไร",
+        "ตามหลัก Kerckhoffs ระบบควรยังปลอดภัยแม้อัลกอริทึมเปิดเผย เพราะความลับอยู่ที่กุญแจ",
+        "Double DES ไม่ได้เพิ่มความแข็งแรงเป็นสองเท่า เพราะการโจมตี meet-in-the-middle",
+        "ECB เผยรูปแบบของข้อมูลซ้ำ ส่วน CTR ทำงานขนานได้และความผิดพลาดไม่กระจายไปบล็อกอื่น",
+        "รหัสผ่านยาวร่วมกับ MFA และ password manager ช่วยได้มากกว่าการจำรหัสสั้นที่ซับซ้อน"
+      ],
+      "emphasis": [
+        "DES เลิกใช้แล้ว; หากต้องเลือกรหัสสมมาตรสมัยใหม่ให้คิดถึง AES",
+        "AES รองรับกุญแจ 128, 192 และ 256 บิต โดยใช้ 10, 12 และ 14 รอบตามลำดับ",
+        "ห้ามเลือก mode จากชื่ออย่างเดียว ต้องดู pattern, การทำงานขนาน และการกระจายของ error",
+        "การเข้ารหัสช่วยเรื่อง Confidentiality แต่ไม่ได้รับประกัน Integrity หรือ Authentication โดยอัตโนมัติ"
+      ],
+      "assignments": [
+        "คาบนี้ไม่มีการบ้าน EGCO676 ใหม่",
+        "ทบทวนความต่างของโหมด ECB, CBC และ CTR พร้อมอธิบายข้อดีข้อเสีย",
+        "เตรียมคาบถัดไปเรื่อง Asymmetric key และผลกระทบจาก Quantum computing"
+      ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงคาบ 22 ส.ค. 2569",
+      "sourceNote": "อ้างอิงจากสรุปหลังเรียน EGCO676 สัปดาห์ที่ 2 สองตอน และข้อความแก้ไขของคาบเดียวกัน"
+    },
+    {
+      "id": "lecture-03",
+      "number": 3,
+      "date": "29 สิงหาคม 2569",
+      "week": "Week 3",
+      "title": "Asymmetric, Hybrid และ Post-Quantum Cryptography",
+      "subtitle": "กุญแจคู่ช่วยแลกกุญแจ เซ็นข้อความ และเตรียมระบบรับภัยจากคอมพิวเตอร์ควอนตัม",
+      "topics": [
+        "Public key, Private key และปัญหาการกระจายกุญแจ",
+        "Hybrid encryption: ใช้ Asymmetric ส่ง session key แล้วใช้ Symmetric กับข้อมูลจริง",
+        "Digital Signature: Private key เซ็น และ Public key ตรวจ",
+        "RSA, Diffie–Hellman, ElGamal และ ECC",
+        "Shor algorithm, Harvest now decrypt later และ Post-Quantum Cryptography"
+      ],
+      "discussions": [
+        "Public key เปรียบเหมือนช่องหยอดตู้ไปรษณีย์ ส่วน Private key เป็นกุญแจเปิดตู้",
+        "AES-128, RSA-3072 และ ECC-256 ถูกใช้เทียบระดับความปลอดภัยโดยประมาณในคาบ",
+        "ระบบจริงใช้ Hybrid เพราะ Asymmetric ช่วยแก้เรื่องแลกกุญแจ แต่ Symmetric เร็วกว่าสำหรับข้อมูลจำนวนมาก",
+        "ลายเซ็นดิจิทัลเซ็น digest ของข้อความ ไม่ได้เซ็นข้อมูลทั้งก้อน",
+        "RSA, Diffie–Hellman และ ECC เสี่ยงต่อ Shor ส่วนกลุ่ม lattice-based, code-based และ hash-based signature เป็นแนวทางหลังควอนตัม"
+      ],
+      "emphasis": [
+        "Encryption ใช้ Public key ของผู้รับเพื่อความลับ; Signature ใช้ Private key ของผู้ส่งเพื่อยืนยันผู้ส่งและความถูกต้อง",
+        "Digital Signature ไม่ทำให้ข้อความเป็นความลับ ต้องเข้ารหัสเพิ่มหากไม่ต้องการให้คนอื่นอ่าน",
+        "Public key ที่แจกโดยไม่มีการรับรองอาจถูกสลับด้วยการโจมตีแบบ man-in-the-middle",
+        "การย้ายระบบไป Post-Quantum ต้องเริ่มก่อนคอมพิวเตอร์ควอนตัมพร้อมใช้งาน เพราะข้อมูลอาจถูกเก็บวันนี้แล้วถอดในอนาคต"
+      ],
+      "assignments": [
+        "เตรียมหัวข้อโปรเจกต์และ Presentation รอบแรกวันที่ 26 กันยายนแบบ onsite",
+        "ทบทวนว่า TLS ใช้ Asymmetric และ Symmetric ร่วมกันอย่างไร",
+        "สไลด์บทที่ 3 จะมีฉบับอัปโหลดใหม่เพราะตัวเลขสมการเพี้ยน ให้ใช้ฉบับล่าสุด",
+        "กำหนดการเดือนตุลาคมที่ประกาศในคาบยังรอยืนยันอีกครั้ง"
+      ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงคาบ 29 ส.ค. 2569",
+      "sourceNote": "อ้างอิงจากสรุปหลังเรียนคาบ 29 ส.ค. 2569 เรื่อง Asymmetric, ECC และ Post-Quantum พร้อมประกาศต่อท้าย"
+    },
+    {
+      "id": "lecture-04",
+      "number": 4,
+      "date": "5 กันยายน 2569",
+      "week": "Week 4",
+      "title": "Hash, MAC, Signature, Key Management และ PKI",
+      "subtitle": "ตรวจการแก้ไข ยืนยันผู้ส่ง เซ็นข้อมูล และสร้างสายความเชื่อถือให้กุญแจสาธารณะ",
+      "topics": [
+        "Hash และคุณสมบัติ Preimage, Second-preimage และ Collision resistance",
+        "MDC, MAC และความต่างระหว่าง Integrity กับ Authentication",
+        "Digital Signature, DSS/DSA และการเซ็น digest",
+        "KDC, Session key และ Kerberos",
+        "Certificate X.509, CA, Chain of Trust, วงจรกุญแจ และ PKI"
+      ],
+      "discussions": [
+        "Hash สร้างลายนิ้วมือขนาดคงที่เพื่อตรวจว่าข้อมูลเปลี่ยนหรือไม่ แต่ไม่ได้ซ่อนข้อมูลและไม่ได้ยืนยันผู้ส่งเพียงลำพัง",
+        "MAC เพิ่ม Secret key ให้การตรวจความถูกต้อง จึงช่วยยืนยันว่าผู้สร้าง MAC ถือกุญแจร่วมกัน",
+        "Digital Signature ใช้ Private key เซ็นและให้คนอื่นใช้ Public key ตรวจ จึงรองรับ Non-repudiation ได้มากกว่า MAC",
+        "Kerberos ทำงานเป็นลำดับ AS ตรวจตัวตน, TGS ออก ticket และ Real Server ให้บริการ",
+        "CA เซ็น Certificate เพื่อผูก Public key กับเจ้าของ และ PKI ดูแลระบบความเชื่อถือทั้งหมด"
+      ],
+      "emphasis": [
+        "Hash ไม่ใช่ Encryption: Hash ย้อนกลับเพื่อเอาข้อความเดิมไม่ได้ และไม่ได้ให้ Confidentiality",
+        "MAC กับ Signature ต่างกันที่ MAC ใช้ Secret key ร่วมกัน ส่วน Signature ใช้กุญแจคู่และเปิดให้ตรวจด้วย Public key",
+        "MD5 และ SHA-1 พบปัญหา collision แล้ว; ใช้อย่างต่ำ SHA-256 หรือ SHA-3 ตามเนื้อหาในคาบ",
+        "Certificate ไม่ได้เข้ารหัสเว็บด้วยตัวเอง แต่ช่วยยืนยันว่า Public key เป็นของเจ้าของที่อ้างจริง",
+        "PKI คือทั้งคน กติกา ระบบ และที่เก็บใบรับรอง ไม่ใช่ชื่ออัลกอริทึมเข้ารหัส"
+      ],
+      "assignments": [
+        "ทำ TryHackMe ฟรี 3 ห้อง และส่ง screenshot หน้า achievement ก่อนเรียน 19 กันยายน",
+        "12 กันยายนงดเรียนและให้ใช้เวลาทำการบ้าน",
+        "เตรียม Presentation ครั้งที่ 1 มูลค่า 5% สำหรับ 26 กันยายน โดยต้องมีหัวข้อ ขอบเขต และวัตถุประสงค์"
+      ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงคาบ 5 ก.ย. 2569",
+      "sourceNote": "อ้างอิงจากสไลด์ Week 04 และ transcript คาบ 5 ก.ย. 2569; ข้อความสรุปถูกโพสต์วันที่ 7 ก.ย."
+    }
+  ]
+}
