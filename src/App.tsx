@@ -193,20 +193,24 @@ function LectureDetail({ course, lecture, onBack }: { course: Course; lecture: L
       <button className="back-button" onClick={onBack}><ArrowLeft size={19} /> กลับไปทุกคาบ</button>
 
       <header className="detail-header">
-        <div className="detail-index">{course.code} · คาบ {String(lecture.number).padStart(2, '0')}</div>
-        <div>
-          <div className="detail-meta"><span>{lecture.week}</span><span><CalendarDays size={16} /> {lecture.date}</span>{lecture.duration && <span><Clock3 size={16} /> {lecture.duration}</span>}</div>
-          <h1>{lecture.title}</h1>
-          <p>{lecture.subtitle}</p>
+        <div className="detail-chips">
+          <span className="chip chip-course">{course.code} · คาบ {String(lecture.number).padStart(2, '0')}</span>
+          <span className="chip">{lecture.week}</span>
+          <span className="chip"><CalendarDays size={15} /> {lecture.date}</span>
+          {lecture.duration && <span className="chip"><Clock3 size={15} /> {lecture.duration}</span>}
         </div>
+        <h1>{lecture.title}</h1>
+        <p>{lecture.subtitle}</p>
       </header>
 
       <div className="detail-layout">
         <div className="detail-content">
-          <ContentSection icon={<BookOpen size={20} />} label="เรียนอะไรบ้าง" items={lecture.topics} />
-          <ContentSection icon={<MessageSquareText size={20} />} label="ในห้องคุยอะไร" items={lecture.discussions} />
-          <ContentSection icon={<Sparkles size={20} />} label="สิ่งที่อาจารย์เน้น" items={lecture.emphasis} accent />
-          <ContentSection icon={<CheckCircle2 size={20} />} label="งานและสิ่งที่ต้องทำต่อ" items={lecture.assignments} />
+          <div className="content-grid">
+            <ContentSection icon={<BookOpen size={20} />} label="เรียนอะไรบ้าง" items={lecture.topics} />
+            <ContentSection icon={<MessageSquareText size={20} />} label="ในห้องคุยอะไร" items={lecture.discussions} />
+            <ContentSection icon={<Sparkles size={20} />} label="สิ่งที่อาจารย์เน้น" items={lecture.emphasis} accent />
+            <ContentSection icon={<CheckCircle2 size={20} />} label="งานและสิ่งที่ต้องทำต่อ" items={lecture.assignments} />
+          </div>
         </div>
 
         <aside className="source-panel">
