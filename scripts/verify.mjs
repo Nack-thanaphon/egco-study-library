@@ -5,8 +5,9 @@ const browser = await chromium.launch({
   executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
 })
 
+const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:5174/'
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } })
-await page.goto('http://127.0.0.1:5174/', { waitUntil: 'networkidle' })
+await page.goto(baseUrl, { waitUntil: 'networkidle' })
 
 const results = {}
 results.title = await page.title()
@@ -23,7 +24,7 @@ results.detailTitle = await page.locator('.detail-header h1').innerText()
 results.audioState = await page.locator('.audio-link').innerText()
 await page.locator('.back-button').click()
 
-const response = await page.request.get('http://127.0.0.1:5174/downloads/egco604/SKILL.md')
+const response = await page.request.get(new URL('./downloads/egco604/SKILL.md', baseUrl).href)
 results.skillStatus = response.status()
 results.skillStartsWithFrontmatter = (await response.text()).startsWith('---\n')
 

@@ -2,6 +2,8 @@
 
 Dashboard สรุปเนื้อหารายวิชาแบบแยกคาบ อ่านง่ายบนมือถือ และตรวจย้อนกลับไปยังไฟล์เสียงต้นฉบับได้
 
+**เว็บไซต์:** https://nack-thanaphon.github.io/egco-study-library/
+
 ## รุ่นปัจจุบัน
 
 - EGCO604 Research Methodology and Seminar
@@ -17,6 +19,7 @@ Dashboard สรุปเนื้อหารายวิชาแบบแย�
 npm install
 npm run dev
 npm run build
+npm run deploy
 ```
 
 ## การตรวจสอบ
