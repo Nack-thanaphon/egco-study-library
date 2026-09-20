@@ -45,18 +45,18 @@ function LibraryHome({ onOpenCourse }: { onOpenCourse: (course: Course) => void 
   return (
     <main className="app-shell library-shell">
       <header className="library-header">
-        <div className="course-mark" aria-hidden="true"><GraduationCap size={25} /></div>
-        <div>
+        <div className="library-top">
+          <div className="course-mark" aria-hidden="true"><GraduationCap size={22} /></div>
           <p className="eyebrow">Mahidol · M.Eng. Computer Engineering</p>
-          <h1>EGCO Study Library</h1>
-          <p className="library-description">
-            เลือกวิชาเพื่อดูจำนวนคาบ สิ่งที่เรียน สิ่งที่คุยในห้อง และแหล่งเสียงต้นฉบับ พร้อมดาวน์โหลดคู่มือสำหรับทบทวนกับ AI
-          </p>
-          <div className="library-stats" aria-label="ภาพรวมคลังวิชา">
-            <div><strong>{courses.length}</strong><span>รายวิชา</span></div>
-            <div><strong>{totalLectures}</strong><span>คาบที่รวบรวม</span></div>
-            <div><strong>{courses.length}</strong><span>ไฟล์ SKILL.md</span></div>
-          </div>
+        </div>
+        <h1>EGCO Study Library</h1>
+        <p className="library-description">
+          เลือกวิชาเพื่อดูจำนวนคาบ สิ่งที่เรียน สิ่งที่คุยในห้อง และแหล่งเสียงต้นฉบับ พร้อมดาวน์โหลดคู่มือสำหรับทบทวนกับ AI
+        </p>
+        <div className="library-stats" aria-label="ภาพรวมคลังวิชา">
+          <div><strong>{courses.length}</strong><span>รายวิชา</span></div>
+          <div><strong>{totalLectures}</strong><span>คาบที่รวบรวม</span></div>
+          <div><strong>{courses.length}</strong><span>ไฟล์ SKILL.md</span></div>
         </div>
       </header>
 
