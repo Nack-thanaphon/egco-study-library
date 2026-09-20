@@ -487,23 +487,12 @@ export const generatedCourses: Course[] = [
         "audioUrl": null,
         "audioLabel": "ไฟล์เสียงคาบ 5 ก.ย. 2569",
         "sourceNote": "อ้างอิงจากสไลด์ Week 04 และ transcript คาบ 5 ก.ย. 2569; ข้อความสรุปถูกโพสต์วันที่ 7 ก.ย."
-      }
-    ],
-    "skillPath": "./downloads/egco676/SKILL.md"
-  },
-  {
-    "code": "EGCO679",
-    "title": "Intrusion Detection and Cyberattack Prevention",
-    "shortTitle": "Intrusion Detection",
-    "description": "เริ่มจากหัวข้องานวิจัยของผู้เรียน ค้นเปเปอร์ภาพรวม มอง Research Gap และเตรียมข้อเสนอที่ต่อยอดเป็นโครงงานจบได้จริง",
-    "focus": "เน้นหัวข้องานวิจัย Literature Review, Research Gap และการนำเสนอ",
-    "accent": "#7c3aed",
-    "lectures": [
+      },
       {
-        "id": "lecture-01",
-        "number": 1,
+        "id": "lecture-05",
+        "number": 5,
         "date": "19 กันยายน 2569",
-        "week": "คาบยืนยัน 1",
+        "week": "Week 5",
         "title": "จากหัวข้อวิจัยสู่ Research Gap",
         "subtitle": "เลือกโจทย์ที่ทำจริงได้ ใช้ Survey/Review วางแผนการอ่าน และเตรียม Assignment 1",
         "topics": [
@@ -536,9 +525,9 @@ export const generatedCourses: Course[] = [
         ],
         "audioUrl": null,
         "audioLabel": "ไฟล์เสียง/ถอดเสียงคาบ 19 ก.ย. 2569",
-        "sourceNote": "ยืนยันจาก transcript ที่ผู้เรียนส่งสำหรับคาบ EGCO679 วันที่ 19 ก.ย. 2569 และสรุป Slack ts 1789869329.944079 ซึ่งถูกเก็บใต้ช่อง EGCO676; ยังไม่มีลิงก์เสียงที่ตรวจสอบแล้ว"
+        "sourceNote": "อ้างอิงจาก transcript คาบ EGCO676 วันที่ 19 ก.ย. 2569 (สรุป Slack ts 1789869329.944079 เดิมเก็บใต้ช่อง EGCO676); ยืนยันจากผู้ใช้ว่าเป็นคาบของ EGCO676 ไม่ใช่วิชา EGCO679"
       }
     ],
-    "skillPath": "./downloads/egco679/SKILL.md"
+    "skillPath": "./downloads/egco676/SKILL.md"
   }
 ]

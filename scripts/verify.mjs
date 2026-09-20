@@ -6,10 +6,9 @@ import { fileURLToPath } from 'node:url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.resolve(__dirname, '..')
 
-const egco604 = fs.readFileSync(path.join(root, 'public/downloads/egco604/SKILL.md'), 'utf8')
 const expectedCourses = [
   { code: 'EGCO604', lectures: 4 },
-  ...['egco611', 'egco623', 'egco676', 'egco679'].map((file) => {
+  ...['egco611', 'egco623', 'egco676'].map((file) => {
     const data = JSON.parse(fs.readFileSync(path.join(root, 'research', `${file}.json`), 'utf8'))
     const sessions = data.sessions || data.lectures
     return { code: data.courseCode || data.code, lectures: sessions.length }

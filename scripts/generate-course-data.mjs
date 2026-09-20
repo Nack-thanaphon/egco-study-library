@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const root = process.cwd()
-const files = ['egco611.json', 'egco623.json', 'egco676.json', 'egco679.json']
+const files = ['egco611.json', 'egco623.json', 'egco676.json']
 const courses = files.map((file) => {
   const source = path.join(root, 'research', file)
   if (!fs.existsSync(source)) throw new Error(`Missing course data: ${source}`)
