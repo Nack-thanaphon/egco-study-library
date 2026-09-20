@@ -52,14 +52,13 @@ function LibraryHome({ onOpenCourse }: { onOpenCourse: (course: Course) => void 
           <p className="library-description">
             เลือกวิชาเพื่อดูจำนวนคาบ สิ่งที่เรียน สิ่งที่คุยในห้อง และแหล่งเสียงต้นฉบับ พร้อมดาวน์โหลดคู่มือสำหรับทบทวนกับ AI
           </p>
+          <div className="library-stats" aria-label="ภาพรวมคลังวิชา">
+            <div><strong>{courses.length}</strong><span>รายวิชา</span></div>
+            <div><strong>{totalLectures}</strong><span>คาบที่รวบรวม</span></div>
+            <div><strong>{courses.length}</strong><span>ไฟล์ SKILL.md</span></div>
+          </div>
         </div>
       </header>
-
-      <section className="library-metrics" aria-label="ภาพรวมคลังวิชา">
-        <div><strong>{courses.length}</strong><span>รายวิชา</span></div>
-        <div><strong>{totalLectures}</strong><span>คาบที่รวบรวม</span></div>
-        <div><strong>{courses.length}</strong><span>ไฟล์ SKILL.md</span></div>
-      </section>
 
       <section className="course-library">
         <div className="section-heading">

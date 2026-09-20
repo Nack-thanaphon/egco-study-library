@@ -31,7 +31,7 @@ await page.goto(baseUrl, { waitUntil: 'networkidle' })
 results.homeTitle = await page.title()
 results.homeH1 = await page.locator('h1').first().innerText()
 results.courseCards = await page.locator('.course-card').count()
-results.totalLecturesMetric = await page.locator('.library-metrics div').nth(1).locator('strong').innerText()
+results.totalLecturesMetric = await page.locator('.library-stats div').nth(1).locator('strong').innerText()
 results.homeOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)
 
 const totalLectures = expectedCourses.reduce((sum, course) => sum + course.lectures, 0)
