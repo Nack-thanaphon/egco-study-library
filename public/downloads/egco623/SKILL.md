@@ -33,6 +33,7 @@ metadata:
 | 2 | 16 ส.ค. 2569 | Exploring Data, ชนิดข้อมูล, Data Quality, EDA | ตรวจวัตถุดิบก่อนทำอาหาร |
 | 3 | 22 หรือ 23 ส.ค. 2569 | Visualization, Preprocessing, Sampling, PCA/LDA | ล้างของ ปรับขนาด และจัดกระเป๋าให้เบา |
 | 4 | 30 ส.ค. 2569 | Data Warehouse, OLAP, Data Cube, Power BI | หมุนลูกบาศก์เพื่อดูข้อมูลคนละมุม |
+| 5 | 20 ก.ย. 2569 | Association Analysis, Support/Confidence/Lift, Apriori, FP-Growth, Maximal/Closed | ดูตะกร้าซื้อของว่าอะไรถูกหยิบไปด้วยกัน |
 
 **หมายเหตุวันที่คาบ 3:** หัวข้อความสรุปสองชุดระบุ “22 ส.ค.” และ “23 ส.ค.” แต่เนื้อหาต่อเนื่องและซ้ำกัน จึงรวมเป็นคาบเดียวและแสดงวันที่แบบไม่ฟันธง ห้าม AI เลือกวันใดวันหนึ่งเองจนกว่าจะมีตารางเรียน ไฟล์เสียง หรือ Classroom ยืนยัน
 
@@ -157,11 +158,40 @@ Mean เหมือนหารค่าอาหารเท่ากันท
 
 ทำ Power BI dashboard **หนึ่งหน้า** ที่มี KPI, Sales Trend, Product Performance, Customer Analysis, Sales by Category และ Slicer พร้อมตอบคำถามเรื่องสินค้าขายดี ลูกค้ารายได้สูงสุด แนวโน้มยอดขาย ความต่างแต่ละหมวด และ Average Order Value
 
-## Association Analysis — สถานะหลักฐาน
+## Association Analysis — คาบที่ 5 (สอนแล้ว 20 ก.ย. 2569)
 
-โพสต์วันที่ 19 กันยายน 2569 เรื่อง Association Rules, Apriori, Support, Confidence และ Lift ระบุชัดว่าเป็น **การเตรียมเรียนล่วงหน้า** และบอกว่าเนื้อหาในห้องอาจต่างจากสไลด์ จึง **ยังไม่นับเป็นคาบที่สอนแล้ว** ในแผนที่รายคาบนี้
+เดิมถือว่าเป็นเพียงบทเตรียมเรียน แต่ตอนนี้มี transcript ไฟล์เสียงของคาบ 20 กันยายน 2569 ยืนยันแล้วว่าสอนจริง จึงอัปเดตเป็นคาบ 5
 
-ใช้โพสต์นั้นเป็นบทเตรียมอ่านได้ แต่ AI ต้องเรียกว่า “เนื้อหาเตรียมเรียน” ไม่ใช่ “สิ่งที่อาจารย์สอนแล้ว” จนกว่าจะมีหลักฐานหลังคาบ เช่นไฟล์เสียง transcript หรือสรุปที่ยืนยันว่าคลาสเกิดขึ้น
+### เรียนอะไร
+
+- Association Analysis / Market Basket Analysis: หาไอเทมที่ถูกหยิบพร้อมกันบ่อย
+- Itemset, Transaction, K-itemset, Frequent itemset (support ≥ min-support)
+- กฎ X → Y หมายถึงเกิดพร้อมกัน ไม่ใช่เหตุผล
+- สูตร support, confidence และ lift
+- Apriori ใช้ anti-monotone ตัด candidate, FP-Growth ใช้ FP-tree ไม่ต้อง generate candidate
+- Maximal frequent itemset, Closed itemset และความสัมพันธ์ Maximal ⊆ Closed
+
+### อธิบายแบบง่าย
+
+- **Support** = ความถี่ที่ชุดนั้นโผล่ใน transaction ทั้งหมด (นับครั้งหาร N)
+- **Confidence** = ในบรรดาที่มี X อยู่ มีกี่ส่วนที่มี Y ตามมา (คล้าย conditional probability)
+- **Lift** = เทียบว่ามี X ช่วยให้ Y น่าจะเกิดขึ้นกว่า random หรือเปล่า
+- **Anti-monotone** = ถ้าคู่เล็กไม่บ่อยพอ คู่ใหญ่ที่มีคู่เล็กอยู่ก็ไม่ต้องดูต่อ
+- **Maximal** = frequent ตัวใหญ่สุดที่ไม่มี superset ที่ยัง frequent, **Closed** = ไม่มี superset ที่ support เท่ากัน
+- **ข้อควรระวังของ confidence** = กฎชา→กาแฟ 0.75 ดูดี แต่คนดื่มกาแฟอยู่แล้ว 90% กฎจึงไม่เพิ่มข้อมูลใหม่
+
+### งานที่ปรากฏในหลักฐาน
+
+- Exercise ในห้อง: กฎ 7 ข้อจาก {ขนมปัง, นม, ผ้าอ้อม} เช็ค min-support 0.4 / min-confidence 0.5
+- Exercise 2: หา maximal/closed itemset (min-support 2)
+- Exercise 3: สร้าง association rules (min-support 0.6 / min-confidence 0.5) ได้ 8 กฎ
+- โจทย์เสริมในสไลด์: min-support 0.3 / min-confidence 0.6 (เซ็ตใหม่)
+- งานส่งในคาบ: กระดาษคำนวณ เขียนชื่อ-รหัส ส่งท้ายคาบ
+
+### คำถามที่เจอในห้อง
+
+- เบียร์ต้องแยกยี่ห้อไหม → ขึ้นกับความละเอียดที่ต้องการ ถ้าสนใจแบรนด์ค่อยแยก ไม่สนก็รวมกลุ่ม (บาร์โค้ดใช้ได้)
+- ครั้งหน้าเรียน Cluster Analysis; 4 ต.ค. ใช้ RapidMiner; สอบ midterm หลังวันที่ 11 ต.ค.
 
 ## วิธีทบทวน 20 นาที
 

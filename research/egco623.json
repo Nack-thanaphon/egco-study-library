@@ -2,7 +2,7 @@
   "courseCode": "EGCO623",
   "title": "Data Mining and Machine Learning",
   "shortTitle": "Data Mining & ML",
-  "description": "จากการทำความเข้าใจและเตรียมข้อมูล ไปจนถึงการลดมิติ คลังข้อมูล OLAP และการทำ Dashboard ด้วย Power BI",
+  "description": "จากการทำความเข้าใจและเตรียมข้อมูล คลังข้อมูล OLAP Dashboard ไปจนถึง Association Analysis หาความสัมพันธ์ของไอเทมที่ซื้อพร้อมกัน",
   "focus": "เน้นสำรวจข้อมูล เตรียมข้อมูล วิเคราะห์หลายมิติ และนำข้อมูลไปใช้ตัดสินใจ",
   "accent": "#003366",
   "sessions": [
@@ -143,6 +143,52 @@
       "audioUrl": null,
       "audioLabel": "ไฟล์เสียงคาบ 30 ส.ค. 2569",
       "sourceNote": "รวมสรุปสองตอนของคาบเดียวกัน Slack ts 1788109078.728709 และ 1788109079.223369 (S7–S8)"
+    },
+    {
+      "id": "egco623-session-05",
+      "number": 5,
+      "date": "20 กันยายน 2569",
+      "week": "Week 7",
+      "title": "Association Analysis (Market Basket Analysis)",
+      "subtitle": "หาไอเทมที่ถูกหยิบพร้อมกันบ่อย แล้วสร้างกฎ ถ้าเห็น X แล้วมักเห็น Y ตามมา",
+      "topics": [
+        "ที่มา Market Basket Analysis: วิเคราะห์ตะกร้าซื้อของ ขยายไปหนังสือ หนัง เพลง ระบบแนะนำ การแพทย์ และ Web mining",
+        "คำศัพท์หลัก: Item set (ชุดไอเทมอย่างน้อย 1 ชิ้น เป็นเซต ลำดับไม่มีผล), Transaction (รายการซื้อ 1 ครั้ง), K-itemset",
+        "Frequent itemset: itemset ที่ support ≥ minimum support threshold",
+        "Association rule X → Y: ฝั่งซ้ายคือ antecedent ฝั่งขวาคือ consequent ความหมายจริงคือเกิดพร้อมกัน (co-occurrence)",
+        "สูตรหลัก: support(X∪Y) = count(X∪Y)/N, confidence(X→Y) = support(X∪Y)/support(X), lift(X→Y) = confidence(X→Y)/support(Y)",
+        "ตัวอย่างตะกร้า 5 รายการ (Bread, Milk, Diaper, Beer, Egg, Coke): นับ support และ confidence ทีละกฎ",
+        "คุณสมบัติ anti-monotone (downward closure): ถ้า itemset ไม่ frequent แล้ว superset ทุกตัวไม่ frequent",
+        "Apriori algorithm: สร้าง candidate รายตัว → ตัดตัวไม่ผ่าน → join เป็น k+1 ทีละระดับ จนหมด",
+        "FP-Growth: บีบอัดข้อมูลเป็น FP-tree เพื่อเลี่ยง candidate generation เร็วกว่าในชุดข้อมูลใหญ่",
+        "Maximal frequent itemset: frequent itemset ที่ไม่มี superset ที่ยัง frequent; Closed itemset: ไม่มี superset ที่มีค่า support เท่ากัน; Maximal ⊆ Closed",
+        "การสร้างกฎจาก frequent itemset: กฎทั้งหมด 2^k − 2 แบบ, pruning ด้วย confidence ฝั่งซ้าย/ขวา",
+        "Drawback ของ confidence: กฎชา→กาแฟ confidence 0.75 แต่คนดื่มกาแฟอยู่แล้ว 90% กฎจึงไม่ให้ข้อมูลใหม่",
+        "คุณสมบัติของ measure: support และ lift เป็น symmetric, confidence เป็น asymmetric"
+      ],
+      "discussions": [
+        "แน็กและเพื่อนถามว่าเบียร์ต้องแยกยี่ห้อไหม: อาจารย์ตอบขึ้นกับระดับความละเอียดของการวิเคราะห์ ถ้าสนใจแบรนด์ค่อยแยก ถ้าไม่สนก็รวมเป็นกลุ่มเดียว (บาร์โค้ดก็ใช้ได้)",
+        "เคสผ้าอ้อมกับเบียร์: พ่อบ้านอายุน้อยซื้อผ้าอ้อมแล้วมักซื้อเบียร์ในวันศุกร์ ร้านใช้จัดวางชั้นและวางแผนโปรโมชัน",
+        "ทำไมต้องหา Maximal/Closed: ทุก frequent itemset สร้างกฎได้เยอะและซ้ำซ้อน เลือกขอบกราฟ (Maximal) หรือตัวที่ support สูง (Closed) ไปต่อคุ้มกว่า",
+        "กฎเยอะเมื่อ threshold ต่ำ: ผู้ใช้ต้องคัดกรองเอง บางกฎผ่านตัวเลขแต่ไม่สมเหตุสมผลในเชิงธุรกิจ",
+        "การใช้งานจริง: วางขนมปังกับนมไว้ใกล้กัน ทำโปรโมชันซื้อคู่ หรือแนะนำสินค้าในระบบ recommendation"
+      ],
+      "emphasis": [
+        "Association analysis เป็น unsupervised: มีแต่ตัวอย่าง ไม่มีคำตอบ อัลกอริทึมต้องจับความสัมพันธ์เอง",
+        "support ใช้เลือก frequent itemset, confidence ใช้เลือกกฎ, lift ใช้เทียบกับ random chance",
+        "กฎจาก itemset เดียวกัน support เท่ากันหมด แต่ confidence ต่างกันตามตัวหาร (ฝั่งซ้าย)",
+        "คัดแล้วเหลือน้อยแต่ล้วนคุ้ม: ตัดไข่กับโค้กตั้งแต่ 1-itemset แล้ว superset ที่มีสองตัวนี้ไม่ต้องพิจารณา"
+      ],
+      "assignments": [
+        "Exercise ในห้อง: หา support กับ confidence ของกฎ 7 ข้อจาก itemset {ขนมปัง, นม, ผ้าอ้อม} แล้วเช็คกับ min-support 0.4 / min-confidence 0.5",
+        "Exercise 2: หา maximal/closed itemset จาก transaction 5 รายการ (min-support 2)",
+        "Exercise 3: สร้าง association rules จาก transaction เดิม (min-support 0.6, min-confidence 0.5) ได้ผ่านเกณฑ์ 8 กฎ",
+        "โจทย์เพิ่มเติมในสไลด์: min-support 0.3 / min-confidence 0.6 สำหรับเซ็ตไอเทมใหม่ (ฝึกเพิ่มเติม)",
+        "งานส่งในคาบ (เขียนชื่อ-รหัส): กระดาษคำนวณ support/confidence และระบุกฎที่ผ่านเกณฑ์"
+        ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงคาบ 20 ก.ย. 2569",
+      "sourceNote": "สรุปจาก transcript ที่ผู้ใช้ส่ง 20/09/2569 (อ่านจากการถอดเสียงโดยตรง)"
     }
   ]
 }
