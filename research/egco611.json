@@ -178,6 +178,54 @@
       "audioUrl": null,
       "audioLabel": "รอลิงก์เสียงคาบ ODE สัปดาห์ 14 ก.ย. 2569",
       "sourceNote": "อ้างอิงจากสรุปหลังเรียน ODE สองตอนที่โพสต์วันที่ 14 ก.ย. 2569 และระบุว่ามาจากข้อความถอดเสียงคาบ; ไม่รวม daily drill เป็นหลักฐานการสอน"
+    },
+    {
+      "id": "egco611-session-06",
+      "number": 6,
+      "date": "20 กันยายน 2569",
+      "week": "Week 7",
+      "title": "Buffer Model, System of ODE และ SIR",
+      "subtitle": "เพิ่ม Constraint ให้โมเดล แยกเคสด้วย max/min และ events ขยายสู่หลายสมการและระบบ non-linear",
+      "topics": [
+        "Communication Buffer Model: dQ/dt = λ(t) − μ(t) แบบไม่จำกัดความจุ และปัญหาที่ตามมา (Q ติดลบ / ทะลุ Q_max)",
+        "แบ่ง 3 เคสด้วย constraint: Q=0 (ต้อง max(0, λ−μ)), 0<Q<Q_max (สมการปกติ), Q=Q_max (ต้อง min(λ, μ) หรือปฏิเสธของเข้า)",
+        "solve_ivp events: ฟังก์ชัน event พร้อม attribute terminal=True หยุดการ integrate และ direction=+1/−1/0 ระบุทิศการตัดเกณฑ์",
+        "t_events และ y_events อ่านเวลา/ค่า ณ จุดที่ event เกิด (เช่น empty buffer ที่ t≈2.57, full buffer ที่ t=3)",
+        "System of ODE: CPU→Heatsink→สิ่งแวดล้อม ได้ 2 สมการ T_P, T_H ผูกกันผ่าน Q = ΔT/R",
+        "จัดรูปเป็น State-space ẋ = Ax + Bu (A คูณกับ state, B คูณกับ input/parameter) — solver รับหลายสมการโดยไม่ต้องจัด matrix ก็ได้",
+        "SIR Model: dS/dt=−βSI/N, dI/dt=βSI/N−γI, dR/dt=γI — non-linear จากพจน์ S×I",
+        "ตรวจโมเดลด้วย conservation: สมการทุกตัวบวกกันแล้วเหลือแค่ in−out (ความร้อนรวม, S+I+R=N)",
+        "ความหมายของ Heat capacity C: พลังงานเข้าน้อยเทียบ C ใหญ่ → อุณหภูมิแทบไม่ขยับ (initial derivative = P/C)",
+        "ทุก parameter เปลี่ยนเป็น function of time ได้ (P(t), λ(t), μ(t), T_A(t) เป็น step function ได้)"
+      ],
+      "discussions": [
+        "ถามในห้อง: โมเดล buffer แบบง่ายมีปัญหาตรงไหน — นำไปสู่การเพิ่ม constraint 0 ≤ Q(t) ≤ Q_max",
+        "ถามต่อ: ทำไมไม่เซ็ต dQ/dt=0 ตอน Q=0 — เพราะยังมีของไหลเข้า-ออกพร้อมกันได้ จึงต้องเขียนเป็น max/min ให้ flexible",
+        "ลองเล่น Colab ที่แชร์: ปรับ arrival/transmit rate และเปลี่ยน events ดูว่าเกิด empty/full เมื่อไหร่",
+        "ผู้เรียนถามเรื่อง Plague Inc. — อาจารย์ยืนยันเกมสร้างบนโมเดลแพร่เชื้อแบบ SIR/SIRD จริง",
+        "ถามหน่วยของ β, γ: อาจารย์อธิบายคน/เวลา และการตรวจหน่วยให้สอดคล้อง (คน/เวลา ทุกพจน์)",
+        "ช่วงท้ายมีการเช็คชื่อและเตือนเรื่องเวลาสอนเกิน (อาจารย์ขอโทษที่คลาสยาว)"
+      ],
+      "emphasis": [
+        "โมเดลตามทฤษฎีถูกแต่ใช้จริงไม่ได้ ต้องแยก case ตาม constraint (สิ่งที่จำกัดเช่น buffer/battery capacity)",
+        "Event ของ solve_ivp ส่วนใหญ่ set terminal=True หยุดการทำงาน และ event function ต้องรับ argument เท่ากับโมเดล",
+        "จำนวน state = จำนวน output ที่ต้องการ (SIR มี 3 state → 3 สมการ) และ initial state ต้องสอดคล้อง constraint (เช่น Q₀ ≤ Q_max)",
+        "CPU ไม่แลกเปลี่ยนกับสิ่งแวดล้อมโดยตรง (เฉพาะผ่าน heatsink) — ถ้าเพิ่มทางแลกตรงต้องเพิ่มพจน์ −(T_P−T_A)/R_PA",
+        "SIR non-linear ตรงพจน์ βSI/N — ต่างจาก linear system ที่ state คูณกับค่าคงที่บวกลบกันเฉย ๆ",
+        "SIR assumption: ประชากรปิด ไม่มีเกิด/ตาย/ย้ายเข้าออก หายแล้วหายเลย (ไม่กลับไป S ถ้าไม่เพิ่มเส้น R→S)",
+        "ตรวจความถูกต้อง: สมการทุกตัวบวกกัน → conservation; ค่าเริ่มต้นที่สมดุล → derivative เป็น 0; พลังงานน้อย/C ใหญ่ → แทบไม่ขยับ",
+        "เมื่ออัตราติดเชื้อสูงกว่าอัตราหายมาก คนจะติดเชื้อจนเกือบหมดแล้วหายไป R เกือบ N"
+      ],
+      "assignments": [
+        "การบ้านโพสต์แล้ว (แต่งเลขให้ครบ มีโน้ตกำกับ) — ข้อสุดท้าย optional ใช้ solver อะไรก็ได้ แนะนำ PuLP เพราะกินสมการ symbolic ตรง ๆ",
+        "หนึ่งข้อมีสองคำตอบ (objective เท่ากัน) — อาจารย์เตือนไม่ต้องตกใจ",
+        "ส่ง 2 ไฟล์: .ipynb (แบ่ง section 1-2-3 ใน Colab) และไฟล์เอกสารคำอธิบาย/วิเคราะห์ (desc→สมการ→แทนเลข→post-analysis)",
+        "หากสอบต้องเขียน solve_ivp อาจารย์ให้ credit ที่ logic สมการถูก — syntax ผิดเล็กน้อยไม่หัก (อ่านรู้เรื่อง ไม่หัก)",
+        "ครั้งหน้า: Linear Algebra ~6 ชั่วโมง ต่อเนื่อง Data Mining; อีก ~2 สัปดาห์ถึง midterm"
+      ],
+      "audioUrl": null,
+      "audioLabel": "ไฟล์เสียงคาบ 20 ก.ย. 2569",
+      "sourceNote": "สรุปจาก transcript ไฟล์เสียงคาบ 20 ก.ย. 2569 (กรอง noise ทักทายซ้ำออกแล้ว) — สอนต่อจากคาบ 14 ก.ย. อย่างต่อเนื่อง"
     }
   ]
 }
