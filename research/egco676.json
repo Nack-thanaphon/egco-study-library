@@ -4,7 +4,7 @@
   "shortTitle": "Network Security",
   "description": "สรุปหลังเรียนจริง 5 คาบ ตั้งแต่พื้นฐานความเสี่ยง การเข้ารหัส ความถูกต้องของข้อมูล โครงสร้างความเชื่อถือของกุญแจ ไปจนถึงคาบวิชาการเรื่อง Research Gap",
   "focus": "ความมั่นคงปลอดภัย การเข้ารหัส และการจัดการความเสี่ยง",
-  "accent": "#2f6f73",
+  "accent": "#003366",
   "skillPath": "./downloads/egco676/SKILL.md",
   "sessionCount": 5,
   "sessions": [

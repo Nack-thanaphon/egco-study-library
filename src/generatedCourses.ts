@@ -7,12 +7,12 @@ export const generatedCourses: Course[] = [
     "shortTitle": "Mathematical Modelling & Optimization",
     "description": "แบบจำลอง การหาค่าที่ดีที่สุด และระบบพลวัต — เรียนวิธีเปลี่ยนปัญหาจริงให้เป็นสมการ เลือกคำตอบที่ดีที่สุดภายใต้ข้อจำกัด ใช้โปรแกรมช่วยแก้ และอธิบายระบบที่เปลี่ยนตามเวลา",
     "focus": "คิดเป็นลำดับจากเรื่องจริง → ตัวแปรและสมการ → solver → ตรวจคำตอบกับข้อจำกัดและความหมายในโลกจริง",
-    "accent": "#205f4e",
+    "accent": "#003366",
     "lectures": [
       {
         "id": "egco611-session-01",
         "number": 1,
-        "date": "โพสต์ 11 สิงหาคม 2569 · ไม่ระบุวันเรียน",
+        "date": "11 สิงหาคม 2569 ",
         "week": "Week 1",
         "title": "Mathematical Modelling: เปลี่ยนเรื่องจริงเป็นสมการ",
         "subtitle": "เริ่มจากขอบเขต สมมติฐาน และหน่วย ก่อนแก้หรือทำนายระบบ",
@@ -44,7 +44,7 @@ export const generatedCourses: Course[] = [
       {
         "id": "egco611-session-02",
         "number": 2,
-        "date": "โพสต์ 16 สิงหาคม 2569 · ไม่ระบุวันเรียน",
+        "date": "16 สิงหาคม 2569 ",
         "week": "Week 2",
         "title": "Linear Programming Formulation",
         "subtitle": "แปลงโจทย์แบ่งทรัพยากรเป็นตัวแปร เป้าหมาย และข้อจำกัดเชิงเส้น",
@@ -191,7 +191,7 @@ export const generatedCourses: Course[] = [
     "shortTitle": "Data Mining & ML",
     "description": "จากการทำความเข้าใจและเตรียมข้อมูล ไปจนถึงการลดมิติ คลังข้อมูล OLAP และการทำ Dashboard ด้วย Power BI",
     "focus": "เน้นสำรวจข้อมูล เตรียมข้อมูล วิเคราะห์หลายมิติ และนำข้อมูลไปใช้ตัดสินใจ",
-    "accent": "#205f4e",
+    "accent": "#003366",
     "lectures": [
       {
         "id": "egco623-session-01",
@@ -340,7 +340,7 @@ export const generatedCourses: Course[] = [
     "shortTitle": "Network Security",
     "description": "สรุปหลังเรียนจริง 5 คาบ ตั้งแต่พื้นฐานความเสี่ยง การเข้ารหัส ความถูกต้องของข้อมูล โครงสร้างความเชื่อถือของกุญแจ ไปจนถึงคาบวิชาการเรื่อง Research Gap",
     "focus": "ความมั่นคงปลอดภัย การเข้ารหัส และการจัดการความเสี่ยง",
-    "accent": "#2f6f73",
+    "accent": "#003366",
     "lectures": [
       {
         "id": "lecture-01",

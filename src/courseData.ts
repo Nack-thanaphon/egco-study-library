@@ -169,7 +169,7 @@ export const egco604: Course = {
   shortTitle: 'Research Methodology',
   description: 'จากการตั้งปัญหาวิจัย ไปจนถึง Literature Review, การนำเสนอ และการป้องกันงาน',
   focus: 'เน้นงานวิจัย การบ้าน และการนำเสนอ',
-  accent: '#ba583b',
+  accent: '#003366',
   lectures: egco604Lectures,
   skillPath: './downloads/egco604/SKILL.md',
 }

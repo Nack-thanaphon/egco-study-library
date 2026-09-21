@@ -23,7 +23,7 @@ const courses = files.map((file) => {
     shortTitle: course.shortTitle,
     description: course.description,
     focus: course.focus,
-    accent: course.accent || '#205f4e',
+    accent: course.accent || '#003366',
     lectures: sessions,
     skillPath: `./downloads/${code.toLowerCase()}/SKILL.md`,
   }
