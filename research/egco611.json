@@ -103,8 +103,8 @@
         "ฝึกโมเดลโจทย์ batch ที่มีค่าตั้งเครื่อง ชั่วโมงล่วงเวลา และตัวแปรเปิด–ปิด",
         "ติดตามประกาศการบ้าน modelling และการเขียนโปรแกรม เพราะในคาบยังไม่ยืนยันโจทย์และกำหนดส่ง"
       ],
-      "audioUrl": null,
-      "audioLabel": "รอลิงก์เสียงคาบ 23 ส.ค. 2569",
+      "audioUrl": "https://drive.google.com/drive/folders/1Xa0XqFOcdfu1PiBiyhU4GmYdGfrtU6ni",
+      "audioLabel": "ไฟล์เสียงคาบ 23 ส.ค. 2569",
       "sourceNote": "รวมสรุปซ้ำจากเสียงคาบ 13:20 และ 15:07 วันที่ 23 ส.ค. เป็นหนึ่ง taught session; เก็บสาระจากทั้ง LP implementation และ MILP โดยไม่เลือกตัวเลขที่ขัดกัน"
     },
     {
@@ -139,8 +139,8 @@
         "เตรียม ODE, solve_ivp และ system of ODE สำหรับคาบถัดไป",
         "เตรียมสอบกลางภาคหลังจบ ODE; หลักฐานขณะนั้นระบุวันที่ 27 ก.ย."
       ],
-      "audioUrl": null,
-      "audioLabel": "รอลิงก์เสียงคาบ 30 ส.ค. 2569",
+      "audioUrl": "https://drive.google.com/drive/folders/1xzeiKRHtaji8jLsYglGAhg8eNBUalIMn",
+      "audioLabel": "ไฟล์เสียงคาบ 30 ส.ค. 2569",
       "sourceNote": "รวมสรุปสองตอนของคาบเดียววันที่ 30 ส.ค. 2569 เป็นหนึ่ง taught session: MILP/Server และ ODE introduction"
     },
     {
@@ -175,8 +175,8 @@
         "รอประกาศตัวเลขโจทย์และกำหนดส่งอย่างเป็นทางการ เพราะหลักฐานวันที่ 14 ก.ย. ยังไม่ยืนยัน",
         "ฝึกเขียน ODE ของถังน้ำ โมเดลอุณหภูมิ CPU แบบกำลังเปลี่ยนช่วง และวงจร RC"
       ],
-      "audioUrl": null,
-      "audioLabel": "รอลิงก์เสียงคาบ ODE สัปดาห์ 14 ก.ย. 2569",
+      "audioUrl": "https://drive.google.com/drive/folders/1MiHi10ViC4BRJDnCnLa6qFyE28gCGBaG",
+      "audioLabel": "ไฟล์เสียงคาบ 13 ก.ย. 2569",
       "sourceNote": "อ้างอิงจากสรุปหลังเรียน ODE สองตอนที่โพสต์วันที่ 14 ก.ย. 2569 และระบุว่ามาจากข้อความถอดเสียงคาบ; ไม่รวม daily drill เป็นหลักฐานการสอน"
     },
     {
@@ -223,7 +223,7 @@
         "หากสอบต้องเขียน solve_ivp อาจารย์ให้ credit ที่ logic สมการถูก — syntax ผิดเล็กน้อยไม่หัก (อ่านรู้เรื่อง ไม่หัก)",
         "ครั้งหน้า: Linear Algebra ~6 ชั่วโมง ต่อเนื่อง Data Mining; อีก ~2 สัปดาห์ถึง midterm"
       ],
-      "audioUrl": null,
+      "audioUrl": "https://drive.google.com/drive/folders/1j8QufhqnXpyYrZZbMX3oB6zMyZX9Cah8",
       "audioLabel": "ไฟล์เสียงคาบ 20 ก.ย. 2569",
       "sourceNote": "สรุปจาก transcript ไฟล์เสียงคาบ 20 ก.ย. 2569 (กรอง noise ทักทายซ้ำออกแล้ว) — สอนต่อจากคาบ 14 ก.ย. อย่างต่อเนื่อง"
     }
