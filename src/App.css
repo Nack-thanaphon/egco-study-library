@@ -451,6 +451,12 @@ input:focus-visible {
   font-size: 15px;
 }
 
+.audio-strip-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .audio-strip-link {
   display: inline-flex;
   align-items: center;

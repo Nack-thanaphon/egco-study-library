@@ -107,8 +107,18 @@ export const generatedCourses: Course[] = [
           "ติดตามประกาศการบ้าน modelling และการเขียนโปรแกรม เพราะในคาบยังไม่ยืนยันโจทย์และกำหนดส่ง"
         ],
         "audioUrl": "https://drive.google.com/drive/folders/1Xa0XqFOcdfu1PiBiyhU4GmYdGfrtU6ni",
-        "audioLabel": "ไฟล์เสียงคาบ 23 ส.ค. 2569",
-        "sourceNote": "รวมสรุปซ้ำจากเสียงคาบ 13:20 และ 15:07 วันที่ 23 ส.ค. เป็นหนึ่ง taught session; เก็บสาระจากทั้ง LP implementation และ MILP โดยไม่เลือกตัวเลขที่ขัดกัน"
+        "audioLabel": "ไฟล์เสียงคาบ 23 ส.ค. 2569 (2 ตอน)",
+        "audioUrls": [
+          {
+            "label": "ตอนที่ 1",
+            "url": "https://drive.google.com/drive/folders/1Xa0XqFOcdfu1PiBiyhU4GmYdGfrtU6ni"
+          },
+          {
+            "label": "ตอนที่ 2",
+            "url": "https://drive.google.com/drive/folders/1YljP2qy1RIiUZ0QFTynXUEO92LjdmI9G"
+          }
+        ],
+        "sourceNote": "รวมสรุปซ้ำจากเสียงคาบ 13:20 และ 15:07 วันที่ 23 ส.ค. เป็นหนึ่ง taught session; เก็บสาระจากทั้ง LP implementation และ MILP โดยไม่เลือกตัวเลขที่ขัดกัน; คาบนี้มีโฟลเดอร์เสียง 2 ตัวใน Drive (ชื่อ EGCO611_260824 เหมือนกัน) เรียงตามลิงก์ที่เคยแมพไว้ก่อน"
       },
       {
         "id": "egco611-session-04",

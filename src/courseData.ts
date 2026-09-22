@@ -1,5 +1,10 @@
 import { generatedCourses } from './generatedCourses'
 
+export type AudioLink = {
+  label: string
+  url: string
+}
+
 export type Lecture = {
   id: string
   number: number
@@ -13,8 +18,14 @@ export type Lecture = {
   emphasis: string[]
   assignments: string[]
   audioUrl: string | null
+  audioUrls?: AudioLink[]
   audioLabel: string
   sourceNote: string
+}
+
+export function lectureAudioLinks(lecture: Lecture): AudioLink[] {
+  if (lecture.audioUrls && lecture.audioUrls.length > 0) return lecture.audioUrls
+  return lecture.audioUrl ? [{ label: 'เปิดไฟล์เสียง', url: lecture.audioUrl }] : []
 }
 
 export type Course = {
@@ -157,7 +168,7 @@ const egco604Lectures: Lecture[] = [
       'ไม่มีการบ้านใหม่ที่ได้ยินชัดในคาบ',
       'นำข้อเสนอแนะจาก Q&A ไปปรับการนำเสนอและงานวิจัยของตัวเอง',
     ],
-    audioUrl: null,
+    audioUrl: 'https://drive.google.com/drive/folders/1NmVuPYszyN-FIWQ7WIl2n8zxZzScpUru',
     audioLabel: 'ไฟล์เสียงคาบ 19 ก.ย. 2569',
     sourceNote: 'อ้างอิงจากไฟล์ถอดเสียงคาบ Journal Club วันที่ 19 ก.ย. 2569',
   },

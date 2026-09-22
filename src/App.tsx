@@ -9,7 +9,7 @@ import {
   FolderOpen,
   Search,
 } from 'lucide-react'
-import { courses, type Course, type Lecture } from './courseData'
+import { courses, lectureAudioLinks, type Course, type Lecture } from './courseData'
 import './App.css'
 
 function App() {
@@ -214,10 +214,14 @@ function LectureDetail({
             <p className="audio-strip-label"><FileAudio size={16} /> เสียงต้นฉบับ</p>
             <p>{lecture.audioLabel}</p>
           </div>
-          {lecture.audioUrl ? (
-            <a className="audio-strip-link" href={lecture.audioUrl} target="_blank" rel="noreferrer">
-              เปิดไฟล์เสียง <ExternalLink size={15} />
-            </a>
+          {lectureAudioLinks(lecture).length > 0 ? (
+            <div className="audio-strip-links">
+              {lectureAudioLinks(lecture).map((audio) => (
+                <a className="audio-strip-link" key={audio.url} href={audio.url} target="_blank" rel="noreferrer">
+                  {audio.label} <ExternalLink size={15} />
+                </a>
+              ))}
+            </div>
           ) : (
             <span className="audio-strip-pending">รอเพิ่มลิงก์ Google Drive</span>
           )}
