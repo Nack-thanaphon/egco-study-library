@@ -2,7 +2,7 @@
   "courseCode": "EGCO623",
   "title": "Data Mining and Machine Learning",
   "shortTitle": "Data Mining & ML",
-  "description": "จากการทำความเข้าใจและเตรียมข้อมูล คลังข้อมูล OLAP Dashboard ไปจนถึง Association Analysis หาความสัมพันธ์ของไอเทมที่ซื้อพร้อมกัน",
+  "description": "สถิติพื้นฐาน การเตรียมข้อมูล Dashboard ถึง Association Analysis",
   "focus": "เน้นสำรวจข้อมูล เตรียมข้อมูล วิเคราะห์หลายมิติ และนำข้อมูลไปใช้ตัดสินใจ",
   "accent": "#003366",
   "sessions": [

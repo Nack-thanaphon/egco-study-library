@@ -2,7 +2,7 @@
   "courseCode": "EGCO676",
   "title": "Information Security and Risk Assessment",
   "shortTitle": "Information Security",
-  "description": "สรุปหลังเรียนจริง 5 คาบ ตั้งแต่พื้นฐานความเสี่ยง การเข้ารหัส ความถูกต้องของข้อมูล โครงสร้างความเชื่อถือของกุญแจ ไปจนถึงคาบวิชาการเรื่อง Research Gap",
+  "description": "ความเสี่ยง การเข้ารหัส การยืนยันตัวตน และการดูแลความเชื่อถือ",
   "focus": "ความมั่นคงปลอดภัย การเข้ารหัส และการจัดการความเสี่ยง",
   "accent": "#003366",
   "skillPath": "./downloads/egco676/SKILL.md",

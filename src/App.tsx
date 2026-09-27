@@ -39,11 +39,9 @@ function LibraryHome({ onOpenCourse }: { onOpenCourse: (course: Course) => void 
   return (
     <main className="app-shell">
       <header className="page-header">
-        <p className="kicker">Mahidol University · M.Eng. Computer Engineering</p>
+        <p className="kicker">Mahidol University · M.Eng. Computer Engineering · ภาคเรียนที่ 1/2569</p>
         <h1>EGCO Study Library</h1>
-        <p className="lead">
-          เลือกวิชาเพื่อดูสรุปรายคาบตามวันที่ และแหล่งเสียงต้นฉบับ
-        </p>
+        <p className="lead">สรุปรายคาบ พร้อมลิงก์ไฟล์เสียงต้นฉบับ</p>
         <p className="meta-line library-stats">
           <span>{courses.length} รายวิชา</span>
           <span>·</span>

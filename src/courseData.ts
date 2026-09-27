@@ -178,7 +178,7 @@ export const egco604: Course = {
   code: 'EGCO604',
   title: 'Research Methodology',
   shortTitle: 'Research Methodology',
-  description: 'จากการตั้งปัญหาวิจัย ไปจนถึง Literature Review, การนำเสนอ และการป้องกันงาน',
+  description: 'ตั้งโจทย์วิจัย ค้นงาน นำเสนอ และป้องกันงานวิจัย',
   focus: 'เน้นงานวิจัย การบ้าน และการนำเสนอ',
   accent: '#003366',
   lectures: egco604Lectures,

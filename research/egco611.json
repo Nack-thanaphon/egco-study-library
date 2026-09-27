@@ -2,7 +2,7 @@
   "courseCode": "EGCO611",
   "title": "Programming Techniques for Advanced Applications",
   "shortTitle": "Programming Techniques",
-  "description": "แบบจำลอง การหาค่าที่ดีที่สุด และระบบพลวัต — เรียนวิธีเปลี่ยนปัญหาจริงให้เป็นสมการ เลือกคำตอบที่ดีที่สุดภายใต้ข้อจำกัด ใช้โปรแกรมช่วยแก้ และอธิบายระบบที่เปลี่ยนตามเวลา",
+  "description": "แปลงโจทย์จริงเป็นโมเดล LP/MILP และ ODE แล้วตรวจคำตอบด้วย solver",
   "focus": "คิดเป็นลำดับจากเรื่องจริง → ตัวแปรและสมการ → solver → ตรวจคำตอบกับข้อจำกัดและความหมายในโลกจริง",
   "accent": "#003366",
   "sessions": [
