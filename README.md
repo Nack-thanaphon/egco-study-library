@@ -25,6 +25,15 @@ npm run build
 npm run deploy
 ```
 
+## ข้อมูลรายคาบ
+
+ข้อมูลทั้งหมดอยู่ใน `research/sessions/<รหัสวิชา>/`
+
+- `course.json` — ข้อมูลรายวิชา (ชื่อ ภาคเรียน สี)
+- `session-NN.json` — หนึ่งไฟล์ต่อหนึ่งคาบ: หัวข้อ สิ่งที่คุย สิ่งที่อาจารย์เน้น งาน ลิงก์เสียง และ `sources` ต้นฉบับ
+
+Vite plugin `build/course-sessions-plugin.ts` อ่านไฟล์เหล่านี้ตรงตอน `npm run dev` / `npm run build` แล้วส่งให้แอปผ่าน `virtual:courses` (`sources` ไม่ถูกรวมเข้าเว็บ) แก้ JSON แล้วหน้า dev reload เอง
+
 ## การตรวจสอบ
 
 ```bash

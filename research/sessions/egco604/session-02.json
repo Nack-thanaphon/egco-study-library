@@ -14,6 +14,25 @@
     "Backward Search, Forward Search และการสร้างสายงานวิจัย",
     "ระดับการทบทวนวรรณกรรม: Describe → Analyse → Evaluate → Offer your view"
   ],
+  "discussions": [
+    "ให้อ่าน Abstract และ Conclusion ก่อน เพื่อประเมินว่าเปเปอร์ตรงกับโจทย์หรือไม่",
+    "AI และ Consensus ช่วยค้นหรือเทียบสรุปได้ แต่ผู้เรียนต้องอ่านต้นฉบับและอธิบายเอง",
+    "การ paraphrase ต้องตามด้วยการวิเคราะห์ ไม่ใช่เพียงเปลี่ยนคำจากต้นฉบับ",
+    "เปเปอร์กลุ่มเรื่อง DGA และ Machine Learning ถูกใช้เป็นตัวอย่างเชื่อม Objective กับงานที่ค้นพบ"
+  ],
+  "emphasis": [
+    "เลือกเปเปอร์เพราะตอบ Objective ไม่ใช่เพราะชื่อดูใกล้เคียง",
+    "ตรวจความน่าเชื่อถือก่อนเสียเวลาอ่านทั้งฉบับ",
+    "Turnitin ต้องต่ำกว่าเกณฑ์และไม่ควรคัดลอกประโยคยาวจากแหล่งเดียว"
+  ],
+  "assignments": [
+    "เลือกเปเปอร์หลักจากงานของตัวเอง",
+    "ทำ Backward Search อย่างน้อย 3 เรื่อง และ Forward Search อย่างน้อย 3 เรื่อง",
+    "เขียน bullet summary ด้วยตัวเองก่อนนำไปเปรียบเทียบกับ AI"
+  ],
+  "audioUrl": "https://drive.google.com/drive/folders/1fGS8vpxNx8WHF-AkSdcoYj3CixFoUbRU",
+  "audioLabel": "ไฟล์เสียงคาบ 29 ส.ค. 2569",
+  "sourceNote": "อ้างอิงจาก transcript คาบ 29 ส.ค. และ Week2 Literature Review.pdf",
   "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
   "sources": [
     {

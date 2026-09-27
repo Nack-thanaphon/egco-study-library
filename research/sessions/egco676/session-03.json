@@ -14,6 +14,28 @@
     "RSA, Diffie–Hellman, ElGamal และ ECC",
     "Shor algorithm, Harvest now decrypt later และ Post-Quantum Cryptography"
   ],
+  "discussions": [
+    "Public key เปรียบเหมือนช่องหยอดตู้ไปรษณีย์ ส่วน Private key เป็นกุญแจเปิดตู้",
+    "AES-128, RSA-3072 และ ECC-256 ถูกใช้เทียบระดับความปลอดภัยโดยประมาณในคาบ",
+    "ระบบจริงใช้ Hybrid เพราะ Asymmetric ช่วยแก้เรื่องแลกกุญแจ แต่ Symmetric เร็วกว่าสำหรับข้อมูลจำนวนมาก",
+    "ลายเซ็นดิจิทัลเซ็น digest ของข้อความ ไม่ได้เซ็นข้อมูลทั้งก้อน",
+    "RSA, Diffie–Hellman และ ECC เสี่ยงต่อ Shor ส่วนกลุ่ม lattice-based, code-based และ hash-based signature เป็นแนวทางหลังควอนตัม"
+  ],
+  "emphasis": [
+    "Encryption ใช้ Public key ของผู้รับเพื่อความลับ; Signature ใช้ Private key ของผู้ส่งเพื่อยืนยันผู้ส่งและความถูกต้อง",
+    "Digital Signature ไม่ทำให้ข้อความเป็นความลับ ต้องเข้ารหัสเพิ่มหากไม่ต้องการให้คนอื่นอ่าน",
+    "Public key ที่แจกโดยไม่มีการรับรองอาจถูกสลับด้วยการโจมตีแบบ man-in-the-middle",
+    "การย้ายระบบไป Post-Quantum ต้องเริ่มก่อนคอมพิวเตอร์ควอนตัมพร้อมใช้งาน เพราะข้อมูลอาจถูกเก็บวันนี้แล้วถอดในอนาคต"
+  ],
+  "assignments": [
+    "เตรียมหัวข้อโปรเจกต์และ Presentation รอบแรกวันที่ 26 กันยายนแบบ onsite",
+    "ทบทวนว่า TLS ใช้ Asymmetric และ Symmetric ร่วมกันอย่างไร",
+    "สไลด์บทที่ 3 จะมีฉบับอัปโหลดใหม่เพราะตัวเลขสมการเพี้ยน ให้ใช้ฉบับล่าสุด",
+    "กำหนดการเดือนตุลาคมที่ประกาศในคาบยังรอยืนยันอีกครั้ง"
+  ],
+  "audioUrl": null,
+  "audioLabel": "ไฟล์เสียงคาบ 29 ส.ค. 2569",
+  "sourceNote": "อ้างอิงจากสรุปหลังเรียนคาบ 29 ส.ค. 2569 เรื่อง Asymmetric, ECC และ Post-Quantum พร้อมประกาศต่อท้าย",
   "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
   "sources": [
     {

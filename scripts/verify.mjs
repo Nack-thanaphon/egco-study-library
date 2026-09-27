@@ -6,14 +6,17 @@ import { fileURLToPath } from 'node:url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.resolve(__dirname, '..')
 
-const expectedCourses = [
-  { code: 'EGCO604', lectures: 4 },
-  ...['egco611', 'egco623', 'egco676'].map((file) => {
-    const data = JSON.parse(fs.readFileSync(path.join(root, 'research', `${file}.json`), 'utf8'))
-    const sessions = data.sessions || data.lectures
-    return { code: data.courseCode || data.code, lectures: sessions.length }
-  }),
-]
+const sessionsDir = path.join(root, 'research', 'sessions')
+const expectedCourses = fs.readdirSync(sessionsDir, { withFileTypes: true })
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name)
+  .sort()
+  .map((folder) => {
+    const courseDir = path.join(sessionsDir, folder)
+    const course = JSON.parse(fs.readFileSync(path.join(courseDir, 'course.json'), 'utf8'))
+    const lectures = fs.readdirSync(courseDir).filter((file) => /^session-\d+\.json$/.test(file)).length
+    return { code: course.courseCode, lectures }
+  })
 
 const browser = await chromium.launch({
   headless: true,
@@ -52,6 +55,7 @@ for (const course of expectedCourses) {
   entry.h1 = await page.locator('h1').first().innerText()
   entry.cards = await page.locator('.lecture-card').count()
   entry.skillHref = await page.locator('.download-skill').getAttribute('href')
+  entry.skillFileName = await page.locator('.download-skill').getAttribute('download')
   entry.desktopOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)
 
   // open first lecture detail
@@ -69,6 +73,7 @@ for (const course of expectedCourses) {
 
   if (entry.h1 !== course.code) errors.push(`${course.code} h1: ${entry.h1}`)
   if (entry.cards !== course.lectures) errors.push(`${course.code} cards: ${entry.cards} != ${course.lectures}`)
+  if (entry.skillFileName !== `${course.code}-SKILL.md`) errors.push(`${course.code} download name: ${entry.skillFileName}`)
   if (entry.desktopOverflow || entry.mobileOverflow) errors.push(`${course.code}: overflow detected`)
   results[course.code] = entry
 }

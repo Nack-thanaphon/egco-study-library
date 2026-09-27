@@ -14,6 +14,25 @@
     "ความต่างระหว่าง OLTP สำหรับธุรกรรมประจำวันกับ OLAP สำหรับการวิเคราะห์อดีต",
     "Power BI workflow: Import → Model Relationship → Visualize → Slicer → Measure"
   ],
+  "discussions": [
+    "Data Warehouse เหมือนตู้เย็นกลางบ้านที่รวมวัตถุดิบจากหลายที่ให้พร้อมใช้ ส่วน Data Mart เป็นช่องย่อยของแต่ละแผนก",
+    "Data Cube เหมือนลูกบาศก์รูบิคที่ดูยอดขายผ่านมิติสินค้า ร้าน และเวลา แล้วหมุนมุมมองเพื่อหาคำตอบ",
+    "ROLAP เก็บแบบตารางและใช้ SQL, MOLAP คำนวณสรุปล่วงหน้าเพื่อความเร็ว, HOLAP ผสมสองแบบ",
+    "ใน Power BI เชื่อม CategoryID แบบ many-to-one แล้วใช้ Slicer ให้ทุกกราฟเปลี่ยนตามหมวดที่เลือก"
+  ],
+  "emphasis": [
+    "เลือกมิติและค่าที่ต้องการวัดให้ตรงคำถามธุรกิจ",
+    "Roll-up คือสรุปกว้างขึ้น ส่วน Drill-down คือเปิดรายละเอียดลึกลง",
+    "Dashboard หนึ่งหน้าควรช่วยตอบคำถาม ไม่ใช่เพียงรวมกราฟสวย ๆ"
+  ],
+  "assignments": [
+    "Zoom assignment #7: ทำ Power BI dashboard หนึ่งหน้า มี KPI, Sales Trend, Product Performance, Customer Analysis, Sales by Category และ Slicer",
+    "ส่งภาพหน้าจอและตอบคำถามเรื่องสินค้าขายดี ลูกค้ารายได้สูงสุด แนวโน้มยอดขาย ความต่างของแต่ละหมวด และ Average Order Value",
+    "ข้อความประกาศระบุว่างดเรียนสองสัปดาห์ และจะเริ่ม Association Analysis เมื่อกลับมา"
+  ],
+  "audioUrl": null,
+  "audioLabel": "ไฟล์เสียงคาบ 30 ส.ค. 2569",
+  "sourceNote": "รวมสรุปสองตอนของคาบเดียวกัน Slack ts 1788109078.728709 และ 1788109079.223369 (S7–S8)",
   "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
   "sources": [
     {

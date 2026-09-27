@@ -22,6 +22,29 @@
     "Drawback ของ confidence: กฎชา→กาแฟ confidence 0.75 แต่คนดื่มกาแฟอยู่แล้ว 90% กฎจึงไม่ให้ข้อมูลใหม่",
     "คุณสมบัติของ measure: support และ lift เป็น symmetric, confidence เป็น asymmetric"
   ],
+  "discussions": [
+    "แน็กและเพื่อนถามว่าเบียร์ต้องแยกยี่ห้อไหม: อาจารย์ตอบขึ้นกับระดับความละเอียดของการวิเคราะห์ ถ้าสนใจแบรนด์ค่อยแยก ถ้าไม่สนก็รวมเป็นกลุ่มเดียว (บาร์โค้ดก็ใช้ได้)",
+    "เคสผ้าอ้อมกับเบียร์: พ่อบ้านอายุน้อยซื้อผ้าอ้อมแล้วมักซื้อเบียร์ในวันศุกร์ ร้านใช้จัดวางชั้นและวางแผนโปรโมชัน",
+    "ทำไมต้องหา Maximal/Closed: ทุก frequent itemset สร้างกฎได้เยอะและซ้ำซ้อน เลือกขอบกราฟ (Maximal) หรือตัวที่ support สูง (Closed) ไปต่อคุ้มกว่า",
+    "กฎเยอะเมื่อ threshold ต่ำ: ผู้ใช้ต้องคัดกรองเอง บางกฎผ่านตัวเลขแต่ไม่สมเหตุสมผลในเชิงธุรกิจ",
+    "การใช้งานจริง: วางขนมปังกับนมไว้ใกล้กัน ทำโปรโมชันซื้อคู่ หรือแนะนำสินค้าในระบบ recommendation"
+  ],
+  "emphasis": [
+    "Association analysis เป็น unsupervised: มีแต่ตัวอย่าง ไม่มีคำตอบ อัลกอริทึมต้องจับความสัมพันธ์เอง",
+    "support ใช้เลือก frequent itemset, confidence ใช้เลือกกฎ, lift ใช้เทียบกับ random chance",
+    "กฎจาก itemset เดียวกัน support เท่ากันหมด แต่ confidence ต่างกันตามตัวหาร (ฝั่งซ้าย)",
+    "คัดแล้วเหลือน้อยแต่ล้วนคุ้ม: ตัดไข่กับโค้กตั้งแต่ 1-itemset แล้ว superset ที่มีสองตัวนี้ไม่ต้องพิจารณา"
+  ],
+  "assignments": [
+    "Exercise ในห้อง: หา support กับ confidence ของกฎ 7 ข้อจาก itemset {ขนมปัง, นม, ผ้าอ้อม} แล้วเช็คกับ min-support 0.4 / min-confidence 0.5",
+    "Exercise 2: หา maximal/closed itemset จาก transaction 5 รายการ (min-support 2)",
+    "Exercise 3: สร้าง association rules จาก transaction เดิม (min-support 0.6, min-confidence 0.5) ได้ผ่านเกณฑ์ 8 กฎ",
+    "โจทย์เพิ่มเติมในสไลด์: min-support 0.3 / min-confidence 0.6 สำหรับเซ็ตไอเทมใหม่ (ฝึกเพิ่มเติม)",
+    "งานส่งในคาบ (เขียนชื่อ-รหัส): กระดาษคำนวณ support/confidence และระบุกฎที่ผ่านเกณฑ์"
+  ],
+  "audioUrl": "https://drive.google.com/drive/folders/1JNWLP8uAYba1yTdpeEW0S6t4XzfYfm9M",
+  "audioLabel": "ไฟล์เสียงคาบ 20 ก.ย. 2569",
+  "sourceNote": "สรุปจาก transcript ที่ผู้ใช้ส่ง 20/09/2569 (อ่านจากการถอดเสียงโดยตรง)",
   "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
   "sources": [
     {

@@ -14,6 +14,27 @@
     "Defense in Depth, Security–Usability balance และการลด Attack Surface",
     "ภาพรวม Symmetric, Asymmetric, Hash, MAC, Digital Signature, PKI และ Key Management"
   ],
+  "discussions": [
+    "ใช้ Mobile Banking แยกภาพของความลับ ความถูกต้อง และความพร้อมใช้",
+    "ความเสี่ยงต้องดูทั้งมูลค่าของสิ่งที่ปกป้อง ภัยคุกคาม ช่องโหว่ โอกาสเกิด และผลกระทบ",
+    "ระบบที่ปลอดภัยไม่ควรฝากความหวังไว้กับด่านเดียว แต่ต้องป้องกันหลายชั้นทั้งคน ขั้นตอน เครือข่าย และข้อมูล",
+    "โปรเจกต์เป็นงานเดี่ยว ใช้หัวข้อเดียวต่อเนื่องทั้งเทอม และอาจต่อยอดเป็นหัวข้อจบได้"
+  ],
+  "emphasis": [
+    "CIA เป็นเป้าหมาย ไม่ใช่รายชื่อเครื่องมือ",
+    "Top-down มักสำเร็จกว่า เพราะผู้บริหารกำหนดนโยบาย ผู้รับผิดชอบ และการบังคับใช้ได้",
+    "Key Management สำคัญพอ ๆ กับการเลือกอัลกอริทึม",
+    "ตารางรายวิชายังเปลี่ยนได้ ให้ตรวจประกาศล่าสุดใน Google Classroom"
+  ],
+  "assignments": [
+    "Assignment 3 ครั้ง รวม 15%",
+    "Term Project 4 ช่วง รวม 55%: Topic 5%, Literature Review 10%, Progress/Methodology 15%, Final Presentation + Report 25%",
+    "Examination 30%",
+    "เตรียม Project 01: Topic, Motivation, Objective และ Expected Outcome สำหรับ 26 กันยายน"
+  ],
+  "audioUrl": null,
+  "audioLabel": "ไฟล์เสียงคาบ 15 ส.ค. 2569",
+  "sourceNote": "อ้างอิงจากสรุปหลังเรียน Week 01 และบันทึกคำบรรยายวันที่ 15 ส.ค. 2569",
   "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
   "sources": [
     {

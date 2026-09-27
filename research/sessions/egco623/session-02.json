@@ -14,6 +14,24 @@
     "Noise, Outlier, Missing Value, ข้อมูลไม่สอดคล้อง ข้อมูลซ้ำ และข้อมูลเก่า",
     "Mean, Median, Range, Variance, Standard Deviation, IQR และการทำ EDA"
   ],
+  "discussions": [
+    "ชนิดข้อมูลเหมือนป้ายบนกล่อง: ถ้าติดป้ายผิด เครื่องมือก็จัดการของข้างในผิด เช่นเปรียบว่า outlook มากกว่า sunny ซึ่งไม่มีความหมาย",
+    "Mean ถูก outlier ดึงง่าย ขณะที่ Median และ IQR มักทนกว่า",
+    "เมื่อนำหลายแหล่งมารวม ต้องตรวจรูปแบบเวลา key หน่วย และระดับการสรุปให้ตรงกัน",
+    "ผลลัพธ์การเรียนรู้ยกตัวอย่าง Decision Table, Decision Tree, IF–THEN Rule และ k-nearest neighbors"
+  ],
+  "emphasis": [
+    "สำรวจข้อมูลก่อนเชื่อหรือสร้างโมเดล",
+    "เลือกสถิติให้เหมาะกับชนิดข้อมูลและผลกระทบของ outlier",
+    "อย่าแก้ค่าหายด้วยสูตรเดียวทุกกรณี ต้องเข้าใจบริบทข้อมูล"
+  ],
+  "assignments": [
+    "คำนวณ sample mean, variance, standard deviation, median, quartiles, range และ IQR จากค่า yield strength 11 ค่า",
+    "ตรวจปัญหาคุณภาพข้อมูลในตารางบุคคล เช่น ID ซ้ำ วันที่คนละรูปแบบ ค่าหาย และข้อมูลขัดแย้ง"
+  ],
+  "audioUrl": null,
+  "audioLabel": "ไฟล์เสียงคาบ 16 ส.ค. 2569",
+  "sourceNote": "อ้างอิงสรุปหลังเรียน Slack ts 1786847322.238019 (S2); ไม่ใช้โพสต์เตรียมเรียน",
   "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
   "sources": [
     {
