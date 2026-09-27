@@ -30,6 +30,7 @@ export function lectureAudioLinks(lecture: Lecture): AudioLink[] {
 
 export type Course = {
   code: string
+  term: string
   title: string
   shortTitle: string
   description: string
@@ -176,6 +177,7 @@ const egco604Lectures: Lecture[] = [
 
 export const egco604: Course = {
   code: 'EGCO604',
+  term: '1/2569',
   title: 'Research Methodology',
   shortTitle: 'Research Methodology',
   description: 'ตั้งโจทย์วิจัย ค้นงาน นำเสนอ และป้องกันงานวิจัย',

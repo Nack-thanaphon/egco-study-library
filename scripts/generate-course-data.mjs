@@ -19,6 +19,7 @@ const courses = files.map((file) => {
   if (new Set(numbers).size !== numbers.length) throw new Error(`${file}: duplicate session number`)
   return {
     code,
+    term: course.term || '1/2569',
     title: course.title,
     shortTitle: course.shortTitle,
     description: course.description,

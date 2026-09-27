@@ -1,5 +1,6 @@
 {
   "courseCode": "EGCO611",
+  "term": "1/2569",
   "title": "Programming Techniques for Advanced Applications",
   "shortTitle": "Programming Techniques",
   "description": "แปลงโจทย์จริงเป็นโมเดล LP/MILP และ ODE แล้วตรวจคำตอบด้วย solver",

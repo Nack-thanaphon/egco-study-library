@@ -3,6 +3,7 @@ import type { Course } from './courseData'
 export const generatedCourses: Course[] = [
   {
     "code": "EGCO611",
+    "term": "1/2569",
     "title": "Programming Techniques for Advanced Applications",
     "shortTitle": "Programming Techniques",
     "description": "แปลงโจทย์จริงเป็นโมเดล LP/MILP และ ODE แล้วตรวจคำตอบด้วย solver",
@@ -245,6 +246,7 @@ export const generatedCourses: Course[] = [
   },
   {
     "code": "EGCO623",
+    "term": "1/2569",
     "title": "Data Mining and Machine Learning",
     "shortTitle": "Data Mining & ML",
     "description": "สถิติพื้นฐาน การเตรียมข้อมูล Dashboard ถึง Association Analysis",
@@ -440,6 +442,7 @@ export const generatedCourses: Course[] = [
   },
   {
     "code": "EGCO676",
+    "term": "1/2569",
     "title": "Information Security and Risk Assessment",
     "shortTitle": "Information Security",
     "description": "ความเสี่ยง การเข้ารหัส การยืนยันตัวตน และการดูแลความเชื่อถือ",

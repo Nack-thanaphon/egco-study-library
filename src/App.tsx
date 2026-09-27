@@ -33,41 +33,57 @@ function App() {
   return <LibraryHome onOpenCourse={setActiveCourse} />
 }
 
+function termLabel(term: string): string {
+  const [n, year] = term.split('/')
+  return `ภาคเรียนที่ ${n} ปีการศึกษา ${year}`
+}
+
 function LibraryHome({ onOpenCourse }: { onOpenCourse: (course: Course) => void }) {
   const totalLectures = courses.reduce((sum, course) => sum + course.lectures.length, 0)
+  const terms = [...new Set(courses.map((course) => course.term))].sort()
+  const termGroups = terms.map((term) => ({
+    term,
+    label: termLabel(term),
+    courses: courses.filter((course) => course.term === term),
+  }))
 
   return (
     <main className="app-shell">
       <header className="page-header">
-        <p className="kicker">Mahidol University · M.Eng. Computer Engineering · ภาคเรียนที่ 1/2569</p>
+        <p className="kicker">Mahidol University · M.Eng. Computer Engineering</p>
         <h1>EGCO Study Library</h1>
         <p className="lead">สรุปรายคาบ พร้อมลิงก์ไฟล์เสียงต้นฉบับ</p>
         <p className="meta-line library-stats">
-          <span>{courses.length} รายวิชา</span>
+          <span>{terms.length} ภาคเรียน</span>
+          <span>·</span>
+          <span><strong>{courses.length}</strong> รายวิชา</span>
           <span>·</span>
           <span><strong>{totalLectures}</strong> คาบ</span>
-          <span>·</span>
-          <span>{courses.length} ไฟล์ SKILL.md</span>
         </p>
       </header>
 
-      <section className="block">
-        <h2>รายวิชา</h2>
-        <ol className="course-table">
-          {courses.map((course) => (
-            <li className="course-card" key={course.code} style={{ '--accent': course.accent } as CSSProperties}>
-              <button type="button" className="course-row course-card-main" onClick={() => onOpenCourse(course)}>
-                <span className="code">{course.code}</span>
-                <span className="title-block">
-                  <strong>{course.shortTitle}</strong>
-                </span>
-                <span className="count">{course.lectures.length} คาบ</span>
-                <span className="go">เปิด <ChevronRight size={16} /></span>
-              </button>
-            </li>
-          ))}
-        </ol>
-      </section>
+      {termGroups.map((group) => (
+        <section className="block term-block" key={group.term}>
+          <div className="block-head">
+            <h2>{group.label}</h2>
+            <span className="block-count">{group.courses.length} รายวิชา</span>
+          </div>
+          <ol className="course-table">
+            {group.courses.map((course) => (
+              <li className="course-card" key={course.code} style={{ '--accent': course.accent } as CSSProperties}>
+                <button type="button" className="course-row course-card-main" onClick={() => onOpenCourse(course)}>
+                  <span className="code">{course.code}</span>
+                  <span className="title-block">
+                    <strong>{course.shortTitle}</strong>
+                  </span>
+                  <span className="count">{course.lectures.length} คาบ</span>
+                  <span className="go">เปิด <ChevronRight size={16} /></span>
+                </button>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
 
       <footer className="site-footer">
         <span>สรุปจากเนื้อหาหลังเรียนจริงและเอกสารประกอบ</span>
