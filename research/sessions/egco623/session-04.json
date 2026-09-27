@@ -1,0 +1,40 @@
+{
+  "courseCode": "EGCO623",
+  "term": "1/2569",
+  "courseTitle": "Data Mining and Machine Learning",
+  "session": 4,
+  "week": "Week 4",
+  "date": "30 สิงหาคม 2569",
+  "title": "Data Warehouse, OLAP และ Power BI",
+  "subtitle": "มองข้อมูลหลายมิติ สรุปจากคลังข้อมูล และเปลี่ยนตารางให้เป็น Dashboard ที่ตอบคำถามได้",
+  "topics": [
+    "Data Warehouse แบบ Subject-oriented, Integrated, Time-variant และ Non-volatile",
+    "Data Cube และ OLAP operators: Roll-up, Drill-down, Slice, Dice และ Pivot",
+    "ROLAP, MOLAP, HOLAP และโครงสร้าง Star, Snowflake, Fact Constellation",
+    "ความต่างระหว่าง OLTP สำหรับธุรกรรมประจำวันกับ OLAP สำหรับการวิเคราะห์อดีต",
+    "Power BI workflow: Import → Model Relationship → Visualize → Slicer → Measure"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-08-30 23:57",
+      "slackTs": "1788109078.728709",
+      "channelId": "C0BNZQT84KG",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNZQT84KG/p1788109078728709",
+      "header": ":blue_book: EGCO623 สรุปคาบ 30 ส.ค. 2026 — Data Models (1/2)",
+      "note": null,
+      "content": "# :blue_book: EGCO623 สรุปคาบ 30 ส.ค. 2026 — Data Models (1/2)\n  แหล่งอ้างอิง: [1] EGCO623-04-DataModels.pdf · [3] ไฟล์เสียงคาบเรียน\n* *:dart: หัวข้อที่เรียน*\n1. Data Warehouse + คุณสมบัติ 4 ข้อ\n2. OLAP + Data Cube (ลูกบาศก์ข้อมูล)\n3. ROLAP / MOLAP / HOLAP + Star/Snowflake Schema\n4. Power BI: นำเข้าข้อมูล → Dashboard → Slicer\n5. การบ้าน Zoom #7 + งดเรียน 2 สัปดาห์ (ดูข้อความถัดไป)\n* *:one: Data Warehouse คืออะไร* [1][3]\nคลังข้อมูลกลางขององค์กร — เหมือน _ตู้เย็นกลางบ้าน_ ใคร ๆ ก็มาหยิบของไปทำอาหาร (วิเคราะห์) ได้ แต่ของถูกคัดแล้วว่าเกี่ยวข้องกับเรื่องที่สนใจ\n\n*คุณสมบัติ 4 ข้อ (Inmon 1990)*\n• *Subject Oriented* — ออกแบบเฉพาะเรื่อง เช่น DW เรื่องยอดขาย ดึงเฉพาะข้อมูลเกี่ยวกับยอดขาย (ต่างจาก operational DB ที่เก็บทุกอย่างไปก่อน)\n• *Integrated* — รวมหลายแหล่งหลาย format ให้อยู่ด้วยกันได้ไม่ขัดแย้ง\n• *Time Variant* — ทุกข้อมูลผูกกับช่วงเวลา (เป็นข้อมูลสถิติ/summary ระบุช่วงเก็บ)\n• *Non-volatile* — นิ่ง เพิ่มได้แต่ไม่ลบ/แก้ เหมือนสมุดบันทึกยอดรวม\n* *คำศัพท์ที่เกี่ยวข้อง* [1][3]\n• *Enterprise DW (EDW)* — คลังระดับทั้งองค์กร (ลูกค้า สินค้า ยอดขาย พนักงาน)\n• *Data Mart* — คลังย่อยของแต่ละแผนก ดึงบางส่วนจาก DW ไปใช้เอง\n• *DSS* — ระบบช่วยตัดสินใจผู้บริหาร ใช้ข้อมูลอดีตมาพยากรณ์\n• *OLAP* — ส่วนการวิเคราะห์หลายมิติใน DSS เสนอโดย E.F. Codd (พ่อของ relational database)\n* *:two: Data Cube* [1][3]\nมองข้อมูลเป็น _ลูกบาศก์รูบิค_ — ไม่ใช่ตารางแบน 2 มิติ แต่ 3 มิติขึ้นไป เช่น ยอดขาย ขึ้นกับ สินค้า × ร้าน × วันที่ (เกิน 3 มิติก็ได้ = multi-dimensional array)\n\n*แปลงตาราง → Array 2 ขั้น*\n1. เลือก attribute เป็น *มิติ (dimension)* — ต้องเป็น discrete ถ้า continuous ต้อง discretize ก่อน (แบ่ง low/med/high)\n2. เลือก *target value* หย่อนลงช่อง = ค่าที่สนใจ (ยอดขาย, จำนวนนับ)\n* *Operator บน Cube* [1][3]\n• *Roll-up* — มุดสรุปขึ้น: รายวัน → รายสัปดาห์/รายเดือน (ผู้บริหารอยากดูราย quarter เพื่อ predict)\n• *Drill-down* — ซูมลงรายละเอียด: รายเดือน → รายวัน\n• *Slice* — หั่น 1 แผ่น fix ค่าเดียว (เฉพาะวันที่ 1) เหมือนหั่นขนมปัง\n• *Dice* — หั่นเป็นก้อน เลือกช่วง/subset พร้อมกัน (Q1+Q2, 2 สินค้า, 2 ทำเล)\n• อื่น ๆ: Pivot, Ranking, Time functions (เช่น top 3% of cities by avg income)\n\n*Extended Cube* — เติมแถว/คอลัมน์/ชีทยอดรวม (*, 110, 19, 129) ไว้ใช้เลยไม่ต้องคำนวณใหม่ทุกรอบ\n\n*Hierarchy* — ร้าน → Region → Country, วัน → สัปดาห์ → Quarter, Product → Brand → กลุ่ม: roll-up/drill-down ตามลำดับชั้นได้\n* *ตัวเลขจากตัวอย่างในสไลด์ (ตาราง sale)* [1]\n• ข้อมูล: p1,s1,d1=12 · p2,s1,d1=11 · p1,s3,d1=50 · p2,s2,d1=8 · p1,s1,d2=44 · p1,s2,d2=4\n• Roll-up ข้ามวัน: s1 = 12+11+44 = *67* · รวมทั้งหมด = *129*\n• ตาม Region (s1=A, s2+s3=B): p1 → A=56, B=54 · p2 → A=11, B=8\n• SQL มุมมองเดียวกัน: `SELECT sum(amt) FROM sale WHERE date=1` (slice) · `GROUP BY date` (roll-up)\n• ตัวอย่าง Iris: discretize petal length/width เป็น low/med/high → นับ count ใส่ cube แล้ว slice ตาม species"
+    },
+    {
+      "kind": "summary",
+      "postedAt": "2026-08-30 23:57",
+      "slackTs": "1788109079.223369",
+      "channelId": "C0BNZQT84KG",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNZQT84KG/p1788109079223369",
+      "header": ":blue_book: EGCO623 สรุปคาบ 30 ส.ค. 2026 — ROLAP/MOLAP + Power BI (2/2)",
+      "note": "สรุปคาบ 30 ส.ค. (2/2)",
+      "content": "# :blue_book: EGCO623 สรุปคาบ 30 ส.ค. 2026 — ROLAP/MOLAP + Power BI (2/2)\n  แหล่งอ้างอิง: [1] EGCO623-04-DataModels.pdf · [2] EGCO623-04-PowerBI.pdf · [3] ไฟล์เสียงคาบเรียน\n* *:three: ROLAP vs MOLAP vs HOLAP* [1][3]\n• *ROLAP* — เก็บแบบตาราง relational (RDBMS), schema Star/Snowflake, แก้ปัญหาด้วย SQL (sum/where/group by) → เหมาะข้อมูลเยอะ ละเอียด (telecom CDRs, e-commerce, บัตรเครดิต)\n• *MOLAP* — เก็บเป็น multi-dimensional array (MDBMS), pre-calculate ไว้ → เร็วมาก เหมาะ summary ขนาด <50GB (financial budgeting, sales analysis) แต่พื้นที่โต (input 200MB → 5GB)\n• *HOLAP* — ผสม: รายละเอียดอยู่ RDBMS + ภาพรวมอยู่ MDBMS (sales มัลติเนชั่นแนล, แบงก์)\n\n*ผลทดลองในสไลด์:* MOLAP ชนะ — ดิสก์ 10 vs 17 GB · retrieve 240:1 · calculation 237:2 [1]\n* *Schema ฝั่ง ROLAP* [1][3]\n• *Star* — fact table ตรงกลาง (ยอดขาย + keys) ลิงก์รังสีไป dimension tables (Product/Time/Store Info)\n• *Snowflake* — Star ที่ dimension ลิงก์ต่อไปอีก (Store → District → Region)\n• *Fact Constellation* — หลาย fact table กระจาย ลิงก์กันเป็นกลุ่มดาว ใช้เมื่อข้อมูลซับซ้อนมาก\n\n*OLAP vs OLTP* [1][3]\n• *OLTP* — transaction ประจำวัน เน้นเก็บ/แก้ไขเร็ว ข้อมูลปัจจุบัน (เหมือนแคชเชียร์ร้านกาแฟ)\n• *OLAP* — วิเคราะห์ข้อมูลอดีต เน้นสรุป อ่านอย่างเดียว de-normalize (เจ้าของร้านนั่งดูรายงานยอดรวมท้ายเดือน)\n* *:four: Power BI* [2][3]\nเครื่องมือ Microsoft สำหรับทำ dashboard — เหมือน _Canva ของข้อมูล_ ลาก-วางกราฟจากข้อมูลจริง เด่นเรื่อง visualization\n\n*Workflow ในคาบ*\n1. *Import* ไฟล์ Excel (Dataset BI บน Classroom — 2 sheets: Category 8 แถว + Product ~127 แถว) → ตรวจ data type (Date=วันที่, Sales=Decimal)\n2. *Model view* — ลาก CategoryID ชนกัน สร้าง relationship many-to-one\n3. *Visualize* — Pie (Sales by Product), Line (Sales by Date), Bar (Sales by Product Name), Treemap, Gauge\n4. *Slicer* — ปุ่มกรอง interactive เลือก Category 1-8 แล้วทุกกราฟในหน้าเปลี่ยนตาม (มีแบบปุ่ม/แถบลาก/พิมพ์เอง/list)\n5. *Measure* — เปลี่ยน Sum → Average/Min/Max ได้\n* :red_circle: *การบ้าน — Zoom assignment #7 Power BI* ส่งที่ Classroom [2][3]\nทำ dashboard *1 หน้าเดียว* ให้ตอบคำถามได้:\n• KPI: Total Sales, Average Order Value, Total Orders, จำนวนลูกค้า (ใช้ Card)\n• Sales Trend (line ตามเวลา) · Product Performance (bar + Top selling)\n• Customer Analysis · Sales by Category\n• มี Slicer + ตกแต่งให้ professional\n\n*ส่งพร้อมแคปหน้าจอ + ตอบ 5 ข้อ:* \n:one: Top-selling products คืออะไร\n:two: ลูกค้าคนไหนรายได้สูงสุด\n:three: Sales trend over time เป็นยังไง\n:four: แต่ละ category แตกต่างกันยังไง\n:five: Average order value เท่าไหร่\n* :calendar: *ประกาศ* [3]\n• *งดเรียน 2 สัปดาห์* — สัปดาห์หน้า (Open House) + สัปดาห์ถัดไป (อาจารย์พานักศึกษาไปดูงาน) อาจารย์จะโพสต์วัน/ชื่อแทนเร็ว ๆ นี้\n• คาบที่กลับมา: *Association Analysis* (เริ่ม Data Mining)\n• เครื่องไม่มี Power BI Desktop → ใช้เว็บผ่าน account มหิดลได้\n  สรุปโดย Hermes · ตัวเลขและ operator อ้างอิงสไลด์ [1] และบันทึกเสียง [3]"
+    }
+  ]
+}

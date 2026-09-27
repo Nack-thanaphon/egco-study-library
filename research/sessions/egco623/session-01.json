@@ -1,0 +1,30 @@
+{
+  "courseCode": "EGCO623",
+  "term": "1/2569",
+  "courseTitle": "Data Mining and Machine Learning",
+  "session": 1,
+  "week": "Week 1",
+  "date": "11 สิงหาคม 2569",
+  "title": "Data Mining, KDD และจริยธรรมข้อมูล",
+  "subtitle": "เริ่มจากข้อมูลดิบ เปลี่ยนให้เป็นความรู้ และเลือกชนิดงานวิเคราะห์ให้ตรงโจทย์",
+  "topics": [
+    "ลำดับ Data → Information → Knowledge → Wisdom",
+    "กระบวนการ KDD: เตรียมข้อมูล → ทำ Data Mining → ตรวจและนำผลไปใช้",
+    "งานหลัก Classification, Regression, Clustering และ Anomaly Detection",
+    "Supervised กับ Unsupervised Learning และภาพรวมเครื่องมือ Machine Learning",
+    "Ethics, Privacy, Bias และการดูแลโมเดลหลังใช้งานด้วย MLOps"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-08-11 12:03",
+      "slackTs": "1786424583.446999",
+      "channelId": "C0BNZQT84KG",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNZQT84KG/p1786424583446999",
+      "header": ":robot_face: สรุป EGCO623 — Data Mining & Machine Learning",
+      "note": null,
+      "content": "# :robot_face: สรุป EGCO623 — Data Mining & Machine Learning\n  :spiral_calendar_pad: สัปดาห์ที่ 1 | :female-teacher: อ. Chairat  | :school: Mahidol University\n# :dart: หัวข้อที่เรียน\n* :one: *กระบวนการ Data Mining และ KDD* (Knowledge Discovery in Database)\n:two: *การเตรียมข้อมูล (Data Pre-Processing)* — ทำความสะอาด จัดรูปแบบ\n:three: *ประเภทงานวิเคราะห์:* Classification, Regression, Clustering, Anomaly Detection\n:four: *Machine Learning* — Supervised vs Unsupervised, อัลกอริทึมยอดนิยม\n:five: *จริยธรรมข้อมูล (Ethics), Privacy, Bias*\n# :bulb: แนวคิดสำคัญ\n* • *Data Mining* คือการหาขุมทรัพย์ในข้อมูลมหาศาล — ข้อมูลเยอะมากในปัจจุบัน (เซ็นเซอร์, บัตรเครดิต, แอปต่างๆ) เก็บไว้เฉยๆ ก็เสียพื้นที่ ต้องเอามาใช้ให้เกิดประโยชน์\n\n• *ลำดับความรู้:*\n  Data (ข้อมูลดิบ) → Information (เริ่มมีความหมาย) → Knowledge (ความรู้) → Wisdom (ภูมิปัญญา/ประยุกต์ใช้)\n  _ตัวอย่าง: รหัสไฟแดง 192.3.45 (Data) → \"ไฟแดงหน้ามอ ถนนพีช\" (Information) → รู้ว่าช่วงนี้ติด (Knowledge) → ตัดสินใจออกเวลาไหน (Wisdom)_\n\n• *KDD Process:* ข้อมูลดิบ → Pre-Processing (ทำความสะอาด) → Data Mining (หาแบบแผน) → Post-Process → ความรู้ที่ใช้ได้\n# :memo: ประเภทงานวิเคราะห์ข้อมูล\n* :label: *Classification* — แบ่งข้อมูลเป็นหมวดหมู่ \"ทำนายป้ายกำกับ\"\n   เช่น ลูกค้าจะย้ายค่ายไหม (Yes/No) ธนาคารทำนายว่าจะอนุมัติสินเชื่อให้ใคร\n\n:chart_with_upwards_trend: *Regression* — ทำนาย \"ตัวเลข\"\n   เช่น ทำนายยอดขายสินค้าใหม่ หรือราคาหุ้นพรุ่งนี้\n\n:radio_button: *Clustering* — จัดกลุ่มข้อมูลที่คล้ายกัน \"โดยไม่บอกล่วงหน้าว่ามีกี่กลุ่ม\"\n   เช่น แบ่งลูกค้าเป็นกลุ่มตามพฤติกรรมซื้อ\n\n:rotating_light: *Anomaly Detection* — หาข้อมูลที่ \"ผิดปกติ\"\n   เช่น ตรวจจับธุรกรรมบัตรเครดิตที่น่าสงสัย หรือบุกรุกเครือข่าย\n# :wrench: ตัวอย่างที่ยกในห้อง\n* :iphone: *เทเลคอม* — ใช้ Classification ทำนายว่าลูกค้าจะย้ายค่ายไหม → เสนอโปรโมชั่นให้ต่อสัญญา\n\n:wind_blowing_face: *ทำนายความเร็วลม* — จากอุณหภูมิ/ความชื้น/ฝน (Regression)\n\n:credit_card: *ตรวจจับการโกงบัตรเครดิต* — จากพฤติกรรมธุรกรรมผิดปกติ (Anomaly Detection)\n\n:shopping_trolley: *แบ่งกลุ่มลูกค้า* — จากบัตรสมาชิก เพื่อทำการตลาดเจาะกลุ่ม (Clustering)\n# :gear: อัลกอริทึม & เครื่องมือยอดนิยม\n* *Top Algorithms:* `Gradient Boosting` (อันดับ 1) → `Logistic Regression` → `Random Forest` → `Deep Learning` → `Transformers`\n\n*Enterprise Tools:* Databricks, AWS, Google Cloud, Microsoft Fabric, SAS\n\n*Open Source:* Python (pandas, scikit-learn), TensorFlow, Apache Spark, Orange, H2O.ai\n# :warning: ประเด็นสำคัญในปัจจุบัน\n* :scales: *Ethics & Bias* — โมเดลอาจมีอคติ เช่น ปฏิเสธสินเชื่อเพราะเพศ/เชื้อชาติโดยไม่ได้ตั้งใจ → ต้องระวัง\n\n:lock: *Privacy* — ข้อมูลเป็นของใคร? เก็บที่ไหน? เอาไปใช้อย่างไร?\n\n:arrows_counterclockwise: *MLOps* — หลัง deploy โมเดลต้องดูแล อัปเดต ให้ทันสถานการณ์\n# :question: คำถามที่ควรฝึก\n* 1. ความแตกต่างระหว่าง *Classification* กับ *Regression* คืออะไร? ยกตัวอย่างแต่ละแบบ\n2. ถ้าข้อมูลมี \"สัญญาณรบกวน\" (Noise) และค่าหายไป (Missing) จะจัดการอย่างไรในขั้นตอน Pre-Processing?\n3. ทำไมโมเดลที่แม่นยำมากอาจยังไม่พอ ถ้ามีอคติ (Bias) แฝงอยู่?\n  :label: Keywords: `Data-Mining` `KDD` `Data-Pre-Processing` `Classification` `Regression` `Clustering` `Anomaly-Detection` `Supervised-Learning` `Unsupervised-Learning` `Gradient-Boosting` `Random-Forest` `Deep-Learning` `Transformers` `Python` `scikit-learn` `TensorFlow` `Ethics` `Bias` `Privacy` `MLOps` `Churn-Prediction` `Fraud-Detection`"
+    }
+  ]
+}

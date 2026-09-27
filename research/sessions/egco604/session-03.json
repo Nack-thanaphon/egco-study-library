@@ -1,0 +1,30 @@
+{
+  "courseCode": "EGCO604",
+  "term": "1/2569",
+  "courseTitle": "Research Methodology",
+  "session": 3,
+  "week": "Week 3",
+  "date": "5 กันยายน 2569",
+  "title": "Scientific Presentation",
+  "subtitle": "เล่างานวิจัยให้คนฟังเข้าใจ ตั้งแต่ปัญหาไปจนถึงผลและข้อสรุป",
+  "topics": [
+    "รูปแบบการนำเสนอทางวิชาการ: seminar, conference, poster และ viva/defense",
+    "โครงเรื่อง Background → Problem → Objective → Method → Result → Discussion → Conclusion",
+    "หลัก Simplicity, Visibility, Unity, Quality และ Feasibility",
+    "การเลือกกราฟและภาพให้เหมาะกับสิ่งที่ต้องการสื่อ",
+    "เทคนิคเตรียมตอบคำถามและสไลด์สำรอง"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-09-07 16:53",
+      "slackTs": "1788774823.496769",
+      "channelId": "C0BPF7EE7HD",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BPF7EE7HD/p1788774823496769",
+      "header": "EGCO604 — สรุปคาบ 5/09/2026",
+      "note": null,
+      "content": "# EGCO604 — สรุปคาบ 5/09/2026\n* *หัวข้อ: Scientific Presentation*\n\n• งานนำเสนอเชิงวิชาการมีหลายแบบ: seminar, progress presentation, conference presentation, poster, viva/defense\n• จุดสำคัญที่สุดคือ *problem statement* ต้องชัดก่อน ไม่งั้นคนฟังไม่ตาม\n• โครงหลัก: background → problem statement → objective → method → result → discussion → conclusion\n* *สิ่งที่อาจารย์เน้น*\n• ใช้สไลด์แบบ *minimize text* + *maximize pictures* + design ให้ consistent\n• AI ใช้ได้ แต่ต้องปรับเอง ไม่งั้นสรุปแน่นเกินไปและพูดต่อยาก\n• ซ้อมก่อนพรีเซนต์เสมอ และตอบคำถามโดยฟังให้ดี ทวนคำถาม แล้วค่อยตอบ\n* *งานที่ต้องทำ*\n• ทำ Journal Club จาก paper 1 เรื่อง\n• โครงสไลด์: Title / Outline / Introduction / Method / Result & Discussion / Conclusion / Acknowledgement\n• วันนำเสนอ: *19 กันยายน*\n\n_อ้างอิง: transcript คาบ 5/09/2026_"
+    }
+  ]
+}

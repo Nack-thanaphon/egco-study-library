@@ -1,0 +1,30 @@
+{
+  "courseCode": "EGCO623",
+  "term": "1/2569",
+  "courseTitle": "Data Mining and Machine Learning",
+  "session": 2,
+  "week": "Week 2",
+  "date": "16 สิงหาคม 2569",
+  "title": "Exploring Data และ Data Quality",
+  "subtitle": "รู้จักแถว คอลัมน์ ชนิดข้อมูล คุณภาพข้อมูล และสถิติพื้นฐานก่อนสร้างโมเดล",
+  "topics": [
+    "Concept, Instance/Object และ Attribute/Feature",
+    "Nominal, Ordinal, Interval, Ratio รวมถึง Discrete และ Continuous",
+    "รูปแบบข้อมูล Record, Data Matrix, Document, Transaction, Graph และ Ordered Data",
+    "Noise, Outlier, Missing Value, ข้อมูลไม่สอดคล้อง ข้อมูลซ้ำ และข้อมูลเก่า",
+    "Mean, Median, Range, Variance, Standard Deviation, IQR และการทำ EDA"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-08-16 09:28",
+      "slackTs": "1786847322.238019",
+      "channelId": "C0BNZQT84KG",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNZQT84KG/p1786847322238019",
+      "header": "EGCO 623 — Chapter 2: Exploring Data",
+      "note": null,
+      "content": "# EGCO 623 — Chapter 2: Exploring Data\n  สรุปจาก EGCO623-02-ExploringData.pdf\n* *ใจความสั้นที่สุด*\nก่อนสร้างโมเดล ต้องสำรวจข้อมูลให้รู้ว่า “แต่ละแถวคืออะไร แต่ละคอลัมน์หมายถึงอะไร ข้อมูลสะอาดแค่ไหน และมีรูปแบบใดซ่อนอยู่” เพราะการเลือกชนิดข้อมูลและวิธีเตรียมข้อมูลผิด อาจทำให้โมเดลเรียนรู้ผิดตั้งแต่ต้น [1]\n* *1) ภาษาพื้นฐานของชุดข้อมูล*\n• *Concept:* สิ่งที่ต้องการเรียนรู้ เช่น ทำนายว่าโกงหรือไม่\n• *Instance / Object:* ตัวอย่างหนึ่งรายการหรือหนึ่งแถว เช่น ลูกค้าหนึ่งคน\n• *Attribute / Feature:* คุณสมบัติหนึ่งคอลัมน์ เช่น อายุ รายได้ หรือสถานภาพ\n• งานหลักของ Data Mining: *Classification* ทำนายกลุ่ม, *Numeric Prediction* ทำนายตัวเลข, *Association* หาความสัมพันธ์ และ *Clustering* จัดกลุ่มสิ่งที่คล้ายกัน [1]\n* *Data Warehouse vs Data Mart*\n• *Data Warehouse:* คลังกลางขนาดใหญ่ รวมข้อมูลหลายแหล่ง มองภาพทั้งองค์กรและเก็บประวัติย้อนหลัง\n• *Data Mart:* ส่วนย่อยที่เน้นแผนกหรืองานเฉพาะ เช่น Sales หรือ HR จึงค้นได้เร็วและจัดการง่ายกว่า [1]\n* *2) ชนิดของ Attribute — จุดที่ออกสอบได้ง่าย*\n• *Nominal:* แค่ชื่อ/ประเภท ไม่มีลำดับ เช่น กรุ๊ปเลือด สีตา รหัสไปรษณีย์\n• *Ordinal:* เรียงลำดับได้ แต่ระยะห่างไม่แน่นอน เช่น น้อย–กลาง–มาก หรืออันดับ\n• *Interval:* ผลต่างมีความหมาย แต่ไม่มีศูนย์แท้ เช่น °C, °F และปีปฏิทิน\n• *Ratio:* มีศูนย์แท้ จึงเปรียบเทียบเป็นกี่เท่าได้ เช่น น้ำหนัก ระยะทาง เวลา และจำนวน\nจำสั้น ๆ: *ชื่อ → เรียงได้ → ลบกันได้ → หารเป็นสัดส่วนได้* [1]\n* *Discrete vs Continuous*\n• *Discrete:* ค่าที่นับแยกเป็นรายการได้ เช่น จำนวนหนังสือ หรือคำในเอกสาร\n• *Continuous:* ค่าบนช่วงต่อเนื่อง เช่น ส่วนสูง น้ำหนัก หรืออุณหภูมิ\nอัลกอริทึมต้องรู้ชนิดข้อมูล เพื่อเปรียบเทียบให้ถูกและตรวจค่าที่เป็นไปไม่ได้ เช่น `outlook > sunny` ไม่มีความหมาย [1]\n* *3) รูปแบบ Dataset และการเตรียมข้อมูล*\n• *Record:* ตารางทั่วไป แต่ละแถวมีชุด attribute คงที่\n• *Data Matrix:* ตัวเลขแบบ m แถว × n คอลัมน์\n• *Document:* เอกสารแปลงเป็นเวกเตอร์ของคำและความถี่\n• *Transaction:* หนึ่งรายการมีชุดสินค้า/เหตุการณ์ เช่น ตะกร้าสินค้า\n• *Graph:* เก็บโหนดและความสัมพันธ์ เช่น เว็บหรือตัวโมเลกุล\n• *Ordered:* ข้อมูลที่ลำดับสำคัญ เช่น time series, spatial-temporal และ DNA sequence\nเมื่อนำข้อมูลหลายแหล่งมารวม ต้องแก้ความต่างของรูปแบบ เวลา key การสรุปรวม และข้อผิดพลาดก่อนวิเคราะห์ [1]\n* *4) Data Quality — เช็กก่อนเชื่อผลวิเคราะห์*\n• *Noise:* ค่าถูกบิดเบือนจากต้นฉบับ\n• *Outlier:* จุดที่แตกต่างจากข้อมูลส่วนใหญ่มาก\n• *Missing value:* ค่าหายเพราะไม่ได้เก็บ ผู้ให้ข้อมูลไม่ตอบ หรือ attribute ใช้ไม่ได้กับกรณีนั้น\n• *Inaccurate / inconsistent:* พิมพ์ผิด หน่วยผิด รูปแบบวันที่ไม่เหมือนกัน หรือหมวดหมู่สะกดหลายแบบ\n• *Duplicate / stale data:* รายการซ้ำหรือข้อมูลเก่า\nวิธีรับมือค่าหายอาจเป็นการลบแถว ประมาณค่า ข้ามค่านั้นระหว่างวิเคราะห์ หรือแทนด้วยค่าที่เป็นไปได้ตามความน่าจะเป็น—ต้องเลือกตามบริบท [1]\n* *5) EDA: สถิติและภาพที่ควรรู้*\n• *Frequency / Mode:* ความถี่และค่าที่พบมากที่สุด เหมาะกับ categorical data\n• *Percentile:* ตำแหน่งของค่าเมื่อเรียงข้อมูล; percentile 50 คือค่ากึ่งกลาง\n• *Mean:* ค่าเฉลี่ย แต่ไวต่อ outlier\n• *Median:* ค่ากลาง ทนต่อ outlier มากกว่า mean\n• *Range:* max − min\n• *Variance / Standard Deviation:* บอกการกระจาย แต่ยังไวต่อ outlier\n• *IQR:* ช่วงระหว่าง quartile ล่างกับ quartile บน\nใช้ histogram, box plot, scatter plot และ correlation matrix เพื่อดูการกระจาย ความสัมพันธ์ กลุ่ม และจุดผิดปกติ [1]\n* *Output ของการเรียนรู้*\n• *Decision table:* แสดงเงื่อนไขและผลลัพธ์เป็นตาราง\n• *Decision tree:* ทดสอบ attribute ตามโหนด แล้วเดินไปยังใบที่ให้คำตอบ\n• *Classification rule:* รูป `IF เงื่อนไข THEN ผลลัพธ์`; แปลงจากแต่ละเส้นทางของต้นไม้เป็นกฎได้\n• *Instance-based learning:* เปรียบเทียบตัวอย่างใหม่กับตัวอย่างเก่าที่คล้ายที่สุด เช่น k-nearest neighbors; ความรู้ถูกเก็บไว้ในตัว instances [1]\n* *Assignment ในสไลด์*\n1. ข้อมูล yield strength: `79, 85, 78, 100, 74, 83, 81, 85, 82, 80, 84` — หา sample mean, variance, standard deviation, median, quartiles, range และ IQR\n2. ตารางบุคคล 10 แถว — ระบุปัญหาคุณภาพข้อมูล เช่น ID ซ้ำ รูปแบบวันเกิดไม่สม่ำเสมอ ค่าหาย หมวดหมู่ผิด และข้อมูลขัดแย้ง [1]\n* *เช็กตัวเอง 3 ข้อ*\n1. Jersey number เป็น nominal หรือ ratio เพราะอะไร?\n2. ถ้าข้อมูลมี outlier รุนแรง ควรดู mean หรือ median มากกว่า?\n3. วันที่แบบ `31/12/1990` ปนกับ `1983-12-01` เป็นปัญหา data quality แบบใด?\n  *Sources:*\n[1] EGCO623-02-ExploringData.pdf — Chapter 2: Exploring Data (เอกสารประกอบรายวิชา EGCO 623)"
+    }
+  ]
+}

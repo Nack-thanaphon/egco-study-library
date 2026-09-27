@@ -1,0 +1,40 @@
+{
+  "courseCode": "EGCO611",
+  "term": "1/2569",
+  "courseTitle": "Programming Techniques for Advanced Applications",
+  "session": 5,
+  "week": "Week 6",
+  "date": "14 กันยายน 2569",
+  "title": "ODE และ Dynamic Model ด้วย solve_ivp",
+  "subtitle": "สร้างสมการจากกฎสมดุล แยก state/input/parameter และตีความการเปลี่ยนแปลงตามเวลา",
+  "topics": [
+    "การแยก State, Input, Parameter, Output และ Initial condition จากโจทย์",
+    "การสร้าง ODE ด้วยกฎสมดุลและจัดรูป dx/dt = f(t, x, u, θ)",
+    "ตัวอย่างถังน้ำรั่ว Newton’s law of cooling และโมเดลความร้อนของ CPU",
+    "จุดสมดุลและ time constant ที่ใช้อธิบายปลายทางกับความเร็วการตอบสนองของระบบ",
+    "การใช้ solve_ivp และ RK45 ด้วย fun, t_span, y0 และ t_eval"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-09-14 09:20",
+      "slackTs": "1789352416.617379",
+      "channelId": "C0BNLCVUE1M",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNLCVUE1M/p1789352416617379",
+      "header": ":blue_book: EGCO611 — ODE และ Dynamic Model",
+      "note": "สรุปคาบ 13 ก.ย. (1/2)",
+      "content": "# :blue_book: EGCO611 — ODE และ Dynamic Model\n  สรุปคาบสัปดาห์นี้ • อ่านประมาณ 5 นาที • แหล่งข้อมูล [1]\n* *เอาให้ได้ก่อน 1 ประโยค*\nODE ใช้ตอบว่า *สถานะของระบบเปลี่ยนตามเวลาอย่างไร* ไม่ได้เน้นหาค่าสูงสุด–ต่ำสุดเหมือน Optimization\n* *สูตรตั้งต้นเวลาเขียน Balance*\n`สะสม = ไหลเข้า − ไหลออก + สร้างขึ้น − ถูกใช้ไป`\nจากนั้นจัดให้อยู่รูป `dx/dt = f(t, x, u, θ)` เพื่อส่งเข้า Solver\n* *คำศัพท์ 5 ตัวที่ต้องแยกให้ได้*\n• *State x(t)* — สิ่งที่โจทย์อยากติดตามและเปลี่ยนตามเวลา\n• *Input u(t)* — สิ่งที่ป้อนหรือควบคุมจากภายนอก\n• *Parameter θ* — คุณสมบัติคงที่ของระบบ\n• *Output y(t)* — ค่าที่ต้องการสังเกตหรือรายงาน\n• *Initial condition x(0)* — จุดเริ่มต้นของระบบ\n* *รูทีนตีโจทย์ ODE*\n:one: โจทย์ถามหาอะไร → State\n:two: ควบคุมหรือป้อนอะไรได้ → Input\n:three: อะไรเป็นค่าคงที่ → Parameter\n:four: หา Balance ว่าอะไรเข้า–ออก–เกิด–ถูกใช้\n:five: จัดสมการเป็น `dx/dt = ...`\n:six: ใส่ค่าเริ่มต้น\n:seven: ตรวจหน่วย เครื่องหมาย และพฤติกรรมของระบบ\n* *ตัวอย่าง 1: แทงก์น้ำรั่ว*\nState คือระดับน้ำ `h(t)`\nความเร็วน้ำออก `v(t) = √(2gh(t))`\nBalance: `B × dh/dt = −A × √(2gh(t))`\nดังนั้น `dh/dt = −(A/B) × √(2gh(t))`\nเครื่องหมายลบสำคัญ เพราะระดับน้ำกำลังลด\n* *ตัวอย่าง 2: Newton’s Law of Cooling*\n`dT/dt = −k(T − Tₐ)` โดย `k > 0`\n• วัตถุร้อนกว่าห้อง → dT/dt < 0 → เย็นลง\n• วัตถุเย็นกว่าห้อง → dT/dt > 0 → อุ่นขึ้น\n• T = Tₐ → dT/dt = 0 → จุดสมดุล"
+    },
+    {
+      "kind": "summary",
+      "postedAt": "2026-09-14 09:20",
+      "slackTs": "1789352417.048159",
+      "channelId": "C0BNLCVUE1M",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNLCVUE1M/p1789352417048159",
+      "header": ":thermometer: โมเดล CPU, วงจร RC และสิ่งที่ต้องเตรียม",
+      "note": "สรุปคาบ 13 ก.ย. (2/2)",
+      "content": "# :thermometer: โมเดล CPU, วงจร RC และสิ่งที่ต้องเตรียม\n* *ตัวอย่างหลัก: อุณหภูมิ CPU*\nเรื่องราวคือ `ความร้อนสะสม = ความร้อนที่สร้าง − ความร้อนที่ระบายออก`\n`Cₜₕ × dT/dt = P(t) − (T − Tₐ)/Rₜₕ`\nจัดเข้า Solver: `dT/dt = [P(t) − (T − Tₐ)/Rₜₕ] / Cₜₕ`\n* *แปลตัวแปร CPU*\n• State/Output: อุณหภูมิ `T(t)`\n• Input: กำลังไฟ `P(t)`\n• Parameters: อุณหภูมิห้อง `Tₐ`, ความจุความร้อน `Cₜₕ`, ความต้านทานความร้อน `Rₜₕ`\n• Initial condition: `T(0) = T₀`\n* *จุดสมดุลของ CPU*\nเมื่อ `P(t) = P₀` คงที่และ `dT/dt = 0`\n`T* = Tₐ + P₀Rₜₕ`\nสรุป: ห้องร้อนขึ้น, ใช้ไฟมากขึ้น หรือระบายยากขึ้น → อุณหภูมิสมดุลสูงขึ้น\nThermal time constant คือ `τ = RₜₕCₜₕ` ใช้บอกว่าระบบตอบสนองเร็วหรือช้า\n* *ตัวอย่าง: วงจร RC*\nState/Output คือแรงดันตัวเก็บประจุ `V꜀(t)`\nInput คือ `Vᵢₙ(t)` และ Parameters คือ `R, C`\nสมการ: `dV꜀/dt = [Vᵢₙ(t) − V꜀(t)]/(RC)`\n• V꜀ < Vᵢₙ → กำลังชาร์จ\n• V꜀ > Vᵢₙ → กำลังคายประจุ\n• V꜀ = Vᵢₙ → อยู่ที่สมดุล\n* *Python: `solve_ivp` / RK45*\nสิ่งที่ต้องส่งเข้าไป:\n• `fun` — ฟังก์ชันด้านขวา f(t, y)\n• `t_span` — เวลาเริ่มและเวลาจบ\n• `y0` — ค่าเริ่มต้น\n• `t_eval` — จุดเวลาที่ต้องการคำตอบ\n• `method=\"RK45\"` — วิธีคำนวณมาตรฐาน\nผลที่ได้เป็นค่าประมาณตามจุดเวลา ไม่ใช่สมการปิดสวย ๆ\n* *สิ่งที่น่าจะออกสอบ*\n1. แยก State / Input / Parameter / Output\n2. เขียน Balance\n3. จัด ODE ให้อยู่ในรูปที่ Solver รับ\n4. ระบุ Initial condition\n5. ตรวจหน่วยและเครื่องหมาย\n6. ตีความจุดสมดุลและผลของ Parameter\n* *ประกาศการบ้าน*\nอาจารย์แจ้งว่าจะมีประมาณ 3 ข้อ: Linear Programming, Binary Programming และ Mixed-Integer Programming\n• สร้าง Mathematical Model\n• แทนตัวเลขและเขียน Python ด้วย `PuLP`\n• ทำ Post-analysis\n• ส่งเป็น Jupyter Notebook แยกข้อชัดเจน\n:warning: อาจารย์ยังปรับตัวเลขบางข้อและยังไม่ได้ประกาศกำหนดส่งแน่นอน\n* *ฝึกก่อนครั้งหน้า — hint น้อย*\n:one: แทงก์มีทั้งน้ำเข้าและน้ำออก: เขียน ODE ของ h(t)\n:two: CPU ใช้กำลังเป็นช่วง 10 → 60 → 15 W: หาอุณหภูมิสมดุลแต่ละช่วง\n:three: วงจร RC: อธิบายเครื่องหมายของ dV꜀/dt เมื่อ V꜀ ต่ำกว่า/สูงกว่า Vᵢₙ\n  [1] ข้อความถอดเสียงคาบ EGCO611 ที่ผู้เรียนส่งส่งมาในแชต • ปรับคำศัพท์ที่ ASR ฟังคลาดเคลื่อนตามบริบท"
+    }
+  ]
+}

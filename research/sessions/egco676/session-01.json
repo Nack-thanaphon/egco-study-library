@@ -1,0 +1,30 @@
+{
+  "courseCode": "EGCO676",
+  "term": "1/2569",
+  "courseTitle": "Information Security and Risk Assessment",
+  "session": 1,
+  "week": "Week 1",
+  "date": "15 สิงหาคม 2569",
+  "title": "Introduction, CIA และการประเมินความเสี่ยง",
+  "subtitle": "รู้ว่าต้องปกป้องอะไร แยกภัยคุกคามออกจากช่องโหว่ และเลือกวิธีจัดการความเสี่ยง",
+  "topics": [
+    "CIA Triad: Confidentiality, Integrity และ Availability",
+    "Authentication, Authorization, Accountability/Auditing และ Non-repudiation",
+    "ความแตกต่างระหว่าง Threat, Vulnerability, Risk และ Countermeasure",
+    "Defense in Depth, Security–Usability balance และการลด Attack Surface",
+    "ภาพรวม Symmetric, Asymmetric, Hash, MAC, Digital Signature, PKI และ Key Management"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-08-15 23:30",
+      "slackTs": "1786811456.912529",
+      "channelId": "C0BPF7FP0TZ",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BPF7FP0TZ/p1786811456912529",
+      "header": "EGCO 676/M — Week 01: Introduction",
+      "note": null,
+      "content": "# EGCO 676/M — Week 01: Introduction\n  Information Security & Risk Assessment • 15 Aug 2026\n* *ใจความสั้นที่สุด*\nวิชานี้สอน 2 ส่วน: (1) วิธีปกป้องข้อมูลและระบบ และ (2) วิธีค้นหา–ประเมิน–ลดความเสี่ยง ก่อนที่ผู้โจมตีจะใช้ช่องโหว่ได้จริง [1][2]\n* *1) แกนหลักที่ต้องจำ: CIA*\n• *Confidentiality — ความลับ:* คนไม่มีสิทธิ์ต้องอ่านข้อมูลไม่ได้\n• *Integrity — ความถูกต้องสมบูรณ์:* ข้อมูลต้องไม่ถูกแก้โดยไม่ได้รับอนุญาต และควรตรวจพบเมื่อถูกเปลี่ยน\n• *Availability — ความพร้อมใช้:* ระบบและข้อมูลต้องพร้อมเมื่อจำเป็น; DoS/DDoS มุ่งทำลายด้านนี้\nCIA ยังไม่พอ จึงต้องมี Authentication, Authorization, Accountability/Auditing และ Non-repudiation เพิ่มด้วย [1][2]\n* *ตัวอย่างจำง่าย: Mobile Banking*\n• คนอื่นอ่านยอดเงินไม่ได้ = C\n• คนอื่นเปลี่ยนยอด/เลขบัญชีไม่ได้ = I\n• ต้องโอนเงินได้ตอนต้องใช้ = A\n• ระบบต้องพิสูจน์ว่า “ผู้ใช้คือเจ้าของบัญชีจริง” และจำกัดสิทธิ์ว่าแต่ละคนทำอะไรได้บ้าง [1]\n* *2) Threat, Vulnerability, Risk ต่างกันอย่างไร*\n• *Threat (ภัยคุกคาม):* สิ่งที่อาจสร้างความเสียหาย เช่น แฮกเกอร์ ไฟไหม้ น้ำท่วม หรือความผิดพลาด\n• *Vulnerability (ช่องโหว่):* จุดอ่อนที่ภัยคุกคามใช้โจมตีได้\n• *Countermeasure (มาตรการป้องกัน):* วิธีลดโอกาสหรือผลกระทบ\nRisk analysis ต้องดูความสำคัญของข้อมูล มูลค่าระบบ ภัยคุกคาม และช่องโหว่ แล้วเลือกว่าจะลด ยอมรับ โอน หรือควบคุมความเสี่ยงอย่างไร [1]\n* *3) หลักออกแบบระบบปลอดภัย*\n• ใช้ *Defense in Depth*: ป้องกันหลายชั้น เช่น กายภาพ คน ขั้นตอน เครือข่าย และข้อมูล—อย่าฝากความหวังไว้กับระบบเดียว\n• ต้อง balance ระหว่าง *Security* กับ *Usability/Access*: เข้มเกินไปใช้งานลำบาก; ง่ายเกินไปเสี่ยง\n• แนวทาง *Top-down* มักสำเร็จกว่า เพราะผู้บริหารกำหนดนโยบาย เป้าหมาย ผู้รับผิดชอบ และบังคับใช้ทั้งองค์กร\n• ลด *Attack Surface*: ลดช่องทางเข้าและสิ่งที่เปิดให้โจมตีเท่าที่จำเป็น [1][2]\n* *4) Cryptography ที่จะเรียนต่อ*\n• Symmetric cryptography: ใช้กุญแจลับร่วมกัน\n• Asymmetric/Public-key + PQC: ใช้กุญแจคู่ และแนวทางรับมือภัยจาก quantum computing\n• Hash, MAC, Digital Signature และ PKI: ช่วยตรวจความถูกต้อง ยืนยันผู้ส่ง และสร้างความรับผิดชอบ\n• จุดเสี่ยงสำคัญไม่ใช่แค่อัลกอริทึม แต่คือ *Key Management*: การเลือก เก็บ ป้องกัน อัปเดต และยกเลิกกุญแจ [1][2]\n* *5) งาน คะแนน และหมุดหมาย*\n• Assignment 3 ครั้ง × 5% = *15%*\n• Term Project 4 ช่วง = *55%*: Topic 5% → Literature Review 10% → Progress/Methodology 15% → Final Presentation + Report 25%\n• Examination = *30%*\n• งานโปรเจกต์เป็น *งานเดี่ยว* ใช้หัวข้อจบจริงได้ และ *ไม่จำเป็นต้องเป็น Security* แต่ต้องใช้หัวข้อเดียวต่อเนื่องทั้งเทอม\n• ผลปลายเทอมอย่างน้อยควรมี *ผลทดลองเบื้องต้น* เพื่อเตรียมหาอาจารย์ที่ปรึกษาและสอบหัวข้อในปี 1 เทอม 2 [2]\n* *วันที่สำคัญ — ตามการแก้ตารางด้วยวาจาในห้อง*\n• 26 Sep — Project 01: Topic, Motivation, Objective, Expected Outcome\n• 17 Oct — Project 02: Literature Review\n• 7 Nov — Project 03: Methodology / Research Progress\n• 21 Nov — Examination\n• 28 Nov — Final Presentation + Report\n• 12 Sep — งดเรียนตามที่อาจารย์แจ้ง\n:warning: ตารางยังเป็น tentative; ให้ยึดประกาศล่าสุดใน Google Classroom หากมีการเปลี่ยนแปลง [2]\n* *เช็กตัวเอง 3 ข้อ*\n1. ถ้าคนร้ายแก้เลขบัญชีระหว่างส่งข้อมูล กระทบ C, I หรือ A?\n2. ทำไม Top-down จึงมักใช้ได้ผลกว่า Bottom-up ในระดับองค์กร?\n3. ถ้ามี Threat แต่ระบบไม่มี Vulnerability ที่ใช้โจมตีได้ ความเสี่ยงจะเปลี่ยนอย่างไร?\n  *Sources:*\n[1] Week 01: Introduction — เอกสารประกอบการสอน EGCO 676 (Assoc. Prof. Suratose Tritilanunt)\n[2] บันทึกคำบรรยาย Week 01 วันที่ 15 Aug 2026 ที่ผู้เรียนจัดส่ง"
+    }
+  ]
+}

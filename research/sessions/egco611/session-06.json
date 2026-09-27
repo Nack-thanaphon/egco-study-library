@@ -1,0 +1,35 @@
+{
+  "courseCode": "EGCO611",
+  "term": "1/2569",
+  "courseTitle": "Programming Techniques for Advanced Applications",
+  "session": 6,
+  "week": "Week 7",
+  "date": "20 กันยายน 2569",
+  "title": "Buffer Model, System of ODE และ SIR",
+  "subtitle": "เพิ่ม Constraint ให้โมเดล แยกเคสด้วย max/min และ events ขยายสู่หลายสมการและระบบ non-linear",
+  "topics": [
+    "Communication Buffer Model: dQ/dt = λ(t) − μ(t) แบบไม่จำกัดความจุ และปัญหาที่ตามมา (Q ติดลบ / ทะลุ Q_max)",
+    "แบ่ง 3 เคสด้วย constraint: Q=0 (ต้อง max(0, λ−μ)), 0<Q<Q_max (สมการปกติ), Q=Q_max (ต้อง min(λ, μ) หรือปฏิเสธของเข้า)",
+    "solve_ivp events: ฟังก์ชัน event พร้อม attribute terminal=True หยุดการ integrate และ direction=+1/−1/0 ระบุทิศการตัดเกณฑ์",
+    "t_events และ y_events อ่านเวลา/ค่า ณ จุดที่ event เกิด (เช่น empty buffer ที่ t≈2.57, full buffer ที่ t=3)",
+    "System of ODE: CPU→Heatsink→สิ่งแวดล้อม ได้ 2 สมการ T_P, T_H ผูกกันผ่าน Q = ΔT/R",
+    "จัดรูปเป็น State-space ẋ = Ax + Bu (A คูณกับ state, B คูณกับ input/parameter) — solver รับหลายสมการโดยไม่ต้องจัด matrix ก็ได้",
+    "SIR Model: dS/dt=−βSI/N, dI/dt=βSI/N−γI, dR/dt=γI — non-linear จากพจน์ S×I",
+    "ตรวจโมเดลด้วย conservation: สมการทุกตัวบวกกันแล้วเหลือแค่ in−out (ความร้อนรวม, S+I+R=N)",
+    "ความหมายของ Heat capacity C: พลังงานเข้าน้อยเทียบ C ใหญ่ → อุณหภูมิแทบไม่ขยับ (initial derivative = P/C)",
+    "ทุก parameter เปลี่ยนเป็น function of time ได้ (P(t), λ(t), μ(t), T_A(t) เป็น step function ได้)"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-09-21 07:30",
+      "slackTs": "1789950634.490489",
+      "channelId": "C0BNLCVUE1M",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNLCVUE1M/p1789950634490489",
+      "header": "คาบที่ 06 | 20 ก.ย. 2569 | Buffer Model, System of ODE, SIR",
+      "note": null,
+      "content": "# คาบที่ 06 | 20 ก.ย. 2569 | Buffer Model, System of ODE, SIR\n  EGCO 611 Mathematical Modelling — สรุปจากไฟล์เสียงคาบ 20 กันยายน 2569 • อ่านจบ ~6 นาที\n* *คาบนี้เรียนอะไร*\n• Communication Buffer Model — โมเดลคิวข้อมูล แล้วเจอปัญหาจริงที่ทำให้ต้องแยก 3 เคส\n• events ของ solve_ivp (terminal / direction / t_events)\n• System of ODE: CPU → Heatsink → อากาศ (2 สมการผูกกัน) + จัดรูป state-space ẋ = Ax + Bu\n• SIR Model — โมเดล non-linear ตัวแรกของคาบเรียน\n• การตรวจโมเดลด้วย conservation + ประกาศการบ้าน/สอบ\n* *1) Buffer Model — สมการสวยแต่ใช้จริงไม่ได้*\nเริ่มจาก dQ/dt = λ(t) − μ(t) (เข้าลบออก) แต่ถามว่าโมเดลนี้มีปัญหาไหม → มี 2 จุด:\n• ถ้า Q=0 (คิวว่าง) แล้ว μ > λ → Q ติดลบ เป็นไปไม่ได้ (ของหมดแล้วส่งออกไม่ได้)\n• ถ้า Q=Q_max (เต็ม) แล้ว λ > μ → Q ทะลุความจุ ทั้งที่จริงต้องปฏิเสธของเข้า\n\nทางแก้ = แยก 3 เคส:\n• Q=0 → dQ/dt = max(0, λ−μ)\n• 0<Q<Q_max → สมการปกติ λ−μ\n• Q=Q_max → dQ/dt = min(0, λ−μ) (ปฏิเสธของเข้า คิวคงที่)\n\nถามต่อ: ทำไมไม่เซ็ต dQ/dt=0 ตอน Q=0 ไปเลย? — เพราะของเข้า-ออกพร้อมกันได้ (เข้า 10 ออก 5 ตอน Q=0) เขียนเป็น λ(t), μ(t) ทั้งคู่จึง flexible กว่า\n* *2) events ของ solve_ivp*\n• event = list ของ callable ใส่ได้หลายตัว (empty + full พร้อมกัน)\n• `terminal=True` → พอเงื่อนไขเกิดให้หยุด integrate ทันที (ส่วนใหญ่ใช้อันนี้)\n• `direction`: −1 = trigger เฉพาะขาลง (บวก→ศูนย์), +1 = ขาขึ้น, 0 = ทั้งคู่\n• argument ของ event function ต้องเท่ากับโมเดล (t, y)\n• อ่านผลจาก sol.t_events[i], sol.y_events[i] — ใส่กี่ event มีกี่ชุด\nตัวอย่างในคาบ: เข้า 1 ออก 3 MB/s → empty ที่ t≈2.57 | เข้า 3 ออก 1, Q₀=20 → full ที่ t=5\n* *3) System of ODE — CPU → Heatsink → อากาศ*\nก่อนหน้า: CPU แลกความร้อนกับอากาศโดยตรง 1 สมการ คาบนี้เพิ่ม stage: Power → CPU (C_P, T_P) → Heatsink (C_H, T_H) → อากาศ T_A\n\nQ_PH = (T_P−T_H)/R_PH  และ  Q_HA = (T_H−T_A)/R_HA\nC_P·dT_P/dt = P(t) − Q_PH\nC_H·dT_H/dt = Q_PH − Q_HA\n\n• จัดเป็น ẋ = Ax + Bu ได้ (A คูณ state, B คูณ input) แต่ solve_ivp ไม่บังคับ — เขียนสมการตรง ๆ return [dT_P, dT_H] ก็ได้\n• Heat capacity C = ต้องใช้พลังงานเท่าไรถึง +1 องศา → C ใหญ่ + P น้อย = อุณหภูมิแทบไม่ขยับ (initial derivative = P/C เช่น 50/40 = 1.25 °C/s)\n• ตรวจ conservation: สองสมการบวกกัน → C_P·dT_P + C_H·dT_H = P(t) − Q_HA (เหลือแค่เข้าลบออก)\n• เริ่มต้นที่ T_P=T_H=T_A → ไม่มีแลกเปลี่ยน, heatsink derivative = 0\n• ทุก parameter เป็น function of time ได้ (P(t), T_A(t) เป็น step function ก็ยังได้)\n* *4) SIR Model — non-linear ตัวแรก*\ndS/dt = −βSI/N • dI/dt = βSI/N − γI • dR/dt = γI\n\n• จุดสำคัญ: พจน์ βSI/N มี S คูณ I — อัตราติดเชื้อขึ้นกับ *สอง* ปัจจัยพร้อมกัน (คนยังไม่ติด × คนติด) นี่คือ non-linear ต่างจาก CPU-heatsink ที่คูณค่าคงที่เฉย ๆ\n• Assumption: ประชากรปิด (ไม่ย้ายเข้าออก), หายแล้วหายเลยไม่กลับเป็น S (ถ้ากลับได้ต้องเพิ่มเส้น R→S)\n• หน่วย: ทุกพจน์คน/เวลา, β และ γ หน่วย 1/เวลา\n• ตรวจ: dS+dI+dR บวกกัน = 0 → ประชากรคงที่ แค่ย้ายสเตจกัน\n• ค่าในคาบ: N=1000, β=0.3, γ=0.1, S=999, I=1, R=0 → จบ S≈60, R≈940, I→0\n• ถ้า β >> γ ติดจนเกือบหมดแล้วหายไป R; ถ้า γ มากกว่า β (หายเร็วกว่าติด) ระบาดสะดุด เหลือคนไม่ติดเยอะ\n• Plague Inc. ก็สร้างบนโมเดลตระกูลนี้ (SIRD เพิ่ม D=ตาย)\n* *ประกาศสำคัญ*\n• การบ้านโพสต์แล้ว — ส่ง 2 ไฟล์: .ipynb (แบ่ง section ใน Colab) + ไฟล์เอกสารคำอธิบาย (description → สมการ → แทนเลข → post-analysis)\n• ข้อสุดท้าย optional ใช้ solver อะไรก็ได้ แนะนำ PuLP (กินสมการ symbolic ตรง ๆ ไม่ต้องจัด matrix)\n• บางข้อมี 2 คำตอบ objective เท่ากัน — อาจารย์เตือนไว้แล้ว ไม่ต้องตกใจ\n• เกณฑ์ตรวจ: อาจารย์ให้ credit ที่ *logic สมการถูก* — syntax ผิดเล็กน้อยไม่หักถ้าอ่านรู้เรื่อง\n• ครั้งหน้า: Linear Algebra ~6 ชม. (ใช้ต่อใน Data Mining) • อีก ~2 สัปดาห์ถึง midterm • เล็งสอบออก solve_ivp\n\n*เช็กตัวเอง 3 ข้อ*\n1. ทำไม Q=0 ต้องใช้ max(0, λ−μ) แทนการฟอร์ส dQ/dt=0?\n2. event direction=−1 กับ 0 ต่างกันยังไง และเมื่อไหร่เลือกอันไหน?\n3. พจน์ไหนของ SIR ทำให้เป็น non-linear และเหตุผลทางกายภาพคืออะไร?\n  สรุปเต็ม + ตาราง 3 เคส + โค้ด event ตัวอย่าง: https://nack-thanaphon.github.io/egco-study-library/ (EGCO611 คาบ 6) • SKILL.md ดาวน์โหลดได้ในเว็บ"
+    }
+  ]
+}

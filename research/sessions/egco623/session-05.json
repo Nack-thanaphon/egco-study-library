@@ -1,0 +1,38 @@
+{
+  "courseCode": "EGCO623",
+  "term": "1/2569",
+  "courseTitle": "Data Mining and Machine Learning",
+  "session": 5,
+  "week": "Week 7",
+  "date": "20 กันยายน 2569",
+  "title": "Association Analysis (Market Basket Analysis)",
+  "subtitle": "หาไอเทมที่ถูกหยิบพร้อมกันบ่อย แล้วสร้างกฎ ถ้าเห็น X แล้วมักเห็น Y ตามมา",
+  "topics": [
+    "ที่มา Market Basket Analysis: วิเคราะห์ตะกร้าซื้อของ ขยายไปหนังสือ หนัง เพลง ระบบแนะนำ การแพทย์ และ Web mining",
+    "คำศัพท์หลัก: Item set (ชุดไอเทมอย่างน้อย 1 ชิ้น เป็นเซต ลำดับไม่มีผล), Transaction (รายการซื้อ 1 ครั้ง), K-itemset",
+    "Frequent itemset: itemset ที่ support ≥ minimum support threshold",
+    "Association rule X → Y: ฝั่งซ้ายคือ antecedent ฝั่งขวาคือ consequent ความหมายจริงคือเกิดพร้อมกัน (co-occurrence)",
+    "สูตรหลัก: support(X∪Y) = count(X∪Y)/N, confidence(X→Y) = support(X∪Y)/support(X), lift(X→Y) = confidence(X→Y)/support(Y)",
+    "ตัวอย่างตะกร้า 5 รายการ (Bread, Milk, Diaper, Beer, Egg, Coke): นับ support และ confidence ทีละกฎ",
+    "คุณสมบัติ anti-monotone (downward closure): ถ้า itemset ไม่ frequent แล้ว superset ทุกตัวไม่ frequent",
+    "Apriori algorithm: สร้าง candidate รายตัว → ตัดตัวไม่ผ่าน → join เป็น k+1 ทีละระดับ จนหมด",
+    "FP-Growth: บีบอัดข้อมูลเป็น FP-tree เพื่อเลี่ยง candidate generation เร็วกว่าในชุดข้อมูลใหญ่",
+    "Maximal frequent itemset: frequent itemset ที่ไม่มี superset ที่ยัง frequent; Closed itemset: ไม่มี superset ที่มีค่า support เท่ากัน; Maximal ⊆ Closed",
+    "การสร้างกฎจาก frequent itemset: กฎทั้งหมด 2^k − 2 แบบ, pruning ด้วย confidence ฝั่งซ้าย/ขวา",
+    "Drawback ของ confidence: กฎชา→กาแฟ confidence 0.75 แต่คนดื่มกาแฟอยู่แล้ว 90% กฎจึงไม่ให้ข้อมูลใหม่",
+    "คุณสมบัติของ measure: support และ lift เป็น symmetric, confidence เป็น asymmetric"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-09-21 07:21",
+      "slackTs": "1789950062.290049",
+      "channelId": "C0BNZQT84KG",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNZQT84KG/p1789950062290049",
+      "header": "คาบที่ 05 | 20 ก.ย. 2569 | Association Analysis",
+      "note": null,
+      "content": "# คาบที่ 05 | 20 ก.ย. 2569 | Association Analysis\n  EGCO 623 Data Mining — สรุปจากไฟล์เสียงคาบ 20 กันยายน 2569 • อ่านจบ ~6 นาที\n* *คาบนี้เรียนอะไร*\n• Association Analysis (Market Basket Analysis) — หาไอเทมที่ถูกซื้อพร้อมกันบ่อย ๆ\n• ค่าวัด 3 ตัว: Support, Confidence, Lift\n• แนวคิด Frequent Itemset + เกณฑ์ minimum support/confidence threshold\n• Maximal และ Closed Frequent Itemset\n• Algorithm: Apriori (anti-monotone pruning) กับ FP-Growth\n• ตัวอย่างใช้งานจริง: recommendation (Netflix/Amazon), ยา-อาการ, web mining\n* *แนวคิดสำคัญ*\n• เป็น *Unsupervised Learning* — ไม่มีคำตอบให้ มีแค่ตัวอย่าง (transaction) แล้วให้ algorithm หาความสัมพันธ์เอง ต่างจาก Classification/Regression ที่มีคำตอบให้ตอนเรียน\n• *Itemset* = เซ็ตของไอเทม (≥1 ชิ้น) — เป็นเซ็ตจริง ๆ ลำดับไม่มีผล {นม,ขนมปัง} = {ขนมปัง,นม}\n• *Transaction* = 1 ตะกร้า/1 แถว — จำนวนไอเทมในแต่ละ transaction ไม่เท่ากันได้ (ต่างจาก classification ที่ feature ต้องเท่ากัน)\n• กฎ X → Y อ่านว่า \"เห็น X แล้วมักเห็น Y ด้วย\" แต่ความหมายจริงคือ *เกิดพร้อมกัน* (co-occurrence) ไม่ใช่เหตุ-ผล\n* *สูตรที่ต้องทำให้ได้*\n• Support(X∪Y) = จำนวน transaction ที่มีทั้ง X และ Y ÷ ทั้งหมด N — ใช้เลือก frequent itemset\n• Confidence(X→Y) = Support(X∪Y) ÷ Support(X) — ใช้เลือกกฎ คล้าย conditional probability P(Y|X)\n• Lift(X→Y) = Confidence(X→Y) ÷ Support(Y) — เทียบโอกาสเจอ Y เมื่อมี X กับ random chance\n\nตัวอย่างในห้อง (5 transactions ขนมปัง/นม/เบียร์/ผ้าอ้อม/ไข่/โค้ก):\n• {นม,ผ้าอ้อม,เบียร์} เกิด 2 ครั้ง → support = 2/5 = 0.4\n• นม+ผ้าอ้อมเกิด 3 ครั้ง → confidence(นม,ผ้าอ้อม→เบียร์) = 2/3 ≈ 0.67\n* *จุดที่อาจารย์เน้น (น่าออกสอบ)*\n1. *กฎจาก itemset เดียวกัน support เท่ากันหมด* — เพราะตัวเศษคือ X∪Y เหมือนกัน แต่ confidence ต่างกันตามตัวหารฝั่งซ้าย\n2. *Anti-monotone (Apriori principle):* itemset เล็กไม่ผ่าน min-support → superset ทุกตัวที่มีมันไม่ผ่านด้วย ตัดทิ้งได้เลย (ในห้อง: ไข่, โค้ก โดนตัดรอบแรก → อะไรที่มีสองตัวนี้ไม่ต้องดู) การบังคับครั้งละ 41 itemset ลดเหลือ 13\n3. *Maximal* = frequent itemset ที่ไม่มี superset ที่ frequent อีก (ใหญ่สุดแล้ว)\n*Closed* = ไม่มี superset ที่มีค่า support *เท่ากัน* และจำว่า *Maximal ⊆ Closed* (ตัวที่ maximal จะเป็น closed เสมอ)\n4. *กับดัก confidence:* ชา→กาแฟ ได้ confidence 0.75 ดูดี แต่คนดื่มกาแฟอยู่แล้ว 90% ของทั้งหมด → กฎไม่ได้ให้ข้อมูลเพิ่ม (drawback ของ confidence)\n5. จำนวนกฎที่เป็นไปได้จาก itemset ขนาด k = 2^k − 2 ส่วน candidate itemset ทั้งหมดจาก d ไอเทม = 2^d (โต exponential ถึงต้องมี Apriori/FP-Growth)\n6. Support/Lift เป็น symmetric measure (สลับซ้ายขวาได้ค่าเดิม) แต่ confidence เป็น asymmetric\n* *งานที่ส่งในคาบ (กระดาษ เขียนชื่อ-รหัส)*\n1. คำนวณ support + confidence ของกฎ 7 ข้อจาก {ขนมปัง, นม, ผ้าอ้อม} แล้วบอกกฎไหนผ่าน (min-support 0.4, min-confidence 0.5)\n2. หา Maximal และ Closed itemset (min-support = 2 ครั้ง)\n3. สร้าง association rules จาก transaction ชุดเดิม (min-support 0.6, min-confidence 0.5) — อาจารย์เฉลยได้ 8 กฎ\n4. โจทย์พิเศษ (ถ้ามีเวลา): items 5 ตัว, min-support 0.3, min-confidence 0.6\n* *นัดหมายถัดไป*\n• ครั้งหน้า: *Cluster Analysis* (unsupervised เช่นกัน)\n• 4 ต.ค.: ลองใช้ *RapidMiner*\n• สัปดาห์ 2 ของ midterm: 11 ต.ค.\n\n*เช็กตัวเอง 3 ข้อ*\n1. {A,B} ไม่ผ่าน min-support แล้ว {A,B,C} ต้องไล่นับไหม เพราะอะไร?\n2. กฎ A→B กับ B→A อันไหน support ต่างกัน อันไหน confidence ต่างกัน?\n3. BC มี superset ABC ที่ยัง frequent อยู่ — BC เป็น maximal ได้ไหม เป็น closed ได้ไหม?\n  สรุปเต็ม + ฟอร์แมทอ่านง่าย: https://nack-thanaphon.github.io/egco-study-library/ (EGCO623 คาบ 5) • SKILL.md ดาวน์โหลดได้ในเว็บ"
+    }
+  ]
+}

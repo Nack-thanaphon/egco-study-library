@@ -1,0 +1,40 @@
+{
+  "courseCode": "EGCO611",
+  "term": "1/2569",
+  "courseTitle": "Programming Techniques for Advanced Applications",
+  "session": 4,
+  "week": "Week 4",
+  "date": "30 สิงหาคม 2569",
+  "title": "MILP สำหรับ Server และการเปิดหัวข้อ ODE",
+  "subtitle": "แก้โจทย์เลือก CPU แบ่ง workload และเชื่อมจากโมเดลคงที่ไปสู่ระบบที่เปลี่ยนตามเวลา",
+  "topics": [
+    "โจทย์เลือกจำนวน CPU แบบ ILP และการตรวจ computing, memory, slot และต้นทุน",
+    "โจทย์แบ่ง workload แบบ MILP ที่มีต้นทุนเปิดเครื่องและต้นทุนตามปริมาณงาน",
+    "การใช้ scipy.optimize.milp, integrality, bounds และ LinearConstraint",
+    "โมเดล task assignment ที่งานแบ่งไม่ได้และเครื่องต้องเปิดก่อนรับงาน",
+    "บทนำ ODE: state, เวลา, balance law และความต่างของ static กับ dynamic"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-08-31 06:37",
+      "slackTs": "1788133067.831539",
+      "channelId": "C0BNLCVUE1M",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNLCVUE1M/p1788133067831539",
+      "header": ":green_book: EGCO611 สรุปคาบ 30 ส.ค. 2026 — MILP ทบทวน + โจทย์ Server (1/2)",
+      "note": "สรุปคาบ 30 ส.ค. (1/2)",
+      "content": "# :green_book: EGCO611 สรุปคาบ 30 ส.ค. 2026 — MILP ทบทวน + โจทย์ Server (1/2)\n  แหล่งอ้างอิง: [1] 3. Integer and Mixed-integer LP (2).pdf · [3] ไฟล์เสียงคาบเรียน · [4] milp_example.ipynb\n* *:dart: หัวข้อที่เรียน*\n1. ทบทวน ILP/MILP + Branch & Bound (ต่อจากคาบก่อน)\n2. โจทย์ที่ 1: ติด CPU กี่ตัว (ILP) — ทำสดในห้อง\n3. โจทย์ที่ 2: แบ่ง Workload 3 เซิร์ฟเวอร์ (MILP) — ทำเอง 25 นาที\n4. โจทย์ตัวอย่างระดับงานวิจัย (task assignment / cache farming)\n5. เปิดหัวข้อใหม่: ODE (Dynamic Modelling) — ดูข้อความถัดไป\n* *:zero: ทบทวนคาบก่อน* [1][3]\n• *LP* = ตัวแปรต่อเนื่องทุกตัว · *ILP* = integer ทุกตัว · *Binary* = 0/1 ทุกตัว · *MILP* = ผสม continuous + integer\n• ทำไมต้องบังคับ integer: คำแนะนำแบบ “เปิดเซิร์ฟเวอร์ 0.43 เครื่อง” ใช้งานจริงไม่ได้ [1]\n• *Rounding LP แล้วใช้ไม่ได้*: 6x₁ + 4x₂ ≤ 9 ปัดขึ้นเป็น 10 > 9 ใช้ไม่ได้ทันที [1]\n• *Branch & Bound*: แก้ LP relaxation ก่อน → เจอค่าเศษ (เช่น y = 3.6) แตกเป็น y ≤ 3 กับ y ≥ 4 → ตัดกิ่งที่ infeasible / ไม่ดีกว่าคำตอบเดิม (incumbent) [1]\n* *:one: โจทย์ CPU (ILP ลงตัว)* [3][4]\nสร้างเซิร์ฟเวอร์ 1 เครื่อง เลือกติด CPU 2 แบบ (จำนวนเป็นเต็ม — ติด 1.5 ตัวไม่ได้):\n• CPU-A: computing 8, memory 4, ราคา 6 · CPU-B: computing 5, memory 8, ราคา 5\n• ต้องการ computing ≥ 40, memory ≥ 32, มีสล็อต 7\n\n*โมเดล:* min 6x_A + 5x_B s.t. 8x_A + 5x_B ≥ 40 · 4x_A + 8x_B ≥ 32 · x_A + x_B ≤ 7 · x_A, x_B ∈ integer, ≥ 0\n\n*คำตอบจาก scipy:* x_A = 4, x_B = 2 → cost = *34* (ตรวจ: computing 8(4)+5(2) = 42 ≥ 40 ✓ · memory 4(4)+8(2) = 32 พอดี ✓ · ใช้ 6 สล็อต ≤ 7 ✓)\n* *:two: โจทย์ Workload แบ่งได้ (MILP)* [3][4]\nมี 3 เซิร์ฟเวอร์ ต้องรันงานรวม 18 ยูนิต — *งานแบ่งได้เป็นเศษ* (continuous) แต่เครื่องเปิด/ปิดเป็น 0/1:\n• capacity: 10 / 12 / 8 · fixed cost เปิดเครื่อง: 14 / 16 / 10 · cost ต่อ workload: 2 / 1.5 / 2.5\n\n*ตัวแปร 2 ชุด:* q_j = งานที่ส่งให้เครื่อง j (real ≥ 0) · y_j = เปิดเครื่อง j หรือไม่ (0/1)\n*Objective:* min 14y₀+16y₁+10y₂ + 2q₀+1.5q₁+2.5q₂\n*Constraints:*\n• q₀+q₁+q₂ = 18 (งานต้องรวม 18 พอดี)\n• q_j ≤ capacity_j × y_j → เครื่องปิด (y=0) แรงบังคับให้ q_j = 0 ทันที ← *จุดสำคัญที่สุดของข้อนี้*\n\n*คำตอบ:* เปิดเครื่อง 1+2 (เครื่อง 0 ปิด) · q₁ = 12, q₂ = 6 → cost = *59*\n* *:bulb: แพทเทิร์นที่ต้องจำ (จากสไลด์)* [1]\n• *เชื่อมการใช้กับการเปิด:* 0 ≤ x ≤ U·y — ถ้าไม่มีตัวนี้ โมเดลอาจใช้เครื่องโดยไม่จ่าย fixed cost\n• *Choice constraints ต่างกันแค่เครื่องหมาย:* “เลือกเดียวเป๊ะ” Σy = 1 · “มากสุดหนึ่ง” Σy ≤ 1 · “มากสุด P” Σy ≤ P\n• *Logic เป็นสมการเชิงเส้น:* A ต้องมี B → y_A ≤ y_B · A,B ห้ามพร้อมกัน → y_A+y_B ≤ 1 · เลือกอย่างน้อย 2 → Σy ≥ 2\n• *Big-M:* aᵀx ≤ b + M(1−y) ใช้เมื่อ constraint มีผลเฉพาะ y=1 (M ใหญ่เกินไปทำให้แก้ช้า/เพี้ยน)\n* *:snake: scipy.optimize.milp — สิ่งที่โปรแกรมต้องการ* [1][4]\nเรียงตัวแปรเป็นเวกเตอร์เดียว z = [q₀,q₁,q₂,y₀,y₁,y₂] แล้วใส่ 4 อย่างนี้ (ลำดับต้องตรงกันทั้งไฟล์!):\n• *c* — สัมประสิทธิ์ objective: [2, 1.5, 2.5, 14, 16, 10]\n• *integrality* — 0 = continuous (พวก q), 1 = integer (พวก y): [0,0,0,1,1,1]\n• *Bounds(lb, ub)* — ขอบเขตตัวแปร: q_j ≤ capacity_j, y_j ≤ 1\n• *LinearConstraint(A, lc, uc)* — ทุก constraint เป็นรูป l ≤ Az ≤ u สองฝั่งเสมอ (= 18 คือ lb=ub=18 · ≤ 0 คือ lb=−∞, ub=0 · ≥ 40 คือ lb=40, ub=+∞)\n\nอ่านผล: result.success / result.fun (ค่า objective) / result.x (คำตอบ — เลข integer อาจมี 4.000000001 ให้ cast ด้วย np.rint)\n:warning: *ห้ามไว้ใจ success เฉย ๆ* — ต้องเอาคำตอบกลับมาคูณบวกตรวจ constraint เอง (recalculate cost + check constraint) [1][3]"
+    },
+    {
+      "kind": "summary",
+      "postedAt": "2026-08-31 06:37",
+      "slackTs": "1788133068.293169",
+      "channelId": "C0BNLCVUE1M",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNLCVUE1M/p1788133068293169",
+      "header": ":green_book: EGCO611 สรุปคาบ 30 ส.ค. 2026 — โจทย์งานจริง + ODE เปิดตัว (2/2)",
+      "note": "สรุปคาบ 30 ส.ค. (2/2)",
+      "content": "# :green_book: EGCO611 สรุปคาบ 30 ส.ค. 2026 — โจทย์งานจริง + ODE เปิดตัว (2/2)\n  แหล่งอ้างอิง: [2] 4. Dynamic Modelling with ODEs.pdf · [3] ไฟล์เสียงคาบเรียน\n* *:three: โจทย์ระดับงานจริง (general form — ไม่มีเลขให้)* [1][3]\nงาน i = 1..I แต่ละงาน *แบ่งไม่ได้* (ต่างจากข้อ 2 ที่ workload ฉีกได้) ต้องเลือกส่งเข้าเซิร์ฟเวอร์ j = 1..J เครื่องเดียว:\n• x_ij = 1 ถ้างาน i ไปเครื่อง j · y_j = 1 ถ้าเครื่อง j เปิด\n• แต่ละงานมี CPU/memory requirement · แต่ละเครื่องมี capacity + fixed activation energy\n*Objective:* min Σ f_j·y_j + ΣΣ e_ij·x_ij (fixed + assignment energy)\n*Constraints:*\n• Σ_j x_ij = 1 ทุกงาน (งานต้องถูก assign ครบ เครื่องเดียว)\n• Σ_i p_i·x_ij ≤ P_j·y_j และ Σ_i m_i·x_ij ≤ M_j·y_j (CPU + memory คูณ y_j เหมือนข้อ 2)\n• x_ij ≤ y_j (งานไปเครื่องไหน เครื่องนั้นต้องเปิด)\n\nอาจารย์เล่าว่าโมเดลนี้คือ *cache farming* ในงาน network จริง (เลือกส่ง content ไป cache ที่ไหน) — ในสไลด์ instance ตัวอย่าง optimal = เปิด 2 เครื่อง, z* = 50 [1]\n* *:four: เปิดหัวข้อใหม่: Dynamic Modelling with ODE* [2][3]\n*สัญญาณว่าโจทย์เป็น ODE:* มี *แกนเวลา* ระบบเปลี่ยนตามเวลา ค่า “ตอนนี้” ขึ้นกับ “อดีต” [3]\n• อุณหภูมิ CPU เมื่อรันไปเรื่อย ๆ เป็นเท่าไหร่ · แบตชาร์จใกล้เต็มยิ่งชาร์จช้า (99% ค้างเป็นนาที) · แรงดัน capacitor/กระแส inductor ในวงจร RLC\n\n*Static vs Dynamic* [2]: P = VI (ความสัมพันธ์ ณ ขณะเดียว ไม่มีความจำ) vs C_th·dT/dt = P(t) − (T−T_a)/R_th (ทำนายว่าอุณหภูมิ *วิวัฒน์* ยังไง)\n\n*Balance law (หัวใจของการสร้าง ODE)* [2]:\nอัตราสะสม = ไหลเข้า − ไหลออก + กำเนิด − ถูกใช้\nตัวอย่างถังผสมสารจากคาบแรก: dy/dt = 50 − 0.1y ก็คือ ODE แบบนี้นั่นเอง [3]\n\n*เกร็ดจากคาบเรียน* [3]:\n• ฝั่ง discrete → เป็น *recurrence relation* แทน (state ปัจจุบันคำนวณจาก state ก่อนหน้า) เช่น Fibonacci: F(n) = F(n−1)+F(n−2) → คำตอบ α₁·r₁ⁿ + α₂·r₂ⁿ ซึ่ง *หน้าตาเหมือน* คำตอบ ODE แบบ C·e^(λt)\n• *PDE* (Partial DE) = โหดกว่า (airflow, heat transfer บนแผ่นโลหะ) — อาจารย์ข้าม แนะนำให้ไปเรียนฟิสิกส์ :sweat_smile:\n• ทุกโมเดลมี assumption เสมอ (เช่น สมมติโลหะไม่ละลาย)\n* *:date: ประกาศจากอาจารย์ (สำคัญ!)* [3]\n• *สัปดาห์หน้างดเรียน* (อาจารย์มีภารกิจ) — และจะ *ชดเชยเพิ่มอีก 1 สัปดาห์* ภายหลัง\n• อาจารย์จะ *เตรียมการบ้านทบทวน* ให้ทำช่วงที่หยุด (ตามดู Facebook/ช่องทางชั้น)\n• คราวหน้าเมื่อกลับมา: *จบ ODE* — วิธีแก้ + เขียนโปรแกรม solve (solve_ivp) + *System of ODE*\n• *ข้อสอบ*: มีสอบ 1 ครั้ง — ต้องจบ ODE ก่อนแล้วค่อยว่ากัน\n• หนังสือแนะนำ: เล่ม Operational Research (ฝึกโมเดล) + เล่มที่มีโปรแกรม (ฝึก solve) — ไม่มีเล่มไหนครบทั้งสองอย่าง ต้องผสมกันเอง\n\n*สรุปภาพรวมของวิชาตอนนี้:* LP → ILP/MILP (จบแล้ว) → ODE (กำลังเริ่ม) — โมเดลบนกระดาษ → ลงโปรแกรม scipy (milp / solve_ivp) → ตรวจคำตอบกลับด้วยมือเสมอ\n  สรุปโดย Hermes · Midterm 27 ก.ย. — เฟสนี้ (31 ส.ค.–4 ก.ย.) คือ LP formulation ตรงเป๊ะ อยู่ในแผนทบทวนแล้ว"
+    }
+  ]
+}

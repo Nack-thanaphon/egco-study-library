@@ -1,0 +1,30 @@
+{
+  "courseCode": "EGCO676",
+  "term": "1/2569",
+  "courseTitle": "Information Security and Risk Assessment",
+  "session": 4,
+  "week": "Week 4",
+  "date": "5 กันยายน 2569",
+  "title": "Hash, MAC, Signature, Key Management และ PKI",
+  "subtitle": "ตรวจการแก้ไข ยืนยันผู้ส่ง เซ็นข้อมูล และสร้างสายความเชื่อถือให้กุญแจสาธารณะ",
+  "topics": [
+    "Hash และคุณสมบัติ Preimage, Second-preimage และ Collision resistance",
+    "MDC, MAC และความต่างระหว่าง Integrity กับ Authentication",
+    "Digital Signature, DSS/DSA และการเซ็น digest",
+    "KDC, Session key และ Kerberos",
+    "Certificate X.509, CA, Chain of Trust, วงจรกุญแจ และ PKI"
+  ],
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-09-07 16:54",
+      "slackTs": "1788774899.725899",
+      "channelId": "C0BPF7FP0TZ",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BPF7FP0TZ/p1788774899725899",
+      "header": "EGCO 676 สรุปคาบ 5/09/2026 — Week 04: Hash, MAC, Digital Signature, PKI",
+      "note": null,
+      "content": "# EGCO 676 สรุปคาบ 5/09/2026 — Week 04: Hash, MAC, Digital Signature, PKI\n* *ประกาศสำคัญ*\n• สัปดาห์หน้า (12/09) *งดเรียน* — ใช้เวลาทำการบ้าน\n• *การบ้าน:* TryHackMe 3 ห้อง (ฟรี) — ส่ง screenshot หน้า achievement ก่อนเรียน *เสาร์ 19/09*\n• Presentation ครั้งที่ 1 (5%) วัน *เสาร์ 26/09* — ต้องมีหัวข้อ + ขอบเขต/วัตถุประสงค์แล้ว (เหลือ ~3 อาทิตย์)\n* *Hash & MAC*\n• Hash ทำหน้าที่ *integrity* ไม่ใช่ความลับ — ผลลัพธ์คือ digest/fingerprint ขนาดคงที่ เปลี่ยน input 1 บิต = ผลลัพธ์เปลี่ยนหมด\n• 3 คุณสมบัติ: *preimage / second preimage / collision resistance*\n• โครงสร้างมาตรฐาน: Merkle–Damgård (compression function + padding) | SHA-3 ใช้ sponge\n• MD5 (128 บิต) กับ SHA-1 (160 บิต) เจอ collision แล้ว ไม่แนะนำ — ใช้อย่างต่ำ *SHA-256* หรือ SHA-3\n• *MDC* = ตรวจ integrity เท่านั้น (ไม่มี key) | *MAC* = hash + *secret key* → ได้ authentication ด้วย\n* *Digital Signature*\n• กุญแจอสมมาตรกลับบทบาท: *private key เซ็น, public key verify*\n• ลายเซ็นดิจิทัลเป็น *1 ข้อความ : 1 ลายเซ็น* (ลายเซ็นกระดาษเป็น one-to-many) — กันการ copy ไปหลอกใช้\n• ได้ *authentication + integrity + non-repudiation* แต่ *ไม่มี confidentiality* — ต้อง encrypt เพิ่มอีกชั้น\n• RSA sign ตรง ๆ เลขใหญ่มาก (3,000+ บิต) → จึง sign ที่ *digest* แทน\n• *DSS/DSA* ทำได้แค่ signature, เร็วกว่าและลายเซ็นสั้นกว่า ElGamal เมื่อขนาด p เท่ากัน (collision ของ hash ไม่เกี่ยวกับขนาด signature)\n* *Key Management (Symmetric)*\n• จุดอ่อนใหญ่สุด = *การกระจายกุญแจ* | โจมตีที่ระบบจัดเก็บ = ได้กุญแจทุกคนทีเดียว\n• *KDC:* ลงทะเบียนก่อน → ขอคุยกับใคร KDC สร้าง *session key* ใช้ครั้งเดียว ห่อด้วยกุญแจ KDC:left_right_arrow:ผู้ใช้ จบ session ก็ยกเลิก\n• ขยายระบบ: flat multiple KDC หรือ *hierarchical* (local → ระดับชาติ → root)\n• *Kerberos (หมา 3 หัว):* AS ตรวจตัวตน → TGS ออก ticket → Real Server ให้บริการ (รวม 6 ข้อความ) | realm ใหญ่เดียว = ล็อกอินครั้งเดียวใช้ได้หลาย service\n* *Key Management (Public key) & PKI*\n• Public key แจกลอย ๆ ไม่ได้ — โจรสลับกุญแจ = man-in-the-middle อ่าน/แก้ข้อมูลได้\n• ทางแก้: trusted center → *CA ออก certificate* มาตรฐาน *X.509* (version, serial, algorithm, issuer, validity, subject, public key) — hash ข้อมูลแล้วเซ็นด้วย private key ของ CA\n• ตัวอย่างจริง: cert เว็บมหิดล ออกโดย GoDaddy | self-signed cert เบราว์เซอร์จะเตือน\n• CA ต้องทำ: *issue / renew / revoke* (delta CRL แจ้งยกเลิกเป็นรอบ)\n• CA หลายเจ้าเชื่อใจกันเป็น *chain of trust* ต่อจาก root ในเครื่อง | PKI = CA + RA (จดทะเบียน) + repository + ผู้ใช้\n• วงจรกุญแจ: ลงทะเบียน → สร้าง → ติดตั้ง → ใช้ → backup/recover → update → revoke → ทำลาย\n* *แนวคิดรวม 1 บรรทัด:* Hash ปกป้องข้อมูลไม่ให้ถูกแก้ → ใส่ key กลายเป็น MAC ยืนยันผู้ส่งได้ → เซ็นด้วย private key กลายเป็นลายเซ็นดิจิทัล → ใบรับรอง (X.509) ผูกกุญแจกับเจ้าของ → PKI คือโครงสร้างที่จัดการทั้งหมดนี้\n  ที่มา: [1] สไลด์ Week04 Hash-MAC-DigitalSignature-PKI.pdf • [2] transcript คาบเรียน 5/09/2026 (การบ้าน/งดเรียน/naming ห้อง TryHackMe)"
+    }
+  ]
+}
