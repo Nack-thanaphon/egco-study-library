@@ -60,7 +60,6 @@ function LibraryHome({ onOpenCourse }: { onOpenCourse: (course: Course) => void 
                 <span className="code">{course.code}</span>
                 <span className="title-block">
                   <strong>{course.shortTitle}</strong>
-                  <span>{course.description}</span>
                 </span>
                 <span className="count">{course.lectures.length} คาบ</span>
                 <span className="go">เปิด <ChevronRight size={16} /></span>
@@ -108,7 +107,6 @@ function CourseDashboard({
       <header className="page-header">
         <p className="kicker">{course.title}</p>
         <h1 className="course-code-heading">{course.code}</h1>
-        <p className="lead">{course.description}</p>
         <p className="meta-line">
           {course.lectures.length} คาบ · เสียง {audioCount}/{course.lectures.length}
         </p>

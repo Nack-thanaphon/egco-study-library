@@ -5,7 +5,7 @@ export const generatedCourses: Course[] = [
     "code": "EGCO611",
     "title": "Programming Techniques for Advanced Applications",
     "shortTitle": "Programming Techniques",
-    "description": "แบบจำลอง การหาค่าที่ดีที่สุด และระบบพลวัต — เรียนวิธีเปลี่ยนปัญหาจริงให้เป็นสมการ เลือกคำตอบที่ดีที่สุดภายใต้ข้อจำกัด ใช้โปรแกรมช่วยแก้ และอธิบายระบบที่เปลี่ยนตามเวลา",
+    "description": "แปลงโจทย์จริงเป็นโมเดล LP/MILP และ ODE แล้วตรวจคำตอบด้วย solver",
     "focus": "คิดเป็นลำดับจากเรื่องจริง → ตัวแปรและสมการ → solver → ตรวจคำตอบกับข้อจำกัดและความหมายในโลกจริง",
     "accent": "#003366",
     "lectures": [
@@ -247,7 +247,7 @@ export const generatedCourses: Course[] = [
     "code": "EGCO623",
     "title": "Data Mining and Machine Learning",
     "shortTitle": "Data Mining & ML",
-    "description": "จากการทำความเข้าใจและเตรียมข้อมูล คลังข้อมูล OLAP Dashboard ไปจนถึง Association Analysis หาความสัมพันธ์ของไอเทมที่ซื้อพร้อมกัน",
+    "description": "สถิติพื้นฐาน การเตรียมข้อมูล Dashboard ถึง Association Analysis",
     "focus": "เน้นสำรวจข้อมูล เตรียมข้อมูล วิเคราะห์หลายมิติ และนำข้อมูลไปใช้ตัดสินใจ",
     "accent": "#003366",
     "lectures": [
@@ -442,7 +442,7 @@ export const generatedCourses: Course[] = [
     "code": "EGCO676",
     "title": "Information Security and Risk Assessment",
     "shortTitle": "Information Security",
-    "description": "สรุปหลังเรียนจริง 5 คาบ ตั้งแต่พื้นฐานความเสี่ยง การเข้ารหัส ความถูกต้องของข้อมูล โครงสร้างความเชื่อถือของกุญแจ ไปจนถึงคาบวิชาการเรื่อง Research Gap",
+    "description": "ความเสี่ยง การเข้ารหัส การยืนยันตัวตน และการดูแลความเชื่อถือ",
     "focus": "ความมั่นคงปลอดภัย การเข้ารหัส และการจัดการความเสี่ยง",
     "accent": "#003366",
     "lectures": [
