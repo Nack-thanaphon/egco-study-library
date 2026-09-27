@@ -1,7 +1,7 @@
 {
   "courseCode": "EGCO611",
-  "title": "Mathematical Modelling, Optimization and Dynamic Systems",
-  "shortTitle": "Mathematical Modelling & Optimization",
+  "title": "Programming Techniques for Advanced Applications",
+  "shortTitle": "Programming Techniques",
   "description": "แบบจำลอง การหาค่าที่ดีที่สุด และระบบพลวัต — เรียนวิธีเปลี่ยนปัญหาจริงให้เป็นสมการ เลือกคำตอบที่ดีที่สุดภายใต้ข้อจำกัด ใช้โปรแกรมช่วยแก้ และอธิบายระบบที่เปลี่ยนตามเวลา",
   "focus": "คิดเป็นลำดับจากเรื่องจริง → ตัวแปรและสมการ → solver → ตรวจคำตอบกับข้อจำกัดและความหมายในโลกจริง",
   "accent": "#003366",

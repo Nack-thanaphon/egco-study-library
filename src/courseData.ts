@@ -176,7 +176,7 @@ const egco604Lectures: Lecture[] = [
 
 export const egco604: Course = {
   code: 'EGCO604',
-  title: 'Research Methodology and Seminar',
+  title: 'Research Methodology',
   shortTitle: 'Research Methodology',
   description: 'จากการตั้งปัญหาวิจัย ไปจนถึง Literature Review, การนำเสนอ และการป้องกันงาน',
   focus: 'เน้นงานวิจัย การบ้าน และการนำเสนอ',

@@ -13,7 +13,7 @@ metadata:
 
 # EGCO611 Study Companion
 
-คู่มือทบทวน **Mathematical Modelling, Optimization and Dynamic Systems** แบบค่อยเป็นค่อยไป เหมาะสำหรับคนที่ยังไม่มั่นใจคณิตศาสตร์และต้องการให้ AI ช่วยติวจากหลักฐานของรายวิชา
+คู่มือทบทวน **EGCO611 Programming Techniques for Advanced Applications** (เนื้อหาสอน: Mathematical Modelling, Optimization and Dynamic Systems) แบบค่อยเป็นค่อยไป เหมาะสำหรับคนที่ยังไม่มั่นใจคณิตศาสตร์และต้องการให้ AI ช่วยติวจากหลักฐานของรายวิชา
 
 > เส้นทางของวิชา: **เรื่องจริง → ตัวแปรและสมการ → solver → ตรวจคำตอบ → อธิบายความหมาย**
 

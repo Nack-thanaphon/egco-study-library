@@ -1,7 +1,7 @@
 {
   "courseCode": "EGCO676",
-  "title": "Network Security and Risk Assessment",
-  "shortTitle": "Network Security",
+  "title": "Information Security and Risk Assessment",
+  "shortTitle": "Information Security",
   "description": "สรุปหลังเรียนจริง 5 คาบ ตั้งแต่พื้นฐานความเสี่ยง การเข้ารหัส ความถูกต้องของข้อมูล โครงสร้างความเชื่อถือของกุญแจ ไปจนถึงคาบวิชาการเรื่อง Research Gap",
   "focus": "ความมั่นคงปลอดภัย การเข้ารหัส และการจัดการความเสี่ยง",
   "accent": "#003366",

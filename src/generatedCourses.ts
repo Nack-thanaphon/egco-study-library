@@ -3,8 +3,8 @@ import type { Course } from './courseData'
 export const generatedCourses: Course[] = [
   {
     "code": "EGCO611",
-    "title": "Mathematical Modelling, Optimization and Dynamic Systems",
-    "shortTitle": "Mathematical Modelling & Optimization",
+    "title": "Programming Techniques for Advanced Applications",
+    "shortTitle": "Programming Techniques",
     "description": "แบบจำลอง การหาค่าที่ดีที่สุด และระบบพลวัต — เรียนวิธีเปลี่ยนปัญหาจริงให้เป็นสมการ เลือกคำตอบที่ดีที่สุดภายใต้ข้อจำกัด ใช้โปรแกรมช่วยแก้ และอธิบายระบบที่เปลี่ยนตามเวลา",
     "focus": "คิดเป็นลำดับจากเรื่องจริง → ตัวแปรและสมการ → solver → ตรวจคำตอบกับข้อจำกัดและความหมายในโลกจริง",
     "accent": "#003366",
@@ -440,8 +440,8 @@ export const generatedCourses: Course[] = [
   },
   {
     "code": "EGCO676",
-    "title": "Network Security and Risk Assessment",
-    "shortTitle": "Network Security",
+    "title": "Information Security and Risk Assessment",
+    "shortTitle": "Information Security",
     "description": "สรุปหลังเรียนจริง 5 คาบ ตั้งแต่พื้นฐานความเสี่ยง การเข้ารหัส ความถูกต้องของข้อมูล โครงสร้างความเชื่อถือของกุญแจ ไปจนถึงคาบวิชาการเรื่อง Research Gap",
     "focus": "ความมั่นคงปลอดภัย การเข้ารหัส และการจัดการความเสี่ยง",
     "accent": "#003366",

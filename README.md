@@ -6,8 +6,11 @@ Dashboard สรุปเนื้อหารายวิชาแบบแย�
 
 ## รุ่นปัจจุบัน
 
-- EGCO604 Research Methodology and Seminar
-- 4 คาบ: 22 ส.ค., 29 ส.ค., 5 ก.ย. และ 19 ก.ย. 2569
+- EGCO604 Research Methodology
+- EGCO611 Programming Techniques for Advanced Applications
+- EGCO623 Data Mining and Machine Learning
+- EGCO676 Information Security and Risk Assessment
+- 20 คาบรวม 4 วิชา: EGCO604 (4) · EGCO611 (6) · EGCO623 (5) · EGCO676 (5)
 - ค้นหาเนื้อหารายคาบ
 - หน้ารายละเอียด: เรียนอะไร / คุยอะไร / อาจารย์เน้นอะไร / งานที่ต้องทำ
 - ปุ่มอ้างอิง Google Drive แยกแต่ละคาบ
