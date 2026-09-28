@@ -1,0 +1,59 @@
+{
+  "courseCode": "EGCO623",
+  "term": "1/2569",
+  "courseTitle": "Data Mining and Machine Learning",
+  "session": 6,
+  "week": "Week 8",
+  "date": "27 กันยายน 2569",
+  "title": "Cluster Analysis: K-means และ Hierarchical Clustering",
+  "subtitle": "จัดของที่คล้ายกันให้อยู่ด้วยกันด้วยระยะทาง ปรับสเกลก่อนคำนวณ และอ่านโครงสร้างกลุ่มจาก dendrogram",
+  "topics": [
+    "Cluster Analysis เป็น unsupervised learning: ภายใน cluster ควรใกล้กันและระหว่าง cluster ควรห่างกัน",
+    "ความต่างระหว่าง Partitional Clustering กับ Hierarchical Clustering และประเภทของ cluster: well-separated, center-based, contiguous, density-based, conceptual",
+    "Distance measures: Euclidean, City-block, Minkowski และ different function สำหรับ categorical data",
+    "ต้อง normalize หรือ standardize ก่อน clustering เพื่อไม่ให้ feature สเกลใหญ่กลบ feature อื่น",
+    "K-means: เลือก K และ initial centroids → assign จุด → update centroid → ทำซ้ำจนไม่เปลี่ยน",
+    "ประเมิน K-means ด้วย SSE/WSS; initial centroid มีผลต่อผลลัพธ์และควรรันหลายครั้ง",
+    "Bisecting K-means, preprocessing/postprocessing และข้อจำกัดเรื่อง size, density, non-globular shape, outlier",
+    "Hierarchical Clustering: agglomerative/divisive, proximity matrix และ dendrogram",
+    "Linkage: MIN/single, MAX/complete, group average และ Ward",
+    "Internal measures: cohesion/WSS ต้องต่ำ และ separation/BSS ต้องสูง"
+  ],
+  "discussions": [
+    "Warm-up อาหารไทย 12 เมนูแสดงว่า feature ที่เลือก เช่น ประเภทอาหาร รสชาติ ภูมิภาค หรือมื้ออาหาร ทำให้ได้ cluster ต่างกัน จึงต้องอธิบายเกณฑ์ให้ชัด",
+    "ตัวอย่าง A/B/C แสดงว่าเงินเดือนหลักหมื่นกลบอายุเมื่อไม่ normalize ทำให้ B อายุ 60 ดูใกล้ A อายุ 22; หลัง normalize คำตอบเปลี่ยนเป็น C อายุ 24",
+    "K-means exercise ใช้ City-block distance และ centroid เริ่มต้นจาก 3 จุดแรก; จุดที่ 6 ย้ายจาก cluster 3 ไป cluster 2 แล้วผลนิ่งในรอบถัดไป",
+    "Hierarchical clustering เลือกจำนวน cluster ภายหลังได้ด้วยการตัด dendrogram จึงช่วยเมื่อยังไม่รู้ K ล่วงหน้า",
+    "การเพิ่ม K ลด SSE ได้ง่าย แต่ไม่ได้แปลว่าคำตอบมีความหมายหรือใช้งานได้ดีกว่าเสมอ"
+  ],
+  "emphasis": [
+    "ก่อนทำ clustering ที่อาศัยระยะทาง ให้ normalize หรือ standardize ทุก feature ก่อน",
+    "K-means ต้องกำหนด K ล่วงหน้าและไวต่อ initial centroid กับ outlier",
+    "MIN linkage ใช้คู่ที่ใกล้ที่สุด; MAX linkage ใช้คู่ที่ไกลที่สุด; group average ใช้ทุกคู่",
+    "คลัสเตอร์ที่ดีต้อง cohesion สูงในความหมายว่าเกาะกันแน่น (WSS ต่ำ) และ separation สูง (BSS สูง)",
+    "แนวสอบคล้ายแบบฝึกและการบ้าน: มีข้อมูลให้คำนวณ วิเคราะห์ปัญหา และตอบสั้นหลายข้อ"
+  ],
+  "assignments": [
+    "Warm-up Cluster the Street Food และ A09 Twin เป็นงานในคาบ กำหนดส่งภายใน 27 กันยายน 2569",
+    "A10 K-means: ใช้จุดแรก 3 จุดเป็น centroid, City-block distance และทำซ้ำจน cluster นิ่ง; ในคาบระบุ deadline 3 ตุลาคม 2569",
+    "การบ้าน Dendrogram: จุด A1–A8 กับ Euclidean distance matrix ให้สร้าง dendrogram ด้วย MAX/Complete linkage และเลือกจำนวน cluster; transcript ไม่ยืนยันวันส่ง ให้ตรวจ Classroom",
+    "แผน 4 ตุลาคม 2569 เรียน onsite และทดลอง RapidMiner; สัปดาห์ถัดไปวางแผนสอบกลางภาค",
+    "สอบกลางภาคครอบคลุมบท 1–6 ถึง Cluster Analysis; นำ A4 ได้หนึ่งแผ่นหน้าหลังและใช้เครื่องคิดเลขที่เตรียมมาเองได้"
+  ],
+  "audioUrl": null,
+  "audioLabel": "ไฟล์เสียงคาบ 27 ก.ย. 2569",
+  "sourceNote": "สรุปจาก transcript egco623_260927.txt, สไลด์ EGCO623-06-ClusterAnalysis.pdf, ภาพแบบฝึก และไฟล์ A09/A10 Excel ที่ผู้ใช้แนบ",
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-09-28 08:31",
+      "slackTs": "1790559086.025139",
+      "channelId": "C0BNZQT84KG",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNZQT84KG/p1790559086025139",
+      "header": "คาบที่ 06 | 27 ก.ย. 2569 | Cluster Analysis",
+      "note": null,
+      "content": "# คาบที่ 06 | 27 ก.ย. 2569 | Cluster Analysis\n  EGCO623 Data Mining and Machine Learning • อ่านจบประมาณ 8 นาที\n* *คาบนี้เรียนอะไร*\n• Cluster Analysis คือจัดของที่คล้ายกันไว้ด้วยกัน โดยไม่มี label เฉลยให้ล่วงหน้า จึงเป็น *Unsupervised Learning*\n• รูปแบบหลัก: *Partitional* แบ่งแต่ละจุดให้อยู่กลุ่มเดียว กับ *Hierarchical* สร้างลำดับชั้นเป็น dendrogram\n• การวัดความใกล้: Euclidean, City-block, Minkowski และฟังก์ชันสำหรับข้อมูล categorical\n• Algorithm หลัก: *K-means*, Bisecting K-means และ Agglomerative Hierarchical Clustering\n• การวัดผล: SSE/WSS (ความแน่นภายในกลุ่ม) และ BSS (ความห่างระหว่างกลุ่ม)\n* *ภาพจำที่สำคัญที่สุด*\nให้นึกถึงการแยกอาหาร 12 เมนูเป็น 3 โต๊ะ เราอาจแบ่งเป็นอาหารคาว–ของหวาน–เครื่องดื่ม หรือแบ่งตามรสชาติ/ภูมิภาค/มื้ออาหารก็ได้ ผลต่างกันเพราะ *feature ที่เลือกเป็นตัวกำหนด cluster*\n\nเป้าหมายมี 2 ข้อพร้อมกัน:\n• ภายในกลุ่มเดียวกันต้องใกล้กัน → minimize intra-cluster distance\n• คนละกลุ่มต้องห่างกัน → maximize inter-cluster distance\n\nดังนั้น Cluster Analysis ไม่ใช่ Classification (ไม่มี label), ไม่ใช่ SQL GROUP BY และไม่ใช่การแบ่งตาม attribute เดียวแบบตรงไปตรงมา\n* *Distance + เหตุผลที่ต้อง Normalize*\n• Euclidean: d(x,y) = √Σ(xᵢ−yᵢ)²\n• City-block: d(x,y) = Σ|xᵢ−yᵢ|\n• Min-max: x′ = (x−min)/(max−min)\n\nตัวอย่าง A อายุ 22 รายได้ 25,000; B อายุ 60 รายได้ 26,000; C อายุ 24 รายได้ 31,000\n• ก่อน normalize: d(A,B) ≈ 1,000.72 และ d(A,C) ≈ 6,000.00 → ระบบบอกว่า B ใกล้ A เพราะรายได้หลักหมื่นกลบอายุ\n• หลัง normalize: d(A,B) ≈ 0.7601 และ d(A,C) ≈ 0.0721 → C ใกล้ A ซึ่งสมเหตุผลกว่า\n\n*ข้อจำ:* งานที่อาศัยระยะทางควร normalize หรือ standardize ก่อน ไม่เช่นนั้น feature ที่ตัวเลขใหญ่จะครองคำตอบ\n* *K-means ทำงานอย่างไร*\n1. กำหนด K และเลือก centroid เริ่มต้น K จุด\n2. คำนวณระยะทาง แล้วส่งแต่ละจุดไป centroid ที่ใกล้ที่สุด\n3. หา mean ของสมาชิกในแต่ละกลุ่มเป็น centroid ใหม่\n4. ทำซ้ำจนสมาชิก/centroid ไม่เปลี่ยน\n\nExercise K=3 ใช้จุดแรก 3 จุดเป็น centroid และ City-block distance:\n• รอบ 1: C1={1}, C2={2,5,7,8}, C3={3,4,6,9,10}\n• รอบ 2: จุด 6 ย้ายจาก C3 → C2\n• รอบ 3 นิ่ง: C1={1}, C2={2,5,6,7,8}, C3={3,4,9,10}\n• centroid สุดท้าย = (8,10), (2.8,5.4), (7.5,5.25)\n\nจุดเริ่มต้นสำคัญ: สุ่ม centroid ต่างกันอาจได้คำตอบต่างกัน จึงควรรันหลายครั้งแล้วเลือกผลที่ SSE ต่ำกว่า\n* *ข้อจำกัดของ K-means*\n• ต้องกำหนด K ก่อน\n• เหมาะกับกลุ่มที่ค่อนข้างกลมและขนาด/ความหนาแน่นใกล้กัน\n• ไวต่อ outlier เพราะ outlier ดึงค่า mean/centroid\n• กลุ่มรูปร่างยาว คด หรือมี density ต่างกันอาจถูกตัดผิด\n\nวิธีรับมือที่เรียน: normalize + กำจัด outlier ก่อน, เพิ่ม K ให้ได้กลุ่มเล็กแล้วค่อย merge, split กลุ่มที่ SSE สูง, merge กลุ่มที่ใกล้กัน หรือใช้ Bisecting K-means แบ่งทีละ 2 กลุ่ม\n* *Hierarchical Clustering และ Dendrogram*\n• *Agglomerative* (นิยมกว่า): เริ่มจากทุกจุดเป็นคนละกลุ่ม แล้ว merge คู่ที่ใกล้ที่สุดขึ้นไปเรื่อย ๆ\n• *Divisive*: เริ่มจากก้อนใหญ่ก้อนเดียว แล้ว split ลงมา\n• ไม่ต้องเลือกจำนวนกลุ่มก่อน สร้าง dendrogram เสร็จแล้วค่อย “ตัดต้นไม้” ตามระดับที่เหมาะสม\n\nวิธีวัดระยะห่างระหว่าง 2 กลุ่ม (linkage):\n• MIN / Single link = คู่ที่ใกล้ที่สุด เหมาะกับกลุ่มยาวคด แต่เสี่ยง chaining/noise\n• MAX / Complete link = คู่ที่ไกลที่สุด ทน noise กว่า แต่เสี่ยงตัดกลุ่มใหญ่\n• Group average = เฉลี่ยระยะทางทุกคู่ เป็นทางสายกลาง\n• Ward = ดูว่า merge แล้ว SSE เพิ่มเท่าไร\n* *วัดว่าจัดกลุ่มดีแค่ไหน*\n• SSE หรือ WSS = ΣΣ distance²(point, centroid ของกลุ่ม) → ยิ่งน้อย สมาชิกยิ่งแน่น\n• BSS = Σ |Cᵢ| × distance²(centroid กลุ่ม, centroid รวม) → ยิ่งมาก กลุ่มยิ่งแยกกันชัด\n• ในตัวอย่าง 1 มิติ จุด {1,2,4,5}: แบ่ง 1 กลุ่มได้ WSS=10, BSS=0; แบ่ง 2 กลุ่ม {1,2}/{4,5} ได้ WSS=1, BSS=9\n\n*อย่าดู SSE อย่างเดียว:* เพิ่ม K แล้ว SSE มักลดอยู่แล้ว ต้องพิจารณาความหมายและจำนวนกลุ่มที่ใช้งานได้จริงด้วย\n* *งานและประกาศ*\n• Warm-up Cluster the Street Food และ A09 Twin: งานในคาบ กำหนดส่งภายในวันที่เรียน 27 ก.ย.\n• A10 K-means: คำนวณ City-block หลายรอบจน cluster นิ่ง; ในคาบระบุ deadline ถึง *3 ต.ค. 2569*\n• การบ้าน Dendrogram: จุด A1–A8 + Euclidean distance matrix ให้สร้าง dendrogram ด้วย *MAX / Complete linkage* แล้วพิจารณาว่าควรแบ่งกี่ cluster; transcript ไม่ยืนยันวันส่ง ให้เช็ก Classroom\n• แผน 4 ต.ค.: เรียน onsite และทดลอง RapidMiner เพื่อทวน preprocessing, visualization, Association และ Clustering\n• สอบกลางภาควางแผนสัปดาห์ถัดไป: ข้อเขียนสั้น + คำนวณ คล้ายแบบฝึก/การบ้าน ครอบคลุมบท 1–6 ถึง Cluster Analysis\n• นำ A4 ได้ 1 แผ่นหน้าหลัง และใช้เครื่องคิดเลขได้ (เตรียมมาเอง ไม่จำกัดรุ่น)\n* *แนวสอบที่อาจารย์บอกตรง ๆ*\n• ให้ข้อมูลมาแล้วถามว่า attribute ไหนมีปัญหา และควรแก้อย่างไร\n• อาจให้เติม missing value หรือคำนวณค่าจากข้อมูล\n• Association Rule: สร้างกฎ/คำนวณ และตัดสินใจว่าตรงไหน prune ได้\n• Clustering: คำนวณ distance, normalize, อัปเดต centroid หรือสร้าง dendrogram\n• คำตอบส่วนใหญ่สั้น แต่มีหลายข้อและมีการคำนวณ\n* *ลองทำเอง 3 ข้อ*\n1. เพราะเหตุใด A อายุ 22 ถึงดูใกล้ B อายุ 60 ก่อน normalize แต่เปลี่ยนไปใกล้ C หลัง normalize?\n2. ถ้า K-means ได้ centroid ใหม่แล้วมี 1 จุดย้ายกลุ่ม ต้องหยุดหรือทำต่อ เพราะอะไร?\n3. ต้องการจับ cluster รูปร่างยาวเหมือนงูและข้อมูลแทบไม่มี noise ควรเริ่มลอง linkage ใด?\n  แหล่งอ้างอิง: [1] egco623_260927.txt (ถอดเสียงคาบ 27 ก.ย. 2569) • [2] EGCO623-06-ClusterAnalysis.pdf • [3] Screenshot 2569-09-27 at 23.17.58.png • [4] twin.png + A09 - Twin.xlsx • [5] kmeans.png + A10 - K Means.xlsx • [6] dendrogram.png"
+    }
+  ]
+}
