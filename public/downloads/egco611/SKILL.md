@@ -44,6 +44,7 @@ metadata:
 | 4 | 30 ส.ค. 2569 | MILP สำหรับ Server + ODE Introduction | สร้าง linking constraint และเริ่มเขียน balance law |
 | 5 | 14 ก.ย. 2569 | ODE + `solve_ivp` | แยก state/input/parameter เขียน ODE และตีความผลตามเวลา |
 | 6 | 20 ก.ย. 2569 | Buffer Model 3 เคส + events, System of ODE, SIR | เพิ่ม constraint ให้โมเดล หลายสมการ และ non-linear |
+| 7 | 27 ก.ย. 2569 | Linear Algebra I: Products, Trace, Norms | คูณเวกเตอร์/เมทริกซ์ทุกแบบ รู้จัก symmetric และวัดขนาดด้วย norm |
 
 สรุปที่โพสต์ซ้ำจากเสียงคาบเดียวกันถูกรวมเป็นคาบเดียว โดยคาบ 23 ส.ค. รวมช่วง LP implementation กับ MILP และคาบ 30 ส.ค. รวมช่วง Server กับ ODE introduction
 
@@ -296,8 +297,50 @@ dR/dt =  γ·I
 - อาจารย์ให้ credit ที่ **logic สมการถูก** — syntax ผิดเล็กน้อยไม่หักถ้าอ่านรู้เรื่อง ("ผมไม่สอน solve ผมสอนสร้างโมเดล")
 - Parameter ที่อาจารย์กำหนดให้ = ห้ามกำหนดผิด ใช้ตามโจทย์ได้เลย
 
+## คาบที่ 7 — Linear Algebra I: Products, Trace และ Norms (27 ก.ย. 2569)
+
+คาบแรกของชุด Linear Algebra (~2 คาบ) วางฐานให้ Matrix Calculus และ Optimization — ทุกอย่างในคาบนี้คือ "คูณเวกเตอร์/เมทริกซ์ให้ถูกวิธี" และ "วัดขนาดให้เป็น"
+
+### Inner กับ Outer product
+
+- `uᵀv` (inner/dot) → ตัวเลขเดียว บีบสองเวกเตอร์เหลือค่าเดียว (ความคล้ายกัน)
+- `uvᵀ` (outer) → แมทริกซ์ m×n จากการ "กระจายคูณ" (broadcasting) ทุกคู่ i,j — ไม่ใช่การคูณเมทริกซ์ปกติ (ถ้าคูณเมทริกซ์เป็นจะรู้ทันทีว่าคูณไม่ได้)
+- Python: `np.dot(u, v)` กับ `np.outer(u, v)` — ถ้าใน array เป็น float ผลลัพธ์เป็น float แนะนำแปลง float ก่อน
+
+### Matrix–vector สามมุมมอง + กับดักใน Python
+
+- Entry view คำนวณทีละช่อง • Row view แถวดอต x • Column view: `Ax = x₁a₁ + … + xₙaₙ` (ผสม column ตามน้ำหนักใน x)
+- A ขนาด m×n คือการแมป Rⁿ → Rᵐ — เปลี่ยนมิติของข้อมูล
+- กับดักสำคัญที่สุดของคาบ: `A @ x` = matrix–vector product แต่ `A * x` = Hadamard product (คูณทีละคู่) — คนละคำตอบสิ้นเชิง
+- ตัวอย่างภาพ: `[0 1; −1 0]` คูณ (x,y) ได้ (−y,x) = หมุน 90° ทวนเข็ม; โปรแกรมหมุนรูปก็คูณตำแหน่ง pixel แบบนี้
+
+### กฎการคูณเมทริกซ์ — ใช้ได้กับใช้ไม่ได้
+
+- เช็ค dimension ก่อนเสมอ: (m×n)(n×p) → m×p — ตัวกลางต้องเท่ากัน; BA อาจคูณไม่ได้เลย
+- ใช้ได้: เปลี่ยนกลุ่ม (AB)C = A(BC) และกระจาย A(B+C) = AB+AC
+- ใช้ไม่ได้: สลับที่ — `AB ≠ BA` โดยทั่วไป → (B+C)A = BA+CA (A อยู่ขวาต้องเติมขวาทั้งคู่)
+- Transpose ก็กลับออเดอร์: `(AB)ᵀ = BᵀAᵀ` สามตัวกลับหมด `(ABC)ᵀ = CᵀBᵀAᵀ`
+
+### โครงสร้าง: identity, diagonal, symmetric
+
+- I คูณแล้วได้ตัวเอง • D = diag(d₁,…,dₙ) ยืดแต่ละแกนแยกกัน `(Dx)ᵢ = dᵢxᵢ` — เจอจริงตอน differentiate activation ใน neural network (Jacobian เป็น diagonal)
+- Symmetric `A = Aᵀ` • Skew `A = −Aᵀ`
+- จำได้ตลอด: `A+Aᵀ` symmetric เสมอ, `A−Aᵀ` skew เสมอ → ทุก square matrix = `½(A+Aᵀ) + ½(A−Aᵀ)`
+- ทำไมต้องรู้: quadratic form xᵀAx ในบทหน้าจะ assume A symmetric เสมอ + symmetric การันตี real eigenvalue กับ orthonormal eigenvectors
+
+### Trace และ Norm
+
+- `tr(A)` = บวกเส้นทแยงมุม; cyclic `tr(ABCD) = tr(BCDA) = tr(CDAB) = tr(DABC)` แต่ห้ามสลับใจกลาง `tr(ABC) ≠ tr(ACB)`; `∥A∥²F = tr(AᵀA)`
+- Norm = ฟังก์ชันวัดความใหญ่ที่ผ่าน 4 ข้อ: non-negativity, definiteness, homogeneity, triangle inequality
+- Lp: L1 = Σ|xᵢ| (Manhattan), L2 = √Σxᵢ² (Euclidean), L∞ = max|xᵢ| — ยิ่ง p ใหญ่ยิ่งเน้น component ใหญ่สุด (ในคาบ: [1,2,3,4] → L1=10, L2≈5.5, L∞=5)
+- Matrix norm = "ยืดหนังสติ๊ก": หยิบ unit vector มาคูณ A แล้วยาวสุดเท่าไร — ไม่ใช่ดูว่าตัวเลขใน A ใหญ่ไหม
+  - `∥A∥₁` = max ผลรวม abs ตามคอลัมน์ • `∥A∥∞` = max ตามแถว (สองตัวนี้หาง่าย)
+  - `∥A∥₂` = max eigenvalue (ยังไม่ได้สอนวิธีหา) • Frobenius = √(Σaᵢⱼ²) ไม่มีความหมายเชิงเรขาคณิต แค่ผ่าน 4 ข้อ
+- ถ้าไม่เจาะลึก: `np.linalg.norm(A, 1/2/np.inf/'fro')` ใช้ได้เลย
+
 ## งานและประกาศที่พบในหลักฐาน
 
+- วันที่ 27 ก.ย.: Midterm น่าจะ 18 ต.ค. 2569 (วิชาอื่นเลื่อนมา 10–11 ต.ค. — ยังไม่ยืนยัน 100% แต่อาจารย์เล็ง 18); แนวข้อสอบ 3 ส่วน: matrix operators, matrix calculus (gradient/Hessian), optimization rate O(N)/O(N²) — optimization ท้าย ๆ อาจยกไป final; การบ้าน MILP ขยาย 1 → 2 สัปดาห์
 - วันที่ 20 ก.ย.: การบ้านใหม่โพสต์แล้ว (อาจารย์แต่งเลขให้ครบ) — ส่ง 2 ไฟล์: .ipynb แบ่ง section ใน Colab + ไฟล์เอกสารคำอธิบาย/วิเคราะห์ (desc→สมการ→แทนเลข→post-analysis); ข้อสุดท้าย optional แนะนำ PuLP (กินสมการ symbolic ตรง ๆ); บางข้อมี 2 คำตอบ objective เท่ากัน ไม่ต้องตกใจ
 - วันที่ 20 ก.ย.: ครั้งหน้าเรียน Linear Algebra ~6 ชั่วโมง (ใช้ต่อใน Data Mining); อีกประมาณ 2 สัปดาห์ถึง midterm; อาจารย์เล็งว่าสอบออก solve_ivp
 - วันที่ 23 ส.ค. มีการบอกว่าการบ้าน modelling กำลังจัดทำ แต่ยังไม่ประกาศรายละเอียดครบ
@@ -377,6 +420,7 @@ dR/dt =  γ·I
 - สรุปและข้อความถอดเสียงสองช่วงของคาบ 23 สิงหาคม 2569
 - สรุปสองตอนของคาบ 30 สิงหาคม 2569 พร้อมเอกสาร MILP, ODE และตัวอย่างโปรแกรมที่ถูกกล่าวถึงในสรุป
 - สรุป ODE สองตอนจากข้อความถอดเสียงคาบที่โพสต์วันที่ 14 กันยายน 2569
+- สรุปสองตอนของคาบ 27 กันยายน 2569 จากไฟล์เสียงคาบ พร้อม handout "5. Linear Algebra.pdf" (34 สไลด์)
 
 ไฟล์นี้สังเคราะห์เฉพาะใจความเพื่อการเรียน ไม่รวมข้อความถอดเสียงดิบหรือข้อมูลส่วนบุคคล และไฟล์เสียงต้นฉบับต้องเปิดผ่านสิทธิ์ของเจ้าของแหล่งข้อมูล
 
@@ -392,4 +436,7 @@ dR/dt =  γ·I
 - Linking constraint ทำหน้าที่อะไร
 - State, input และ parameter ในโมเดล CPU คืออะไร
 - เครื่องหมายของอนุพันธ์บอกอะไร
+- ใน Python `A @ x` กับ `A * x` ต่างกันอย่างไร
+- `(ABC)ᵀ` เขียนให้ถูกต้องได้อย่างไร และ trace จะ cyclic แบบใดได้/ไม่ได้
+- ∥A∥₁ กับ ∥A∥∞ หาจากอะไร และ matrix norm วัดอะไร (ไม่ใช่วัดอะไร)
 - หลัง solver ให้คำตอบแล้วต้องตรวจอะไรบ้าง

@@ -1,0 +1,70 @@
+{
+  "courseCode": "EGCO611",
+  "term": "1/2569",
+  "courseTitle": "Programming Techniques for Advanced Applications",
+  "session": 7,
+  "week": "Week 8",
+  "date": "27 กันยายน 2569",
+  "title": "Linear Algebra I: Products, Trace และ Norms",
+  "subtitle": "คูณเวกเตอร์และเมทริกซ์ทุกรูปแบบ โครงสร้าง symmetric และการวัดความใหญ่ด้วย norm — ฐานของ Matrix Calculus",
+  "topics": [
+    "Inner product uᵀv (บีบสองเวกเตอร์เหลือสเกลาร์เดียว) กับ Outer product uvᵀ (แมทริกซ์ m×n จากการกระจายคูณ/broadcasting — ไม่ใช่การคูณเมทริกซ์ปกติ) + คำสั่ง np.dot / np.outer",
+    "Matrix–vector แบบ 3 มุมมอง: entry view, row view, column view (Ax = x₁a₁ + … + xₙaₙ) — A ∈ R m×n แมป Rⁿ → Rᵐ เปลี่ยนมิติข้อมูลได้",
+    "Python: A @ x คือ matrix–vector product ส่วน A * x คือ Hadamard (pairwise) product — คนละคำตอบสิ้นเชิง",
+    "เมทริกซ์ [0 1; −1 0] คูณ (x,y) ได้ (−y,x) = หมุน 90° ทวนเข็ม — แอปหมุนรูปก็คูณตำแหน่ง pixel กับเมทริกซ์",
+    "Matrix–matrix multiplication: เช็ค dimension ก่อน (m×n)(n×p) → m×p, สมบัติ associative + distributive ใช้ได้ แต่ AB ≠ BA — กระจาย/ทรานสโพสต์ต้องรักษาออเดอร์เสมอ",
+    "Identity, diagonal matrix ((Dx)ᵢ = dᵢxᵢ ยืดแต่ละแกนแยกกัน — เจอใน Jacobian ของ activation ใน neural network), transpose และกฎ (AB)ᵀ = BᵀAᵀ",
+    "Symmetric A = Aᵀ และ skew-symmetric A = −Aᵀ — ทุก square matrix แตกเป็น ½(A+Aᵀ) + ½(A−Aᵀ) เสมอ; symmetric การันตี real eigenvalue + orthonormal eigenvectors",
+    "Trace: tr(A) = ผลรวมเส้นทแยงมุม, tr(AB) = tr(BA), cyclic tr(ABCD) = tr(BCDA) = tr(CDAB) = tr(DABC) แต่ tr(ABC) ≠ tr(ACB); ∥A∥²F = tr(AᵀA)",
+    "Norm นิยามด้วย 4 สมบัติ (non-negativity, definiteness, homogeneity, triangle inequality); ตระกูล Lp: L1 Manhattan, L2 Euclidean, L∞ = max|xᵢ| — ยิ่ง p ใหญ่ยิ่งเน้น component ใหญ่สุด",
+    "Matrix norm = ความสามารถยืด unit vector ให้ไกลที่สุด; ∥A∥₁ = max abs column sum, ∥A∥∞ = max abs row sum, ∥A∥₂ = max eigenvalue, Frobenius = √(Σaᵢⱼ²) = √tr(AᵀA)"
+  ],
+  "discussions": [
+    "ผู้เรียนถามว่าวิธีคำนวณ matrix norm สำคัญไหม — อาจารย์ตอบ ถ้าไม่สนใจเชิงลึกใช้ np.linalg.norm ได้เลย",
+    "ผู้เรียนขอสรุปซ้ำเรื่อง norm อีกรอบเพราะยังพันกัน — อาจารย์สรุปใหม่ 3 ข้อ: norm วัดความใหญ่, Lp ดูจาก element, matrix norm ดูจากการยืด unit vector",
+    "อาจารย์คำนวณมือ ∥A∥₁ / ∥A∥∞ จากตารางจริง และ demo สดใน Python: unit circle (L2) โดน transform กลายเป็นวงรี, unit ball ของ L1 เป็นสี่เหลี่ยมที่โดนยืด",
+    "อาจารย์เล่ากึ่งล้อว่าใครหาฟังก์ชันใหม่ผ่าน 4 ข้อ norm ก็ตั้งชื่อตัวเองได้ — แต่จะมีประโยชน์จริงไหมเป็นอีกเรื่อง",
+    "ช่วงท้ายถาม-ตอบเรื่องแนวข้อสอบ midterm (อาจารย์ยังไม่ฟันธง แต่ให้แนว 3 ส่วน) และการขยายเวลาการบ้านเป็น 2 สัปดาห์"
+  ],
+  "emphasis": [
+    "ใน Python ต้องใช้ @ สำหรับ matrix product — * คือ Hadamard product คนละเรื่อง ใช้ผิดได้คำตอบผิดทั้งบรรทัด",
+    "การคูณเมทริกซ์ไม่มีสมบัติการสลับที่ (AB ≠ BA) — ตอนกระจายหรือ transpose ผลคูณ ต้องรักษาออเดอร์ของตัวคูณเสมอ",
+    "ทุก square matrix แตกเป็น symmetric + skew-symmetric ได้เสมอ — โยงกับ quadratic form xᵀAx ที่จะ assume A symmetric ในบทถัดไป",
+    "trace เป็น cyclic ไม่ใช่ arbitrary — เลื่อนวนหัว-ท้ายได้ แต่ห้ามสลับใจกลาง",
+    "norm ของเวกเตอร์วัดความใหญ่: ยิ่ง p มากยิ่งให้น้ำหนัก component ที่ใหญ่สุด จน L∞ เหลือค่า max เดียว",
+    "matrix norm ไม่ได้ดูว่าตัวเลขใน matrix ใหญ่แค่ไหน แต่ดูว่ายืด unit vector ไปได้ไกลสุดเท่าไร; ∥A∥₁ รวม abs ตามคอลัมน์, ∥A∥∞ ตามแถว, ∥A∥₂ = max eigenvalue",
+    "Frobenius norm ไม่มีความหมายเชิงเรขาคณิต — แค่ผ่าน 4 สมบัติและคำนวณง่าย (√tr(AᵀA))"
+  ],
+  "assignments": [
+    "การบ้าน (MILP) ขยายเวลาจาก 1 เป็น 2 สัปดาห์ — ที่ปรึกษาขอเพิ่มเพราะตารางสอบชดเชย",
+    "Midterm น่าจะ 18 ต.ค. 2569 (วิชาอื่นเลื่อนมา 10–11 ต.ค. — อาจารย์ยังไม่ยืนยัน 100% แต่เล็ง 18)",
+    "แนวข้อสอบ 3 ส่วน: matrix operators, matrix calculus (หา gradient/Hessian ของฟังก์ชันที่กำหนด), optimization rate O(N)/O(N²) — optimization ท้าย ๆ อาจยกไปออก final",
+    "ครั้งหน้า: จบ Matrix Calculus แล้วทะยอยเข้า Optimization"
+  ],
+  "audioUrl": null,
+  "audioLabel": "ไฟล์เสียงคาบ 27 ก.ย. 2569",
+  "sourceNote": "สรุปจาก transcript ไฟล์เสียงคาบ 27 ก.ย. 2569 และ handout “5. Linear Algebra.pdf” — คาบแรกของชุด Linear Algebra วางฐานให้ Matrix Calculus",
+  "source": "สรุปคาบจาก Slack ช่องวิชา (Block Kit) ถอดเป็นข้อความ",
+  "sources": [
+    {
+      "kind": "summary",
+      "postedAt": "2026-09-28 08:41",
+      "slackTs": "1790559667.243889",
+      "channelId": "C0BNLCVUE1M",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNLCVUE1M/p1790559667243889",
+      "header": "คาบที่ 07 | 27 ก.ย. 2569 | Linear Algebra I (1/2)",
+      "note": "ครึ่งแรก: products ทั้งหมด + โครงสร้าง matrix",
+      "content": "# คาบที่ 07 | 27 ก.ย. 2569 | Linear Algebra I (1/2)\n  EGCO 611 Mathematical Modelling — สรุปจากไฟล์เสียงคาบ 27 กันยายน 2569 [1] และ handout “5. Linear Algebra.pdf” [2] • อ่านจบ ~6 นาที\n* *คาบนี้เรียนอะไร*\n• Inner vs Outer product — คูณแบบไหนได้ “ตัวเลขเดียว” หรือ “แมทริกซ์เต็มตัว”\n• Matrix–vector multiplication แบบ 3 มุมมอง + กับดัก A * x ใน Python\n• Matrix–matrix multiplication และกฎ “ห้ามสลับที่”\n• โครงสร้างของ matrix: identity / diagonal / transpose / symmetric และการแตกทุกตัวเป็น 2 ส่วน\n• Trace และ Norm (L1, L2, L∞, Frobenius) — วิธีวัด “ความใหญ่” ของเวกเตอร์และแมทริกซ์\n\nคาบนี้คือช่วงครึ่งแรกของ Linear Algebra (~2 คาบ) วางฐานให้ Matrix Calculus และ Optimization ที่จะตามมา\n* *1) Inner product vs Outer product*\n• uᵀv (inner/dot product) = “ตัวเลขเดียว” — บีบเวกเตอร์สองตัวให้เหลือค่าเดียว เช่น ความคล้ายกันของสองสิ่ง\n• uvᵀ (outer product) = แมทริกซ์ m×n — ไม่ใช่การคูณเมทริกซ์ปกติ (เลขคู่แบบนั้นคูณกันไม่ได้) แต่เป็นการ “กระจายคูณ” (broadcasting): ทุกคู่ i,j คูณกันครบหมด\n• ตัวอย่างในคาบ: [1,2,3] กับ [4,5,6] → outer ได้ตาราง 3×3 = [[4,5,6],[8,10,12],[12,15,18]]\n• Python: np.dot(u, v) ได้ inner • np.outer(u, v) ได้ outer (ถ้าข้อมูลข้างในเป็น float ผลลัพธ์เป็น float — แนะนำแปลง float ก่อน)\n* *2) Matrix–vector multiplication — มุมมองเดียว สามแบบมอง*\n• Entry view: คำนวณทีละช่อง yᵢ = Σ aᵢⱼxⱼ\n• Row view: แถวที่ i ของ A ดอตกับ x\n• Column view: Ax = x₁a₁ + … + xₙaₙ — เอา column มาผสมกันตาม “น้ำหนัก” ใน x\n• ตัวอย่างในคาบ: A ขนาด 2×3 คูณ x ขนาด 3 → ได้เวกเตอร์ขนาด 2 = การ “แมป” จาก R³ ไป R² (เปลี่ยนมิติของข้อมูลได้)\n• กับดัก Python: A @ x คือคูณแมทริกซ์–เวกเตอร์ • A * x คือ Hadamard product (คูณเฉพาะคู่ ทีละช่อง) — คนละคำตอบสิ้นเชิง อย่าใช้ * เด็ดขาด\n• แอปจริง: เมทริกซ์ [0 1 / −1 0] คูณ (x,y) ได้ (−y,x) = หมุนเวกเตอร์ 90° ทวนเข็ม — โปรแกรมหมุนรูปก็เอาตำแหน่ง pixel มาคูณเมทริกซ์แบบนี้\n* *3) Matrix–matrix multiplication*\n• เช็ค dimension ก่อนเสมอ: A (m×n) × B (n×p) → AB (m×p) — “ตัวกลาง” ต้องเท่ากัน; BA อาจคูณไม่ได้เลย\n• มองง่าย ๆ: เหมือนทำ matrix–vector หลายรอบ — เอา column ของ B มาดอตกับ A ทีละตัว\n• สมบัติที่ใช้ได้: (AB)C = A(BC) เปลี่ยนกลุ่มได้ • A(B+C) = AB+AC กระจายได้\n• สมบัติที่ “ไม่มี”: การสลับที่ — AB ≠ BA โดยทั่วไป\n• ผลที่ตามมา: (B+C)A = BA + CA (A อยู่ขวาต้องเติมขวาทั้งคู่) — อาจารย์เน้น: อย่าสลับตำแหน่งเด็ดขาด\n  [1] ไฟล์เสียงคาบ 27 ก.ย. 2569 • [2] handout Linear Algebra (Vasin Suttichaya, Mahidol) — ต่อในข้อความถัดไป (2/2)"
+    },
+    {
+      "kind": "summary",
+      "postedAt": "2026-09-28 08:41",
+      "slackTs": "1790559674.666779",
+      "channelId": "C0BNLCVUE1M",
+      "permalink": "https://jarvis-qhc8676.slack.com/archives/C0BNLCVUE1M/p1790559674666779",
+      "header": "คาบที่ 07 | 27 ก.ย. 2569 | Linear Algebra I (2/2)",
+      "note": "ครึ่งหลัง: identity/diagonal/transpose, symmetric, trace, norms + ประกาศสอบและการบ้าน",
+      "content": "# คาบที่ 07 | 27 ก.ย. 2569 | Linear Algebra I (2/2)\n* *4) Identity, diagonal, transpose*\n• I (identity): คูณแล้วได้ตัวเอง — AI = IA = A\n• D = diag(d₁,…,dₙ): คูณแล้วแต่ละแกนถูกยืดแยกกัน (Dx)ᵢ = dᵢxᵢ — เจอจริงตอน differentiate activation ใน neural network (Jacobian ออกมาเป็น diagonal)\n• Transpose: สลับแถว↔หลัก; (Aᵀ)ᵀ = A, (A+B)ᵀ = Aᵀ+Bᵀ\n• กฎที่อาจารย์ย้ำ: (AB)ᵀ = BᵀAᵀ — ต้อง “กลับออเดอร์” ด้วย; สามตัว ABC → CᵀBᵀAᵀ กลับหมดทุกตัว\n* *5) Symmetric และการแตกทุกแมทริกซ์เป็น 2 ส่วน*\n• A = Aᵀ → symmetric (สมมาตร) • A = −Aᵀ → skew-symmetric (อาจารย์ชอบเรียก anti-symmetric)\n• มหัศจรรย์ง่าย ๆ: A+Aᵀ เป็น symmetric เสมอ, A−Aᵀ เป็น skew เสมอ\n• รวมกัน: ทุก square matrix = ½(A+Aᵀ) + ½(A−Aᵀ) — แตกได้เสมอเป็น “ส่วนสมมาตร + ส่วนสวนกัน”\n• ทำไมต้องรู้: quadratic form xᵀAx ในบทหลังจะ assume A symmetric เสมอ และ symmetric matrix การันตีว่ามี real eigenvalue + orthonormal eigenvectors (จะได้เรียนต่อในคาบหน้า ๆ)\n* *6) Trace — บวกเส้นทแยงมุม*\n• tr(A) = ผลรวมของเส้นทแยงมุม (transpose ไม่ยุ่งกับเส้นนี้ → tr(A) = tr(Aᵀ))\n• tr(A+B) = tr(A)+tr(B), tr(AB) = tr(BA)\n• Cyclic: tr(ABCD) = tr(BCDA) = tr(CDAB) = tr(DABC) — เลื่อน “วนเป็นวงกลม” ได้ แต่ห้ามสลับใจกลาง: tr(ABC) ≠ tr(ACB)\n• โบนัส: ∥A∥²F = tr(AᵀA) — ใน matrix calculus สูตรยาว ๆ จะย่อเป็นรูป trace ได้สั้นมาก\n* *7) Norm — วิธีวัด “ความใหญ่”*\n• นิยามกว้างกว่าที่คิด: ฟังก์ชันใดก็ได้ที่กินเวกเตอร์ คายตัวเลขจริง ≥ 0 และผ่าน 4 ข้อ — non-negativity, definiteness (เป็นศูนย์เฉพาะ x = 0), homogeneity (f(tx) = |t|f(x)), triangle inequality — ใครตั้งสูตรใหม่ผ่านครบก็ตั้งชื่อ norm ของตัวเองได้ (อาจารย์: “วสินนอร์ม” ก็ได้ ถ้ามีประโยชน์ก็เก็บไว้)\n• ตระกูล Lp (p ≥ 1): L1 = Σ|xᵢ| (Manhattan — เดินตามตาราง) • L2 = √(Σxᵢ²) (Euclidean — วัดตรง) • L∞ = max|xᵢ|\n• สังเกตจากในคาบ [1,2,3,4]: L1 = 10, L2 ≈ 5.5, L3 ≈ 4.6, L4 ≈ 4.3 → ยิ่ง p ใหญ่ ยิ่งให้น้ำหนัก component ตัวใหญ่สุด จนถึง L∞ เหลือแค่ค่า max\n* *Norm ของ “แมทริกซ์” = ความสามารถยืดหนังสติ๊ก*\n• แนวคิด: หยิบ unit vector (ตาม norm ที่สนใจ) มาคูณกับ A แล้วยาวสุดได้เท่าไร — ไม่ใช่ดูว่า “ตัวเลขในแมทริกซ์ใหญ่ไหม” แต่ดูว่า “ดึงเวกเตอร์ออกได้ไกลสุดเท่าไร”\n• ภาพในคาบ: unit circle ของ L2 (วงกลม) โดน A transform กลายเป็นวงรี — ปลายสุดคือ ∥A∥₂; unit ball ของ L1 เป็นสี่เหลี่ยมโดนยืดเป็นรูปอื่น\n• สูตรสองตัวที่หาง่าย: ∥A∥₁ = max ผลรวม absolute “ตามคอลัมน์” • ∥A∥∞ = max ผลรวม absolute “ตามแถว”\n• ตัวอย่างในคาบ A = [[3,5,7],[2,6,4],[0,2,8]]: คอลัมน์รวมได้ 5, 13, 19 → ∥A∥₁ = 19 • แถวรวมได้ 15, 12, 10 → ∥A∥∞ = 15\n• ∥A∥₂ = max eigenvalue ของ A (หาไม่ง่าย — ยังไม่ได้สอนวิธี) • Frobenius = √(Σaᵢⱼ²) = √tr(AᵀA) — ไม่มีความหมายเชิงเรขาคณิต แค่วัด “ข้อมูลรวมใหญ่แค่ไหน” แต่ผ่าน 4 ข้อจึงชื่อ norm ได้\n* *ประกาศสำคัญ*\n• Midterm น่าจะ *18 ต.ค. 2569* (ไม่ใช่ 11 ต.ค. — วิชาอื่นเลื่อนมา 10–11) อาจารย์บอกยังไม่ซอลิด 100% แต่เล็งอย่างนั้น → เหลือเวลาอ่าน ~2 สัปดาห์\n• แนวข้อสอบ (อาจารย์พูดเอง): (1) matrix operator ต่าง ๆ ทำอะไรได้ (2) matrix calculus — หา gradient / Hessian ของฟังก์ชันที่กำหนด (3) ปลายทาง optimization — ลู่เข้าค่าน้อยสุด/มากสุดด้วย rate O(N) หรือ O(N²) • optimization ส่วนหลังอาจยกไปออก final\n• การบ้านขยายเวลา 1 → *2 สัปดาห์* (ที่ปรึกษาขอเพิ่ม เพราะตารางสอบชดเชย)\n• ครั้งหน้า: จบ Matrix Calculus แล้วทะยอย Optimization\n* *คำถามฝึกท้ายคาบ*\n1. u = [1,2], v = [3,4] → uᵀv = ? และ uvᵀ เป็นแมทริกซ์ขนาดไหน มีค่าอะไรบ้าง?\n2. เขียน (ABC)ᵀ ให้ถูกต้อง และ tr(ABCD) แบบ cyclic ให้ได้ค่าเท่ากันอีก 2 รูปแบบ\n3. A = [[3,5,7],[2,6,4],[0,2,8]] → ∥A∥₁ = ? และ ∥A∥∞ = ? (เฉลยอยู่ในข้อ 7 ข้างบน)\n  EGCO 611 Mathematical Modelling — สรุปจากไฟล์เสียงคาบ 27 กันยายน 2569 [1] และ handout “5. Linear Algebra.pdf” [2]"
+    }
+  ]
+}
